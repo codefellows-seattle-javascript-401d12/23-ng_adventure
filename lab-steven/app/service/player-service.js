@@ -20,6 +20,8 @@ function playerService($log, $q, mapService) {
     feedback: 'Welcome to the game.'
   };
 
+  service.player.history = [];
+
   service.movePlayer = function(direction) {
     if (direction === 'n') direction = 'north';
     if (direction === 'e') direction = 'east';
@@ -30,9 +32,14 @@ function playerService($log, $q, mapService) {
       let newLocation = mapService.mapData[service.player.location][direction];
 
       if (!newLocation) {
-        service.player.feedback = 'You can\'t go that way.';
-        return reject('Player can\'t go that way');
+        service.player.feedback = `You can't go ${direction}.`;
+        return reject(`Player can't go ${direction}.`);
       }
+
+      service.player.history.push({
+        prevLoc: service.player.location,
+        prevFeedback: service.player.feedback
+      });
 
       service.player.location = newLocation;
       service.player.feedback = `You move ${direction}.`;

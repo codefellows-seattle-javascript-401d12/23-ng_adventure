@@ -9,9 +9,9 @@ adventureGame.component('playerInput', {
   controllerAs: 'playerInputCtrl'
 });
 
-adventureGame.controller('PlayerInputController', ['$log', 'playerService', 'interpreterService', PlayerInputController]);
+adventureGame.controller('PlayerInputController', ['$log', 'playerService', 'interpreterService', '$location', '$anchorScroll', PlayerInputController]);
 
-function PlayerInputController($log, playerService, interpreterService) {
+function PlayerInputController($log, playerService, interpreterService, $location, $anchorScroll) {
   $log.debug('PlayerInputController');
 
   this.interpretCommand = function(command) {
@@ -26,5 +26,9 @@ function PlayerInputController($log, playerService, interpreterService) {
       .catch(err => $log.log(err));
     }
     this.command = '';
+    setTimeout(function() {
+      $location.hash('bottom');
+      $anchorScroll();
+    }, 0);
   };
 }

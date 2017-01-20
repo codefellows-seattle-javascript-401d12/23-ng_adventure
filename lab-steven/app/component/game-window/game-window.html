@@ -1,6 +1,15 @@
 <section class="game-window">
-  <h2>{{gameWindowCtrl.mapData[gameWindowCtrl.player.location].title}}</h2>
-  <p>{{gameWindowCtrl.mapData[gameWindowCtrl.player.location].desc}}</p>
-  <p>Exits: <span>{{gameWindowCtrl.mapData[gameWindowCtrl.player.location].exits}}</span></p>
-  <p>{{gameWindowCtrl.player.feedback}}</p>
+  <div ng-show="gameWindowCtrl.player.history" ng-repeat="previous in gameWindowCtrl.player.history">
+    <h2>{{gameWindowCtrl.mapData[previous.prevLoc].title}}</h2>
+    <p>{{gameWindowCtrl.mapData[previous.prevLoc].desc}}</p>
+    <p>Exits: <span>{{gameWindowCtrl.mapData[previous.prevLoc].exits}}</span></p>
+    <p>{{previous.prevFeedback}}</p>
+  </div>
+
+  <div>
+    <h2>{{gameWindowCtrl.mapData[gameWindowCtrl.player.location].title}}</h2>
+    <p>{{gameWindowCtrl.mapData[gameWindowCtrl.player.location].desc}}</p>
+    <p>Exits: <span>{{gameWindowCtrl.mapData[gameWindowCtrl.player.location].exits}}</span></p>
+    <p id="bottom">{{gameWindowCtrl.player.feedback}}</p>
+  </div>
 </section>
