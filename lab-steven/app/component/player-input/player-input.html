@@ -1,0 +1,11 @@
+<section class="player-input">
+  <form name="player-input">
+    <label for="direction">Travel to the</label>
+    <button type="button" ng-click="playerInputCtrl.movePlayer()">Move player</button>
+    <select ng-model="playerInputCtrl.moveDirection">
+      <option ng-repeat="direction in playerInputCtrl.directions" value="{{direction}}">
+        {{direction}}
+      </option>
+    </select>
+  </form>
+</section>
