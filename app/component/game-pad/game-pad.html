@@ -1,3 +1,14 @@
 <section class="gamepad">
+  <form name="gamepad novalidate">
+    <label for="direction">head to the</label>
+    <button
+      type="button"
+      value="{{ direction }}"
+      ng-click="gamePadCtrl.movePlayer()"
+      ng-model="gamePadCtrl.moveDirection">North</button>
+    <button type="button" value="{{ direction }}" ng-click="gamePadCtrl.movePlayer()">South</button>
+    <button type="button" value="{{ direction }}" ng-click="gamePadCtrl.movePlayer()">East</button>
+    <button type="button" value="{{ direction }}" ng-click="gamePadCtrl.movePlayer()">West</button>
 
+  </form>
 </section>

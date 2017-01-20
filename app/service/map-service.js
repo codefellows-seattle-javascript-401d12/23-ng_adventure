@@ -6,7 +6,7 @@ const ngAdventure = angular.module('ngAdventure');
 ngAdventure.factory('mapService', ['$log', mapService]);
 
 function mapService($log) {
-  $log.debug('mapService');
+  $log.debug('map service');
 
   let service = {};
 
@@ -52,4 +52,6 @@ function mapService($log) {
       west: 'KingsHardware'
     }
   };
+
+  return service;
 }

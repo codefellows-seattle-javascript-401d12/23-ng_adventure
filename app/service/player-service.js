@@ -13,7 +13,7 @@ function playerService($q, $log, mapService) {
   let turn = 0;
   let player = service.player = {
     name: 'dbecks',
-    location: 'Fremont Brewing',
+    location: 'FremontBrewing',
     hp: 12
   };
 
@@ -21,7 +21,7 @@ function playerService($q, $log, mapService) {
     {
       turn,
       desc: 'Ready to get drunk?',
-      location: 'Fremont Brewing',
+      location: 'FremontBrewing',
       hp: player.hp
     }
   ];
