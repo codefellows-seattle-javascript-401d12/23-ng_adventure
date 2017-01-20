@@ -14,7 +14,6 @@ adventureGame.controller('GameWindowController', ['$log', 'mapService', 'playerS
 function GameWindowController($log, mapService, playerService) {
   $log.debug('Game Window Controller');
 
-  this.roomTitle = mapService.mapData[playerService.player.location].title;
-  this.roomDescription = mapService.mapData[playerService.player.location].desc;
-  this.roomExits = mapService.mapData[playerService.player.location].exits;
+  this.mapData = mapService.mapData;
+  this.player = playerService.player;
 }
