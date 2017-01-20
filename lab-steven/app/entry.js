@@ -11,3 +11,4 @@ require('./service/interpreter-service.js');
 require('./service/player-service.js');
 
 require('./component/player-input/player-input.js');
+require('./component/prompt/prompt.js');
