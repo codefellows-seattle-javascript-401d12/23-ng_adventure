@@ -3,7 +3,7 @@
 const angular = require('angular');
 const adventureGame = angular.module('adventureGame');
 
-adventureGame.component({
+adventureGame.component('playerInput', {
   template: require('./player-input.html'),
   controller: 'PlayerInputController',
   controllerAs: 'playerInputCtrl'
