@@ -15,37 +15,18 @@ function playerService($log, $q, mapService) {
     location: 'room1'
   };
 
-  service.history = [
-    {
-      desc: 'Welcome to the game',
-      location: service.player.location
-    }
-  ];
-
   service.movePlayer = function(direction) {
     if (direction === 'n') direction = 'north';
     if (direction === 'e') direction = 'east';
     if (direction === 'w') direction = 'west';
     if (direction === 's') direction = 'south';
-    
+
     return new $q((resolve, reject) => {
       let newLocation = mapService.mapData[service.player.location][direction];
 
-      if (!newLocation) {
-        service.history.unshift({
-          desc: 'You can\'t go that way',
-          location: service.player.location
-        });
-        return reject('You can\'t go that way.');
-      }
+      if (!newLocation) return reject('You can\'t go that way.');
 
       service.player.location = newLocation;
-
-      service.history.unshift({
-        desc: mapService.mapData[newLocation].desc,
-        location: service.player.location,
-      });
-
       return resolve(service.player.location);
     });
   };

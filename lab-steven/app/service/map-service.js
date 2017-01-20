@@ -12,17 +12,23 @@ function mapService($log) {
 
   service.mapData = {
     room1: {
+      title: 'Room 1',
       desc: 'Room 1 desc.',
-      east: 'room2'
+      east: 'room2',
+      exits: 'east'
     },
     room2: {
+      title: 'Room 2',
       desc: 'Room 2 desc.',
       west: 'room1',
-      east: 'room3'
+      east: 'room3',
+      exits: 'east west'
     },
     room3: {
+      title: 'Room 3',
       desc: 'Room 3 desc.',
-      west: 'room2'
+      west: 'room2',
+      exits: 'west'
     }
   };
 
