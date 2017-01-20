@@ -23,6 +23,11 @@ function playerService($log, $q, mapService) {
   ];
 
   service.movePlayer = function(direction) {
+    if (direction === 'n') direction = 'north';
+    if (direction === 'e') direction = 'east';
+    if (direction === 'w') direction = 'west';
+    if (direction === 's') direction = 'south';
+    
     return new $q((resolve, reject) => {
       let newLocation = mapService.mapData[service.player.location][direction];
 

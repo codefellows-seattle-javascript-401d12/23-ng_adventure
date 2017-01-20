@@ -9,23 +9,22 @@ adventureGame.component('playerInput', {
   controllerAs: 'playerInputCtrl'
 });
 
-adventureGame.controller('PlayerInputController', ['$log', 'playerService', PlayerInputController]);
+adventureGame.controller('PlayerInputController', ['$log', 'playerService', 'interpreterService', PlayerInputController]);
 
-function PlayerInputController($log, playerService) {
+function PlayerInputController($log, playerService, interpreterService) {
   $log.debug('PlayerInputController');
 
-  this.movePlayer = function(direction) {
-    direction = direction.toLowerCase();
-    if (direction === 'n') direction = 'north';
-    if (direction === 'w') direction = 'west';
-    if (direction === 'e') direction = 'east';
-    if (direction === 's') direction = 'south';
+  this.interpretCommand = function(command) {
+    command = command.toLowerCase();
+    if (!interpreterService.acceptableCommands[command]) return $log.error('That is not an acceptable command.');
 
-    playerService.movePlayer(direction)
-    .then(location => {
-      $log.log(`player currently at ${location}`);
-      this.direction = '';
-    })
-    .catch(err => $log.error(err));
+    if (interpreterService.acceptableCommands[command] === 'direction') {
+      playerService.movePlayer(command)
+      .then(location => {
+        $log.log(`Player currently at ${location}`);
+      })
+      .catch(err => $log.error(err));
+    }
+    this.command = '';
   };
 }
