@@ -14,12 +14,18 @@ adventureGame.controller('PlayerInputController', ['$log', 'playerService', Play
 function PlayerInputController($log, playerService) {
   $log.debug('PlayerInputController');
 
-  this.directions = ['north', 'west', 'east', 'south'];
-  this.moveDirection = this.directions[0];
+  this.movePlayer = function(direction) {
+    direction = direction.toLowerCase();
+    if (direction === 'n') direction = 'north';
+    if (direction === 'w') direction = 'west';
+    if (direction === 'e') direction = 'east';
+    if (direction === 's') direction = 'south';
 
-  this.movePlayer = function() {
-    playerService.movePlayer(this.moveDirection)
-    .then(location => $log.log(`player currently at ${location}`))
+    playerService.movePlayer(direction)
+    .then(location => {
+      $log.log(`player currently at ${location}`);
+      this.direction = '';
+    })
     .catch(err => $log.error(err));
   };
 }
