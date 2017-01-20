@@ -23,7 +23,7 @@ function PlayerInputController($log, playerService, interpreterService) {
       .then(location => {
         $log.log(`Player currently at ${location}`);
       })
-      .catch(err => $log.error(err));
+      .catch(err => $log.log(err));
     }
     this.command = '';
   };

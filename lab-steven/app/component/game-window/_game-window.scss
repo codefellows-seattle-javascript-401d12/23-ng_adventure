@@ -1,0 +1,35 @@
+@import '../../scss/lib/theme/vars';
+
+.game-window {
+  background: $black;
+  height: 30vw;
+  overflow: auto;
+  color: $white;
+  border: 7px ridge $gray;
+  border-bottom: none;
+  font-size: 1em;
+  font-family: Monospace;
+  padding: 1vw 1vw 2.5vw 1vw;
+
+  h2 {
+    color: $blue-highlight;
+  }
+
+  p:nth-child(2) {
+    width: 70%;
+  }
+
+  p:nth-child(3) {
+    margin: 1% 0;
+    color: $blue-highlight;
+  }
+
+  p span {
+    color: $blue-dull;
+  }
+
+  p:nth-child(4) {
+    color: $green;
+    margin-top: 2%;
+  }
+}

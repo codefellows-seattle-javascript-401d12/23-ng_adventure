@@ -1,5 +1,6 @@
 <section class="game-window">
   <h2>{{gameWindowCtrl.mapData[gameWindowCtrl.player.location].title}}</h2>
   <p>{{gameWindowCtrl.mapData[gameWindowCtrl.player.location].desc}}</p>
-  <p>{{gameWindowCtrl.mapData[gameWindowCtrl.player.location].exits}}</p>
+  <p>Exits: <span>{{gameWindowCtrl.mapData[gameWindowCtrl.player.location].exits}}</span></p>
+  <p>{{gameWindowCtrl.player.feedback}}</p>
 </section>

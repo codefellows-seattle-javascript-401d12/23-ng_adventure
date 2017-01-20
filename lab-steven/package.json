@@ -9,7 +9,7 @@
   "scripts": {
     "lint": "eslint '**/*.js'",
     "build": "webpack",
-    "watch": "webpack-dev-server",
+    "watch": "webpack-dev-server --inline --hot",
     "test": "karma start --single-run",
     "test-watch": "karma start"
   },

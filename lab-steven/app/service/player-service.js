@@ -12,7 +12,12 @@ function playerService($log, $q, mapService) {
 
   service.player = {
     name: 'Sample name',
-    location: 'room1'
+    location: 'room1',
+    hp: 20,
+    maxHP: 20,
+    mp: 20,
+    maxMP: 20,
+    feedback: 'Welcome to the game.'
   };
 
   service.movePlayer = function(direction) {
@@ -24,9 +29,13 @@ function playerService($log, $q, mapService) {
     return new $q((resolve, reject) => {
       let newLocation = mapService.mapData[service.player.location][direction];
 
-      if (!newLocation) return reject('You can\'t go that way.');
+      if (!newLocation) {
+        service.player.feedback = 'You can\'t go that way.';
+        return reject('Player can\'t go that way');
+      }
 
       service.player.location = newLocation;
+      service.player.feedback = `You move ${direction}.`;
       return resolve(service.player.location);
     });
   };
