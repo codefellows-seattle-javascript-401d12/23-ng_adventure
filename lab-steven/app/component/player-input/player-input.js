@@ -16,7 +16,11 @@ function PlayerInputController($log, playerService, interpreterService, $locatio
 
   this.interpretCommand = function(command) {
     command = command.toLowerCase();
-    if (!interpreterService.acceptableCommands[command]) return $log.error('That is not an acceptable command.');
+    this.command = '';
+    if (!interpreterService.acceptableCommands[command]) {
+      playerService.player.feedback = 'I\'m not sure what you\'re trying to do.';
+      return $log.error('That is not an acceptable command.');
+    }
 
     if (interpreterService.acceptableCommands[command] === 'direction') {
       playerService.movePlayer(command)
@@ -25,7 +29,6 @@ function PlayerInputController($log, playerService, interpreterService, $locatio
       })
       .catch(err => $log.log(err));
     }
-    this.command = '';
     setTimeout(function() {
       $location.hash('bottom');
       $anchorScroll();

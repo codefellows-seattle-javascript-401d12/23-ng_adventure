@@ -11,7 +11,7 @@ function playerService($log, $q, mapService) {
   let service = {};
 
   service.player = {
-    name: 'Sample name',
+    name: 'Monkay',
     location: 'room1',
     hp: 20,
     maxHP: 20,
@@ -36,10 +36,8 @@ function playerService($log, $q, mapService) {
         return reject(`Player can't go ${direction}.`);
       }
 
-      service.player.history.push({
-        prevLoc: service.player.location,
-        prevFeedback: service.player.feedback
-      });
+      service.player.history.push(service.player.location);
+      $log.log(service.player.history);
 
       service.player.location = newLocation;
       service.player.feedback = `You move ${direction}.`;

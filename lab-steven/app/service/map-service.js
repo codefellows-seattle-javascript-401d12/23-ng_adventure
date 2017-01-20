@@ -13,20 +13,20 @@ function mapService($log) {
   service.mapData = {
     room1: {
       title: 'Room 1',
-      desc: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
+      desc: 'This is the description for room 1. It\'s just placeholder text and will thus be gone in the near future.',
       east: 'room2',
       exits: '[east]'
     },
     room2: {
       title: 'Room 2',
-      desc: 'Room 2 desc.',
+      desc: 'This will also be replaced at some point soon. Probably by something significantly more fascinating.',
       west: 'room1',
       east: 'room3',
       exits: '[east  west]'
     },
     room3: {
       title: 'Room 3',
-      desc: 'Room 3 desc.',
+      desc: 'This may come as a shock to you, but this is also just some placeholder text. Nothing to see here, folks. Move along.',
       west: 'room2',
       exits: '[west]'
     }

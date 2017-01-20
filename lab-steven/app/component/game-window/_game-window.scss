@@ -7,9 +7,12 @@
   color: $white;
   border: 7px ridge $gray;
   border-bottom: none;
-  font-size: 1em;
   font-family: Monospace;
   padding: 1vw 1vw 2.5vw 1vw;
+
+  div {
+    margin-bottom: 2%;
+  }
 
   div h2 {
     color: $blue-highlight;
@@ -30,6 +33,6 @@
 
   div p:nth-child(4) {
     color: $green;
-    margin-top: 2%;
+    margin: 2% 0;
   }
 }
