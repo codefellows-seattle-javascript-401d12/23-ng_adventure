@@ -29,7 +29,7 @@ function playerService($log, $q, mapService) {
     if (direction === 's') direction = 'south';
 
     return new $q((resolve, reject) => {
-      let newLocation = mapService.mapData[service.player.location][direction];
+      let newLocation = mapService.mapData[service.player.location].exits[direction];
 
       if (!newLocation) {
         service.player.feedback = `You can't go ${direction}.`;

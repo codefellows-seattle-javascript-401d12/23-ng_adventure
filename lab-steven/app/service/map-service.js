@@ -14,21 +14,24 @@ function mapService($log) {
     room1: {
       title: 'Room 1',
       desc: 'This is the description for room 1. It\'s just placeholder text and will thus be gone in the near future.',
-      east: 'room2',
-      exits: '[east]'
+      exits: {
+        east: 'room2'
+      }
     },
     room2: {
       title: 'Room 2',
       desc: 'This will also be replaced at some point soon. Probably by something significantly more fascinating.',
-      west: 'room1',
-      east: 'room3',
-      exits: '[east  west]'
+      exits: {
+        west: 'room1',
+        east: 'room3'
+      }
     },
     room3: {
       title: 'Room 3',
       desc: 'This may come as a shock to you, but this is also just some placeholder text. Nothing to see here, folks. Move along.',
-      west: 'room2',
-      exits: '[west]'
+      exits: {
+        west: 'room2'
+      }
     }
   };
 

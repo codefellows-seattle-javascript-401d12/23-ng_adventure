@@ -16,6 +16,7 @@ function PlayerInputController($log, playerService, interpreterService, $locatio
 
   this.interpretCommand = function(command) {
     command = command.toLowerCase();
+    if (command === '') return;
     this.command = '';
     if (!interpreterService.acceptableCommands[command]) {
       playerService.player.feedback = 'I\'m not sure what you\'re trying to do.';
