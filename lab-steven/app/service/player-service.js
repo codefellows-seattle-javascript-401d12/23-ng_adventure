@@ -38,28 +38,28 @@ function playerService($log, $q, mapService) {
   };
 
   service.addInventory = function(item) {
-    let roomItemIndex = mapService.mapData[service.player.location].items.indexOf(item.toLowerCase());
-    if (roomItemIndex === -1) return service.player.feedback = 'I don\'t see that here.';
+    let arrayOfItems = mapService.mapData[service.player.location].items;
+    let foundItem = arrayOfItems.filter(element => element.keywords.indexOf(item) !== -1)[0];
+    if (!foundItem) return service.player.feedback = 'I don\'t see that here.';
 
-    let foundItem = mapService.mapData[service.player.location].items[roomItemIndex];
     service.player.inventory.push(foundItem);
-    mapService.mapData[service.player.location].items.splice(roomItemIndex, 1);
-    service.player.feedback = `You pick up ${foundItem}.`;
+    mapService.mapData[service.player.location].items = arrayOfItems.filter(element => element.shortDesc !== foundItem.shortDesc);
+    service.player.feedback = `You pick up ${foundItem.shortDesc}.`;
   };
 
   service.removeInventory = function(item) {
-    let inventoryItemIndex = service.player.inventory.indexOf(item);
-    if (inventoryItemIndex === -1) return service.player.feedback = 'You don\'t appear to be carrying that item.';
+    let arrayOfItems = service.player.inventory;
+    let foundItem = arrayOfItems.filter(element => element.keywords.indexOf(item) !== -1)[0];
+    if (!foundItem) return service.player.feedback = 'You don\'t seem to be carrying that.';
 
-    let foundItem = service.player.inventory[inventoryItemIndex];
     mapService.mapData[service.player.location].items.push(foundItem);
-    service.player.inventory.splice(inventoryItemIndex, 1);
-    return service.player.feedback = `You drop ${foundItem}.`;
+    service.player.inventory = arrayOfItems.filter(element => element.shortDesc !== foundItem.shortDesc);
+    service.player.feedback = `You drop ${foundItem.shortDesc}.`;
   };
 
   service.listInventory = function() {
     let inventory = '';
-    service.player.inventory.forEach(invItem => inventory+= `${invItem}\n`);
+    service.player.inventory.forEach(invItem => inventory+= `${invItem.shortDesc}\n`);
     if (inventory === '') return service.player.feedback = 'You\'re not carrying anything.';
     service.player.feedback = `You are currently carrying:\n${inventory}`;
     return;

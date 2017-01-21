@@ -9,11 +9,12 @@ adventureGame.component('gameWindow', {
   controllerAs: 'gameWindowCtrl'
 });
 
-adventureGame.controller('GameWindowController', ['$log', 'mapService', 'playerService', GameWindowController]);
+adventureGame.controller('GameWindowController', ['$log', 'mapService', 'itemService', 'playerService', GameWindowController]);
 
-function GameWindowController($log, mapService, playerService) {
+function GameWindowController($log, mapService, itemService, playerService) {
   $log.debug('Game Window Controller');
 
   this.mapData = mapService.mapData;
   this.player = playerService.player;
+  this.gameItems = itemService.gameItems;
 }
