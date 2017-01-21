@@ -20,10 +20,7 @@ function PlayerInputController($log, playerService, interpreterService, $locatio
     let commandArgs = command.toLowerCase().split(baseCommand).join('').trim();
     this.command = '';
 
-    if (!interpreterService.acceptableCommands[baseCommand]) {
-      playerService.player.feedback = 'I\'m not sure what you\'re trying to do.';
-      return $log.error('That is not an acceptable command.');
-    }
+    if (!interpreterService.acceptableCommands[baseCommand]) return playerService.player.feedback = 'I\'m not sure what you\'re trying to do.';
 
     if (interpreterService.acceptableCommands[baseCommand] === 'direction') playerService.movePlayer(baseCommand);
 
