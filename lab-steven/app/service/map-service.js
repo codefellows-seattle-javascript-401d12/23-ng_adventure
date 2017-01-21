@@ -3,9 +3,9 @@
 const angular = require('angular');
 const adventureGame = angular.module('adventureGame');
 
-adventureGame.factory('mapService', ['$log', 'itemService', mapService]);
+adventureGame.factory('mapService', ['$log', 'itemService', 'mobService', mapService]);
 
-function mapService($log, itemService) {
+function mapService($log, itemService, mobService) {
   $log.debug('mapService');
 
   let service = {};
@@ -21,7 +21,8 @@ function mapService($log, itemService) {
           unlockKey: itemService.gameItems.key
         }
       },
-      items: [itemService.gameItems.key, itemService.gameItems.key, itemService.gameItems.blueKey]
+      items: [itemService.gameItems.key, itemService.gameItems.key, itemService.gameItems.blueKey],
+      mobs: [mobService.rat, mobService.rat]
     },
     room2: {
       title: 'Room 2',
