@@ -5,7 +5,7 @@ const ngAdventure = angular.module('ngAdventure');
 
 ngAdventure.factory('mapService', ['$log', mapService]);
 
-funciton mapService($log) {
+function mapService($log) {
   $log.debug('mapService');
 
   let service = {};
@@ -20,9 +20,9 @@ funciton mapService($log) {
       north: 'corridor',
       east: 'ballroom',
       south: 'porch',
-      west: 'sitting-room'
+      west: 'sittingroom'
     },
-    sitting-room: {
+    sittingroom: {
       description: 'messageHere',
       east: 'entryway'
     },
@@ -33,7 +33,7 @@ funciton mapService($log) {
     corridor: {
       description: 'messageHere',
       north: 'kitchen',
-      east: 'dining-room',
+      east: 'diningroom',
       south: 'entryway',
       west: 'den'
     },
@@ -41,7 +41,7 @@ funciton mapService($log) {
       description: 'messageHere',
       east: 'corridor'
     },
-    dining-room: {
+    diningroom: {
       description: 'messageHere',
       west: 'corridor'
     },
@@ -59,5 +59,5 @@ funciton mapService($log) {
       description: 'messageHere',
       west: 'kitchen'
     }
-  }
+  };
 }
