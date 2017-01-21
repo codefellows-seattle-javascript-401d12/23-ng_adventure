@@ -15,6 +15,7 @@ function GameWindowController($log, mapService, itemService, playerService, comb
   $log.debug('Game Window Controller');
 
   this.combatLog = combatService.combatLog;
+  this.combat = combatService;
   this.mapData = mapService.mapData;
   this.player = playerService.player;
   this.gameItems = itemService.gameItems;

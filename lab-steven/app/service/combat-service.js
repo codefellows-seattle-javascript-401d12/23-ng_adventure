@@ -6,7 +6,7 @@ const adventureGame = angular.module('adventureGame');
 adventureGame.factory('combatService', ['$log', 'mapService', 'mobService', 'playerService', combatService]);
 
 function combatService($log, mapService, mobService, playerService) {
-  $log.log('Combat service.');
+  $log.debug('Combat service.');
 
   let service = {};
 
@@ -21,7 +21,7 @@ function combatService($log, mapService, mobService, playerService) {
     let spell = commandArgs.split(' ')[0];
     let target = service.currentlyFighting;
     if (!service.inCombat) {
-      if (!spell.outOfCombat) return playerService.player.feedback = 'You are not in combat.';
+      if (spell.inCombat) return playerService.player.feedback = 'You are not in combat.';
     }
     if (!playerService.player.spells[spell]) return playerService.player.feedback = 'You don\'t know that spell.';
     if (playerService.player.spells[spell].cost > playerService.player.mp) return playerService.player.feedback = 'You don\'t have enough MP.';
@@ -35,6 +35,7 @@ function combatService($log, mapService, mobService, playerService) {
       service.combatLog.push(logMessage);
       target.hp -= playerService.player.mat;
       if (target.hp <= 0) service.combatLog.push(`You've slain ${target.shortDesc}!`);
+      service.currentlyFighting = '';
       mapService.mapData[playerService.player.location].mobs.splice(target, 1);
       service.inCombat = false;
       return;

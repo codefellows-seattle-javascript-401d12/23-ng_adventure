@@ -22,11 +22,10 @@ function PlayerInputController($log, mapService, playerService, interpreterServi
 
     if (!interpreterService.acceptableCommands[baseCommand]) return playerService.player.feedback = 'I\'m not sure what you\'re trying to do.';
 
-
     if (interpreterService.acceptableCommands[baseCommand] === 'cast') combatService.castSpell(commandArgs);
 
     if (interpreterService.acceptableCommands[baseCommand] === 'help') playerService.player.feedback = interpreterService.help();
-    
+
     if (combatService.inCombat) {
       playerService.player.feedback = 'You can\'t do that while you\'re in the middle of combat!';
       return scrollToBottom();
