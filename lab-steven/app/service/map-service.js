@@ -16,7 +16,8 @@ function mapService($log) {
       desc: 'This is the description for room 1. It\'s just placeholder text and will thus be gone in the near future.',
       exits: {
         east: 'room2'
-      }
+      },
+      items: ['key', 'red key', 'green key']
     },
     room2: {
       title: 'Room 2',
@@ -24,14 +25,16 @@ function mapService($log) {
       exits: {
         west: 'room1',
         east: 'room3'
-      }
+      },
+      items: ['blue key']
     },
     room3: {
       title: 'Room 3',
       desc: 'This may come as a shock to you, but this is also just some placeholder text. Nothing to see here, folks. Move along.',
       exits: {
         west: 'room2'
-      }
+      },
+      items: []
     }
   };
 

@@ -17,7 +17,8 @@ function playerService($log, $q, mapService) {
     maxHP: 20,
     mp: 20,
     maxMP: 20,
-    feedback: 'Welcome to the game.'
+    feedback: 'Welcome to the game.',
+    inventory: []
   };
 
   service.player.history = [];
@@ -37,11 +38,26 @@ function playerService($log, $q, mapService) {
       }
 
       service.player.history.push(service.player.location);
-      $log.log(service.player.history);
 
       service.player.location = newLocation;
       service.player.feedback = `You move ${direction}.`;
       return resolve(service.player.location);
+    });
+  };
+
+  service.addInventory = function(item) {
+    return new $q((resolve, reject) => {
+      let roomItemIndex = mapService.mapData[service.player.location].items.indexOf(item.toLowerCase());
+
+      if (roomItemIndex === -1) {
+        service.player.feedback = 'I don\'t see that here.';
+        return reject('Item not found.');
+      }
+      let foundItem = mapService.mapData[service.player.location].items[roomItemIndex];
+      service.player.inventory.push(foundItem);
+      mapService.mapData[service.player.location].items.splice(roomItemIndex, 1);
+      service.player.feedback = `You pick up ${foundItem}.`;
+      return resolve(`Picked up ${foundItem}.`);
     });
   };
 

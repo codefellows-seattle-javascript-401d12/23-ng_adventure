@@ -15,21 +15,26 @@ function PlayerInputController($log, playerService, interpreterService, $locatio
   $log.debug('PlayerInputController');
 
   this.interpretCommand = function(command) {
-    command = command.toLowerCase();
-    if (command === '') return;
+    let baseCommand = command.toLowerCase().split(' ')[0];
+    if (baseCommand === '') return;
     this.command = '';
-    if (!interpreterService.acceptableCommands[command]) {
+    if (!interpreterService.acceptableCommands[baseCommand]) {
       playerService.player.feedback = 'I\'m not sure what you\'re trying to do.';
       return $log.error('That is not an acceptable command.');
     }
 
-    if (interpreterService.acceptableCommands[command] === 'direction') {
-      playerService.movePlayer(command)
-      .then(location => {
-        $log.log(`Player currently at ${location}`);
-      })
+    if (interpreterService.acceptableCommands[baseCommand] === 'direction') {
+      playerService.movePlayer(baseCommand)
       .catch(err => $log.log(err));
     }
+
+    if (interpreterService.acceptableCommands[baseCommand] === 'add inventory') {
+      let commandArgs = command.toLowerCase().split(baseCommand).join('').trim();
+      playerService.addInventory(commandArgs)
+      .then(() => $log.log(`Player inventory: ${playerService.player.inventory}.`))
+      .catch(err => $log.log(err));
+    }
+
     setTimeout(function() {
       $location.hash('bottom');
       $anchorScroll();
