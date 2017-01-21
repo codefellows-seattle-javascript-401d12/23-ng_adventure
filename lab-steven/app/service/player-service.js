@@ -43,9 +43,10 @@ function playerService($log, $q, mapService) {
     if (!foundItem) return service.player.feedback = 'I don\'t see that here.';
 
     service.player.inventory.push(foundItem);
-    mapService.mapData[service.player.location].items.pop(mapService.mapData[service.player.location].items.find(element => {
-      return element.shortDesc === foundItem.shortDesc;
-    }));
+    mapService.mapData[service.player.location].items.splice(
+      mapService.mapData[service.player.location].items.indexOf(
+        mapService.mapData[service.player.location].items.find(element => element.shortDesc === foundItem.shortDesc)
+      ), 1);
     service.player.feedback = `You pick up ${foundItem.shortDesc}.`;
   };
 
@@ -55,13 +56,29 @@ function playerService($log, $q, mapService) {
     if (!foundItem) return service.player.feedback = 'You don\'t seem to be carrying that.';
 
     mapService.mapData[service.player.location].items.push(foundItem);
-    service.player.inventory.pop(service.player.inventory.find(element => element.shortDesc === foundItem.shortDesc));
+    service.player.inventory.splice(
+      service.player.inventory.indexOf(
+        service.player.inventory.find(element => element.shortDesc === foundItem.shortDesc)
+      ), 1);
     service.player.feedback = `You drop ${foundItem.shortDesc}.`;
   };
 
   service.listInventory = function() {
-
-    return;
+    let inventory = 'You are currently carrying:\n';
+    if (service.player.inventory.length === 0) return service.player.feedback = 'You aren\'t carrying anything.';
+    let tempInventory = service.player.inventory.map(element => element.shortDesc);
+    let counts = {};
+    tempInventory.forEach(element => {
+      counts[element] = (counts[element] || 0) + 1;
+    });
+    tempInventory.reduce((acc, curr) => {
+      if (acc.indexOf(curr) === -1) acc.push(curr);
+      return acc;
+    }, []).forEach(element => {
+      if (counts[element] === 1) return inventory += `${element}\n`;
+      inventory += `${element} x ${counts[element]}\n`;
+    });
+    service.player.feedback = inventory;
   };
 
   return service;

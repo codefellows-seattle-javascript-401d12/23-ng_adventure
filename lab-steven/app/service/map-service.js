@@ -17,7 +17,7 @@ function mapService($log, itemService) {
       exits: {
         east: 'room2'
       },
-      items: [itemService.gameItems.key, itemService.gameItems.key]
+      items: [itemService.gameItems.key, itemService.gameItems.key, itemService.gameItems.key, itemService.gameItems.key, itemService.gameItems.blueKey]
     },
     room2: {
       title: 'Room 2',
