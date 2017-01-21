@@ -9,9 +9,9 @@ adventureGame.component('playerInput', {
   controllerAs: 'playerInputCtrl'
 });
 
-adventureGame.controller('PlayerInputController', ['$log', 'playerService', 'interpreterService', '$location', '$anchorScroll', PlayerInputController]);
+adventureGame.controller('PlayerInputController', ['$log', 'mapService', 'playerService', 'interpreterService', '$location', '$anchorScroll', PlayerInputController]);
 
-function PlayerInputController($log, playerService, interpreterService, $location, $anchorScroll) {
+function PlayerInputController($log, mapService, playerService, interpreterService, $location, $anchorScroll) {
   $log.debug('PlayerInputController');
 
   this.interpretCommand = function(command) {
@@ -29,6 +29,10 @@ function PlayerInputController($log, playerService, interpreterService, $locatio
     if (interpreterService.acceptableCommands[baseCommand] === 'remove inventory') playerService.removeInventory(commandArgs);
 
     if (interpreterService.acceptableCommands[baseCommand] === 'check inventory') playerService.listInventory();
+
+    if (interpreterService.acceptableCommands[baseCommand] === 'unlock') {
+      playerService.player.feedback = mapService.unlockDoor(commandArgs, playerService.player.location, playerService.player.inventory);
+    }
 
     if (interpreterService.acceptableCommands[baseCommand] === 'help') playerService.player.feedback = interpreterService.help();
 

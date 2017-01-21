@@ -23,7 +23,8 @@ function interpreterService($log) {
     drop: 'remove inventory',
     inv: 'check inventory',
     inventory: 'check inventory',
-    help: 'help'
+    help: 'help',
+    unlock: 'unlock'
   };
 
   service.help = function() {
@@ -33,7 +34,8 @@ function interpreterService($log) {
     'n, s, e, w: Shortcuts for the above\n\n' +
     'get <item keyword> (ex: "get key" or "get blue key"): Picks an item up in your current room\n\n' +
     'drop <item keyword> (ex: "drop key" or "drop blue key"): Drops an item from your inventory into the current room\n\n' +
-    'inv, inventory: Displays your current inventory\n\n';
+    'inv, inventory: Displays your current inventory\n\n' +
+    'unlock <direction>: Unlocks a locked door in the stated direction if you have the correct key. Must fully type the direction\n\n';
   };
 
   return service;

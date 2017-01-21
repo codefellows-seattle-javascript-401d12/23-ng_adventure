@@ -17,7 +17,8 @@ function mapService($log, itemService) {
       exits: {
         east: {
           connection: 'room2',
-          locked: true
+          locked: true,
+          unlockKey: itemService.gameItems.key
         }
       },
       items: [itemService.gameItems.key, itemService.gameItems.key, itemService.gameItems.blueKey]
@@ -48,6 +49,26 @@ function mapService($log, itemService) {
       },
       items: []
     }
+  };
+
+  service.unlockDoor = function(direction, currentRoom, playerInventory) {
+    if (service.mapData[currentRoom].exits[direction]) {
+      if (service.mapData[currentRoom].exits[direction].locked) {
+        if (playerInventory.find((invItem => service.mapData[currentRoom].exits[direction].unlockKey === invItem))) {
+          service.mapData[currentRoom].exits[direction].locked = false;
+          let connectedRoom = service.mapData[currentRoom].exits[direction].connection;
+          Object.keys(service.mapData[connectedRoom].exits).forEach(eleDirection => {
+            if (service.mapData[connectedRoom].exits[eleDirection].connection === currentRoom) {
+              service.mapData[connectedRoom].exits[eleDirection].locked = false;
+            }
+          });
+          return `You use ${service.mapData[currentRoom].exits[direction].unlockKey.shortDesc} to unlock the door to the ${direction}.`;
+        }
+        return 'You don\'t have the correct key to unlock that door.';
+      }
+      return 'That exit isn\'t locked.';
+    }
+    return `There doesn\'t appear to be an exit to the ${direction}.`;
   };
 
   return service;
