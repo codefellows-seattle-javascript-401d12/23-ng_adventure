@@ -67,10 +67,12 @@ function playerService($log, $q, mapService) {
     let inventory = 'You are currently carrying:\n';
     if (service.player.inventory.length === 0) return service.player.feedback = 'You aren\'t carrying anything.';
     let tempInventory = service.player.inventory.map(element => element.shortDesc);
+
+    // Credit to user SheetJS on stackoverflow.com for this method of counting duplicate values in an array
+    // http://stackoverflow.com/questions/19395257/how-to-count-duplicate-value-in-an-array-in-javascript/19395300
     let counts = {};
-    tempInventory.forEach(element => {
-      counts[element] = (counts[element] || 0) + 1;
-    });
+    tempInventory.forEach(element => counts[element] = (counts[element] || 0) + 1);
+    
     tempInventory.reduce((acc, curr) => {
       if (acc.indexOf(curr) === -1) acc.push(curr);
       return acc;
