@@ -26,6 +26,9 @@
         <span ng-show="val.locked">(</span>{{exit}}<span ng-show="val.locked">)</span>
       </span> ]
     </p>
+    <div class="combat-log">
+      <p ng-show="gameWindowCtrl.combatLog" ng-repeat="line in gameWindowCtrl.combatLog track by $index">{{line}}</p>
+    </div>
     <pre id="bottom">{{gameWindowCtrl.player.feedback}}</pre>
   </div>
 </section>

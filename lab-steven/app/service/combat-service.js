@@ -3,36 +3,46 @@
 const angular = require('angular');
 const adventureGame = angular.module('adventureGame');
 
-adventureGame.factory('combatService', ['$log', 'mobService', 'playerService', combatService]);
+adventureGame.factory('combatService', ['$log', 'mapService', 'mobService', 'playerService', combatService]);
 
-function combatService($log, mobService, playerService) {
+function combatService($log, mapService, mobService, playerService) {
   $log.log('Combat service.');
 
   let service = {};
 
-  service.combatLog = '';
+  service.combatLog = [];
 
-  service.inCombat = false;
+  service.inCombat = true;
   service.round = 0;
+  service.currentlyFighting = mapService.mapData[playerService.player.location].mobs[0];
 
-  service.castSpell = function(spell, target){
+  service.castSpell = function(commandArgs){
+    let logMessage = '';
+    let spell = commandArgs.split(' ')[0];
+    let target = service.currentlyFighting;
     if (!service.inCombat) {
       if (!spell.outOfCombat) return playerService.player.feedback = 'You are not in combat.';
     }
     if (!playerService.player.spells[spell]) return playerService.player.feedback = 'You don\'t know that spell.';
     if (playerService.player.spells[spell].cost > playerService.player.mp) return playerService.player.feedback = 'You don\'t have enough MP.';
 
-    service.combatLog += `${playerService.player.spells[spell].castDescription}\n`;
+    logMessage += `${playerService.player.spells[spell].castDescription} `;
 
-    if (spell.inCombat) {
-      service.combatLog += `It deals ${playerService.player.mat} damage!\n`;
+    playerService.player.mp -= playerService.player.spells[spell].cost;
+
+    if (playerService.player.spells[spell].inCombat) {
+      logMessage += `It deals ${playerService.player.mat} damage!`;
+      service.combatLog.push(logMessage);
       target.hp -= playerService.player.mat;
+      if (target.hp <= 0) service.combatLog.push(`You've slain ${target.shortDesc}!`);
+      mapService.mapData[playerService.player.location].mobs.splice(target, 1);
+      service.inCombat = false;
       return;
     }
-    service.combatLog += `It heals you for ${playerService.player.mat} HP.`;
+    logMessage += `It heals you for ${playerService.player.mat} HP.`;
+    service.combatLog.push(logMessage);
     playerService.player.hp += playerService.player.mat;
     if (playerService.player.hp > playerService.player.mhp) playerService.player.hp = playerService.player.mhp;
-    playerService.player.mp -= playerService.player.spells[spell].mp;
   };
 
   return service;

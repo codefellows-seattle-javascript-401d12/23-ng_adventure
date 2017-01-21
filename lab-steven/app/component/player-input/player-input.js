@@ -9,9 +9,9 @@ adventureGame.component('playerInput', {
   controllerAs: 'playerInputCtrl'
 });
 
-adventureGame.controller('PlayerInputController', ['$log', 'mapService', 'playerService', 'interpreterService', 'mobService', '$location', '$anchorScroll', PlayerInputController]);
+adventureGame.controller('PlayerInputController', ['$log', 'mapService', 'playerService', 'interpreterService', 'mobService', 'combatService','$location', '$anchorScroll', PlayerInputController]);
 
-function PlayerInputController($log, mapService, playerService, interpreterService, mobService, $location, $anchorScroll) {
+function PlayerInputController($log, mapService, playerService, interpreterService, mobService, combatService, $location, $anchorScroll) {
   $log.debug('PlayerInputController');
 
   this.interpretCommand = function(command) {
@@ -21,6 +21,16 @@ function PlayerInputController($log, mapService, playerService, interpreterServi
     this.command = '';
 
     if (!interpreterService.acceptableCommands[baseCommand]) return playerService.player.feedback = 'I\'m not sure what you\'re trying to do.';
+
+
+    if (interpreterService.acceptableCommands[baseCommand] === 'cast') combatService.castSpell(commandArgs);
+
+    if (interpreterService.acceptableCommands[baseCommand] === 'help') playerService.player.feedback = interpreterService.help();
+    
+    if (combatService.inCombat) {
+      playerService.player.feedback = 'You can\'t do that while you\'re in the middle of combat!';
+      return scrollToBottom();
+    }
 
     if (interpreterService.acceptableCommands[baseCommand] === 'direction') playerService.movePlayer(baseCommand);
 
@@ -46,8 +56,6 @@ function PlayerInputController($log, mapService, playerService, interpreterServi
       playerService.player.feedback = foundMob.description;
       return scrollToBottom();
     }
-
-    if (interpreterService.acceptableCommands[baseCommand] === 'help') playerService.player.feedback = interpreterService.help();
 
     function scrollToBottom() {
       setTimeout(function() {

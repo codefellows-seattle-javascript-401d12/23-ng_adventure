@@ -26,7 +26,9 @@ function interpreterService($log) {
     help: 'help',
     unlock: 'unlock',
     look: 'look',
-    l: 'look'
+    l: 'look',
+    cast: 'cast',
+    c: 'cast'
   };
 
   service.help = function() {

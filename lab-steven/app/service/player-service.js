@@ -23,9 +23,13 @@ function playerService($log, $q, mapService) {
     history: [],
     spells: {
       lightning: {
-        castDescription: 'You send out a forking bolt of lightning!'
+        castDescription: 'You send out a forking bolt of lightning!',
+        inCombat: true,
+        cost: 2
       },
       cure: {
+        inCombat: false,
+        cost: 3,
         castDescription: 'A warm, white glow washes over you.'
       }
     }
