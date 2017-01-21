@@ -43,7 +43,9 @@ function playerService($log, $q, mapService) {
     if (!foundItem) return service.player.feedback = 'I don\'t see that here.';
 
     service.player.inventory.push(foundItem);
-    mapService.mapData[service.player.location].items = arrayOfItems.filter(element => element.shortDesc !== foundItem.shortDesc);
+    mapService.mapData[service.player.location].items.pop(mapService.mapData[service.player.location].items.find(element => {
+      return element.shortDesc === foundItem.shortDesc;
+    }));
     service.player.feedback = `You pick up ${foundItem.shortDesc}.`;
   };
 
@@ -53,15 +55,12 @@ function playerService($log, $q, mapService) {
     if (!foundItem) return service.player.feedback = 'You don\'t seem to be carrying that.';
 
     mapService.mapData[service.player.location].items.push(foundItem);
-    service.player.inventory = arrayOfItems.filter(element => element.shortDesc !== foundItem.shortDesc);
+    service.player.inventory.pop(service.player.inventory.find(element => element.shortDesc === foundItem.shortDesc));
     service.player.feedback = `You drop ${foundItem.shortDesc}.`;
   };
 
   service.listInventory = function() {
-    let inventory = '';
-    service.player.inventory.forEach(invItem => inventory+= `${invItem.shortDesc}\n`);
-    if (inventory === '') return service.player.feedback = 'You\'re not carrying anything.';
-    service.player.feedback = `You are currently carrying:\n${inventory}`;
+
     return;
   };
 

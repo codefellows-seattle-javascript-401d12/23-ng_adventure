@@ -14,7 +14,7 @@
     <div class="items">
       <p
       ng-show="{{gameWindowCtrl.mapData[gameWindowCtrl.player.location].items.length > 0}}"
-      ng-repeat="item in gameWindowCtrl.mapData[gameWindowCtrl.player.location].items">{{item.longDesc}}</p>
+      ng-repeat="item in gameWindowCtrl.mapData[gameWindowCtrl.player.location].items track by $index">{{item.longDesc}}</p>
     </div>
     <p class="exits">Exits:  [
       <span ng-repeat="(exit, val) in gameWindowCtrl.mapData[gameWindowCtrl.player.location].exits">{{exit}}</span> ]

@@ -12,17 +12,17 @@ function itemService($log) {
 
   service.gameItems = {
     key: {
-      keywords: ['key'],
+      keywords: ['key', 'simple', 'simple key'],
       shortDesc: 'a simple key',
       longDesc: 'A simple key is lying on the floor here.'
     },
     blueKey: {
-      keywords: ['key', 'blue'],
+      keywords: ['key', 'blue', 'blue key'],
       shortDesc: 'a blue key',
-      longDesc: 'An ornate, blue key is lying on the floor here.'
+      longDesc: 'An ornate blue key is lying on the floor here.'
     },
     redKey: {
-      keywords: ['red'],
+      keywords: ['red', 'key', 'red key'],
       shortDesc: 'a red key',
       longDesc: 'A fiery, magical red key is lying on the floor here.'
     }
