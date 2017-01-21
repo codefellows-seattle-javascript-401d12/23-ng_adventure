@@ -29,13 +29,13 @@ function interpreterService($log) {
 
   service.help = function() {
     return ':::: LIST OF COMMANDS ::::\n\n' +
-    'help: Shows this menu\n\n' +
-    'north, south, east, west: Moves you in that direction\n\n' +
-    'n, s, e, w: Shortcuts for the above\n\n' +
-    'get <item keyword> (ex: "get key" or "get blue key"): Picks an item up in your current room\n\n' +
-    'drop <item keyword> (ex: "drop key" or "drop blue key"): Drops an item from your inventory into the current room\n\n' +
-    'inv, inventory: Displays your current inventory\n\n' +
-    'unlock <direction>: Unlocks a locked door in the stated direction if you have the correct key. Must fully type the direction\n\n';
+    'HELP: Shows this menu.\n\n' +
+    'NORTH, SOUTH, EAST, WEST: Moves you in that direction.\n\n' +
+    'N, S, E, W: Shortcuts for the above.\n\n' +
+    'GET <item keyword> (ex: "get key" or "get blue key"): Picks an item up in your current room.\n\n' +
+    'DROP <item keyword> (ex: "drop key" or "drop blue key"): Drops an item from your inventory into the current room.\n\n' +
+    'INV, INVENTORY: Displays your current inventory.\n\n' +
+    'UNLOCK <direction>: Unlocks a locked door in the stated direction if you have the correct key. Must fully type the direction.\n\n';
   };
 
   return service;
