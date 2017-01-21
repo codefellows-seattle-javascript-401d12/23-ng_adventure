@@ -17,7 +17,9 @@ function PlayerInputController($log, playerService, interpreterService, $locatio
   this.interpretCommand = function(command) {
     let baseCommand = command.toLowerCase().split(' ')[0];
     if (baseCommand === '') return;
+    let commandArgs = command.toLowerCase().split(baseCommand).join('').trim();
     this.command = '';
+    
     if (!interpreterService.acceptableCommands[baseCommand]) {
       playerService.player.feedback = 'I\'m not sure what you\'re trying to do.';
       return $log.error('That is not an acceptable command.');
@@ -29,8 +31,13 @@ function PlayerInputController($log, playerService, interpreterService, $locatio
     }
 
     if (interpreterService.acceptableCommands[baseCommand] === 'add inventory') {
-      let commandArgs = command.toLowerCase().split(baseCommand).join('').trim();
       playerService.addInventory(commandArgs)
+      .then(() => $log.log(`Player inventory: ${playerService.player.inventory}.`))
+      .catch(err => $log.log(err));
+    }
+
+    if (interpreterService.acceptableCommands[baseCommand] === 'remove inventory') {
+      playerService.removeInventory(commandArgs)
       .then(() => $log.log(`Player inventory: ${playerService.player.inventory}.`))
       .catch(err => $log.log(err));
     }

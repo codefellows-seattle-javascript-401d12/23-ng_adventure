@@ -61,5 +61,21 @@ function playerService($log, $q, mapService) {
     });
   };
 
+  service.removeInventory = function(item) {
+    return new $q((resolve, reject) => {
+      let inventoryItemIndex = service.player.inventory.indexOf(item);
+
+      if (inventoryItemIndex === -1) {
+        service.player.feedback = 'You don\'t appear to be carrying that item.';
+        return reject('Item not found.');
+      }
+      let foundItem = service.player.inventory[inventoryItemIndex];
+      mapService.mapData[service.player.location].items.push(foundItem);
+      service.player.inventory.splice(inventoryItemIndex, 1);
+      service.player.feedback = `You drop ${foundItem}.`;
+      return resolve(`Dropped ${foundItem}.`);
+    });
+  };
+
   return service;
 }
