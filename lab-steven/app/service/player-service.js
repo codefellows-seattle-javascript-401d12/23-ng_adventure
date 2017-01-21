@@ -18,10 +18,9 @@ function playerService($log, $q, mapService) {
     mp: 20,
     maxMP: 20,
     feedback: 'Welcome to the game.',
-    inventory: []
+    inventory: [],
+    history: []
   };
-
-  service.player.history = [];
 
   service.movePlayer = function(direction) {
     if (direction === 'n') direction = 'north';
@@ -29,52 +28,41 @@ function playerService($log, $q, mapService) {
     if (direction === 'w') direction = 'west';
     if (direction === 's') direction = 'south';
 
-    return new $q((resolve, reject) => {
-      let newLocation = mapService.mapData[service.player.location].exits[direction];
+    let newLocation = mapService.mapData[service.player.location].exits[direction];
 
-      if (!newLocation) {
-        service.player.feedback = `You can't go ${direction}.`;
-        return reject(`Player can't go ${direction}.`);
-      }
+    if (!newLocation) return service.player.feedback = `You can't go ${direction}.`;
 
-      service.player.history.push(service.player.location);
-
-      service.player.location = newLocation;
-      service.player.feedback = `You move ${direction}.`;
-      return resolve(service.player.location);
-    });
+    service.player.history.push(service.player.location);
+    service.player.location = newLocation;
+    service.player.feedback = `You move ${direction}.`;
   };
 
   service.addInventory = function(item) {
-    return new $q((resolve, reject) => {
-      let roomItemIndex = mapService.mapData[service.player.location].items.indexOf(item.toLowerCase());
+    let roomItemIndex = mapService.mapData[service.player.location].items.indexOf(item.toLowerCase());
+    if (roomItemIndex === -1) return service.player.feedback = 'I don\'t see that here.';
 
-      if (roomItemIndex === -1) {
-        service.player.feedback = 'I don\'t see that here.';
-        return reject('Item not found.');
-      }
-      let foundItem = mapService.mapData[service.player.location].items[roomItemIndex];
-      service.player.inventory.push(foundItem);
-      mapService.mapData[service.player.location].items.splice(roomItemIndex, 1);
-      service.player.feedback = `You pick up ${foundItem}.`;
-      return resolve(`Picked up ${foundItem}.`);
-    });
+    let foundItem = mapService.mapData[service.player.location].items[roomItemIndex];
+    service.player.inventory.push(foundItem);
+    mapService.mapData[service.player.location].items.splice(roomItemIndex, 1);
+    service.player.feedback = `You pick up ${foundItem}.`;
   };
 
   service.removeInventory = function(item) {
-    return new $q((resolve, reject) => {
-      let inventoryItemIndex = service.player.inventory.indexOf(item);
+    let inventoryItemIndex = service.player.inventory.indexOf(item);
+    if (inventoryItemIndex === -1) return service.player.feedback = 'You don\'t appear to be carrying that item.';
 
-      if (inventoryItemIndex === -1) {
-        service.player.feedback = 'You don\'t appear to be carrying that item.';
-        return reject('Item not found.');
-      }
-      let foundItem = service.player.inventory[inventoryItemIndex];
-      mapService.mapData[service.player.location].items.push(foundItem);
-      service.player.inventory.splice(inventoryItemIndex, 1);
-      service.player.feedback = `You drop ${foundItem}.`;
-      return resolve(`Dropped ${foundItem}.`);
-    });
+    let foundItem = service.player.inventory[inventoryItemIndex];
+    mapService.mapData[service.player.location].items.push(foundItem);
+    service.player.inventory.splice(inventoryItemIndex, 1);
+    return service.player.feedback = `You drop ${foundItem}.`;
+  };
+
+  service.listInventory = function() {
+    let inventory = '';
+    service.player.inventory.forEach(invItem => inventory+= `${invItem}\n`);
+    if (inventory === '') return service.player.feedback = 'You\'re not carrying anything.';
+    service.player.feedback = `You are currently carrying:\n${inventory}`;
+    return;
   };
 
   return service;

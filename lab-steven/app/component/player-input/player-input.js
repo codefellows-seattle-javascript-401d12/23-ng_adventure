@@ -19,27 +19,26 @@ function PlayerInputController($log, playerService, interpreterService, $locatio
     if (baseCommand === '') return;
     let commandArgs = command.toLowerCase().split(baseCommand).join('').trim();
     this.command = '';
-    
+
     if (!interpreterService.acceptableCommands[baseCommand]) {
       playerService.player.feedback = 'I\'m not sure what you\'re trying to do.';
       return $log.error('That is not an acceptable command.');
     }
 
     if (interpreterService.acceptableCommands[baseCommand] === 'direction') {
-      playerService.movePlayer(baseCommand)
-      .catch(err => $log.log(err));
+      playerService.movePlayer(baseCommand);
     }
 
     if (interpreterService.acceptableCommands[baseCommand] === 'add inventory') {
-      playerService.addInventory(commandArgs)
-      .then(() => $log.log(`Player inventory: ${playerService.player.inventory}.`))
-      .catch(err => $log.log(err));
+      playerService.addInventory(commandArgs);
     }
 
     if (interpreterService.acceptableCommands[baseCommand] === 'remove inventory') {
-      playerService.removeInventory(commandArgs)
-      .then(() => $log.log(`Player inventory: ${playerService.player.inventory}.`))
-      .catch(err => $log.log(err));
+      playerService.removeInventory(commandArgs);
+    }
+
+    if (interpreterService.acceptableCommands[baseCommand] === 'check inventory') {
+      playerService.listInventory();
     }
 
     setTimeout(function() {

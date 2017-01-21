@@ -20,7 +20,9 @@ function interpreterService($log) {
     south: 'direction',
     s: 'direction',
     get: 'add inventory',
-    drop: 'remove inventory'
+    drop: 'remove inventory',
+    inv: 'check inventory',
+    inventory: 'check inventory'
   };
 
   return service;
