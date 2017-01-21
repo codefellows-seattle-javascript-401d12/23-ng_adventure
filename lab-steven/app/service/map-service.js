@@ -15,16 +15,25 @@ function mapService($log, itemService) {
       title: 'Room 1',
       desc: 'This is the description for room 1. It\'s just placeholder text and will thus be gone in the near future.',
       exits: {
-        east: 'room2'
+        east: {
+          connection: 'room2',
+          locked: true
+        }
       },
-      items: [itemService.gameItems.key, itemService.gameItems.key, itemService.gameItems.key, itemService.gameItems.key, itemService.gameItems.blueKey]
+      items: [itemService.gameItems.key, itemService.gameItems.key, itemService.gameItems.blueKey]
     },
     room2: {
       title: 'Room 2',
       desc: 'This will also be replaced at some point soon. Probably by something significantly more fascinating.',
       exits: {
-        west: 'room1',
-        east: 'room3'
+        west: {
+          connection: 'room1',
+          locked: true
+        },
+        east: {
+          connection: 'room3',
+          locked: false
+        }
       },
       items: []
     },
@@ -32,7 +41,10 @@ function mapService($log, itemService) {
       title: 'Room 3',
       desc: 'This may come as a shock to you, but this is also just some placeholder text. Nothing to see here, folks. Move along.',
       exits: {
-        west: 'room2'
+        west: {
+          connection: 'room2',
+          locked: false
+        }
       },
       items: []
     }

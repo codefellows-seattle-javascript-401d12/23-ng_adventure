@@ -8,7 +8,9 @@
       ng-repeat="item in gameWindowCtrl.mapData[previous].items track by $index">{{item.longDesc}}</p>
     </div>
     <p class="exits">Exits: [
-      <span ng-repeat="(exit, val) in gameWindowCtrl.mapData[previous].exits">{{exit}}</span> ]
+      <span ng-repeat="(exit, val) in gameWindowCtrl.mapData[previous].exits">
+        <span ng-show="val.locked">( </span>{{exit}} <span ng-show="val.locked">)</span>
+      </span> ]
     </p>
     <p>-----------------------------</p>
   </div>
@@ -22,7 +24,9 @@
       ng-repeat="item in gameWindowCtrl.mapData[gameWindowCtrl.player.location].items track by $index">{{item.longDesc}}</p>
     </div>
     <p class="exits">Exits:  [
-      <span ng-repeat="(exit, val) in gameWindowCtrl.mapData[gameWindowCtrl.player.location].exits">{{exit}}</span> ]
+      <span ng-repeat="(exit, val) in gameWindowCtrl.mapData[gameWindowCtrl.player.location].exits">
+        <span ng-show="val.locked">(</span>{{exit}}<span ng-show="val.locked">)</span>
+      </span> ]
     </p>
     <pre id="bottom">{{gameWindowCtrl.player.feedback}}</pre>
   </div>

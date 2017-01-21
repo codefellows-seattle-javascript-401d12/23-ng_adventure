@@ -28,9 +28,10 @@ function playerService($log, $q, mapService) {
     if (direction === 'w') direction = 'west';
     if (direction === 's') direction = 'south';
 
-    let newLocation = mapService.mapData[service.player.location].exits[direction];
+    let newLocation = mapService.mapData[service.player.location].exits[direction].connection;
 
     if (!newLocation) return service.player.feedback = `You can't go ${direction}.`;
+    if (mapService.mapData[service.player.location].exits[direction].locked) return service.player.feedback = 'That door is locked.';
 
     service.player.history.push(service.player.location);
     service.player.location = newLocation;
