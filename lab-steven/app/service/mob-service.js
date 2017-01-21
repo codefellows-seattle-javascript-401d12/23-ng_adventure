@@ -14,14 +14,18 @@ function mobService($log) {
     keywords: ['rat', 'black', 'black rat'],
     shortDesc: 'a black rat',
     longDesc: 'A large black rat is here, sniffing around curiously.',
-    description: 'It\'s a hairy black rat.'
+    description: 'It\'s a hairy black rat.',
+    hp: 5,
+    atk: 1
   };
 
   service.turtle = {
     keywords: ['black', 'turtle', 'black turtle'],
     shortDesc: 'a black turtle',
     longDesc: 'A big black turtle is chilling here.',
-    description: 'It\'s a turtle. But black.'
+    description: 'It\'s a turtle. But black.',
+    hp: 10,
+    atk: 2
   };
 
   return service;

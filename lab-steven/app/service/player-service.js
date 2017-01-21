@@ -17,9 +17,18 @@ function playerService($log, $q, mapService) {
     maxHP: 20,
     mp: 20,
     maxMP: 20,
+    mat: 10,
     feedback: 'Welcome to the game. Type HELP for a list of commands.',
     inventory: [],
-    history: []
+    history: [],
+    spells: {
+      lightning: {
+        castDescription: 'You send out a forking bolt of lightning!'
+      },
+      cure: {
+        castDescription: 'A warm, white glow washes over you.'
+      }
+    }
   };
 
   service.movePlayer = function(direction) {
