@@ -8,6 +8,14 @@
   font-family: Monospace;
   padding: 1vw 1vw 2.5vw 1vw;
 
+  pre {
+    white-space: pre-wrap;
+    white-space: -moz-pre-wrap;
+    white-space: -pre-wrap;
+    white-space: -o-pre-wrap;
+    word-wrap: break-word;
+  }
+
   div {
     margin-bottom: 2%;
   }
@@ -20,7 +28,7 @@
     width: 70%;
   }
 
-  div.history p:nth-child(4) {
+  div.history > p:last-child {
     color: $green;
   }
 

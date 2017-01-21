@@ -17,7 +17,7 @@ function playerService($log, $q, mapService) {
     maxHP: 20,
     mp: 20,
     maxMP: 20,
-    feedback: 'Welcome to the game.',
+    feedback: 'Welcome to the game. Type HELP for a list of commands.',
     inventory: [],
     history: []
   };
@@ -38,6 +38,7 @@ function playerService($log, $q, mapService) {
   };
 
   service.addInventory = function(item) {
+    if (!item) return service.player.feedback = 'What do you want to get?';
     let arrayOfItems = mapService.mapData[service.player.location].items;
     let foundItem = arrayOfItems.filter(element => element.keywords.indexOf(item) !== -1)[0];
     if (!foundItem) return service.player.feedback = 'I don\'t see that here.';
@@ -51,6 +52,7 @@ function playerService($log, $q, mapService) {
   };
 
   service.removeInventory = function(item) {
+    if (!item) return service.player.feedback = 'What do you want to drop?';
     let arrayOfItems = service.player.inventory;
     let foundItem = arrayOfItems.filter(element => element.keywords.indexOf(item) !== -1)[0];
     if (!foundItem) return service.player.feedback = 'You don\'t seem to be carrying that.';
@@ -72,7 +74,7 @@ function playerService($log, $q, mapService) {
     // http://stackoverflow.com/questions/19395257/how-to-count-duplicate-value-in-an-array-in-javascript/19395300
     let counts = {};
     tempInventory.forEach(element => counts[element] = (counts[element] || 0) + 1);
-    
+
     tempInventory.reduce((acc, curr) => {
       if (acc.indexOf(curr) === -1) acc.push(curr);
       return acc;

@@ -25,21 +25,15 @@ function PlayerInputController($log, playerService, interpreterService, $locatio
       return $log.error('That is not an acceptable command.');
     }
 
-    if (interpreterService.acceptableCommands[baseCommand] === 'direction') {
-      playerService.movePlayer(baseCommand);
-    }
+    if (interpreterService.acceptableCommands[baseCommand] === 'direction') playerService.movePlayer(baseCommand);
 
-    if (interpreterService.acceptableCommands[baseCommand] === 'add inventory') {
-      playerService.addInventory(commandArgs);
-    }
+    if (interpreterService.acceptableCommands[baseCommand] === 'add inventory') playerService.addInventory(commandArgs);
 
-    if (interpreterService.acceptableCommands[baseCommand] === 'remove inventory') {
-      playerService.removeInventory(commandArgs);
-    }
+    if (interpreterService.acceptableCommands[baseCommand] === 'remove inventory') playerService.removeInventory(commandArgs);
 
-    if (interpreterService.acceptableCommands[baseCommand] === 'check inventory') {
-      playerService.listInventory();
-    }
+    if (interpreterService.acceptableCommands[baseCommand] === 'check inventory') playerService.listInventory();
+
+    if (interpreterService.acceptableCommands[baseCommand] === 'help') playerService.player.feedback = interpreterService.help();
 
     setTimeout(function() {
       $location.hash('bottom');

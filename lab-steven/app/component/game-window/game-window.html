@@ -2,6 +2,11 @@
   <div class="history" ng-show="gameWindowCtrl.player.history" ng-repeat="previous in gameWindowCtrl.player.history track by $index">
     <h2>{{gameWindowCtrl.mapData[previous].title}}</h2>
     <p>{{gameWindowCtrl.mapData[previous].desc}}</p>
+    <div class="items">
+      <p
+      ng-show="{{gameWindowCtrl.mapData[previous].items.length > 0}}"
+      ng-repeat="item in gameWindowCtrl.mapData[previous].items track by $index">{{item.longDesc}}</p>
+    </div>
     <p class="exits">Exits: [
       <span ng-repeat="(exit, val) in gameWindowCtrl.mapData[previous].exits">{{exit}}</span> ]
     </p>
