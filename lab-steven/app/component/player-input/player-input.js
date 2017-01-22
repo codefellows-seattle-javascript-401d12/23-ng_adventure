@@ -47,7 +47,12 @@ function PlayerInputController($log, mapService, playerService, interpreterServi
 
     if (interpreterService.acceptableCommands[baseCommand] === 'drink') {
       playerService.drinkPotion(commandArgs);
-      if (combatService.inCombat) combatService.enemyAttack();
+      if (combatService.inCombat) {
+        if (playerService.player.feedback === 'What do you want to drink?' || playerService.player.feedback === 'You don\'t seem to have any of those in your inventory.') {
+          return scrollToBottom();
+        }
+        combatService.enemyAttack();
+      }
       return scrollToBottom();
     }
 
