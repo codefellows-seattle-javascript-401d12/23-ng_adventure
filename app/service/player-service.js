@@ -37,7 +37,7 @@ function playerService($q, $log, mappingService) {
         history.unshift({
           turn,
           desc: 'Zoiks! You are blocked by an impassable crater.',
-          location: player.location,
+          location: current,
           hp: player.hp -= 1
         });
         return reject('No Mars station in that zone.');
@@ -45,7 +45,7 @@ function playerService($q, $log, mappingService) {
 
       history.unshift({
         turn,
-        location: player.location,
+        location: newLocation,
         desc: mappingService.mapData[newLocation].desc,
         hp: player.hp
       });
