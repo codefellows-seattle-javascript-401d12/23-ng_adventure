@@ -43,6 +43,7 @@ function mapService($log, itemService, mobService) {
           locked: false
         }
       },
+      items: [],
       mobs: [mobService.rat]
     },
     mainStreet: {
@@ -75,7 +76,9 @@ function mapService($log, itemService, mobService) {
           connection: 'alley',
           locked: false
         }
-      }
+      },
+      items: [],
+      mobs: []
     },
     alley: {
       title: 'Alley',
@@ -89,7 +92,9 @@ function mapService($log, itemService, mobService) {
           connection: 'townCenter',
           locked: false
         }
-      }
+      },
+      items: [],
+      mobs: []
     },
     townCenter: {
       title: 'Town Square',
@@ -105,13 +110,16 @@ function mapService($log, itemService, mobService) {
           unlockKey: itemService.gameItems.ornateKey
         }
       },
+      items: [],
       mobs: [mobService.belzar]
     },
     tower: {
       title: 'Tower of Tempest',
       desc: 'The door into the tower has shut behind you, leaving you with no avenue of escape or direction to go except up. A spiraling staircase stretches on into a fog of darkness that eventually seems to consume its steps. There are no windows, though the sound of rain pouring against the stone echoes around this chamber. The only dim light comes from a handful of wispy balls of a faint blue glow, apparitions of magic that float through the air lazily. It seems your adventure has only just begun...',
       exits: {}
-    }
+    },
+    items: [],
+    mobs: []
   };
 
   service.unlockDoor = function(direction, currentRoom, playerInventory) {
