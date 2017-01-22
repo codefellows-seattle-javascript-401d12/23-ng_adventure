@@ -11,38 +11,56 @@ function mapService($log) {
   let service = {};
 
   service.mapData = {
-    cabin: {
-      desc: 'message from the cabin',
-      south: 'trail'
+    seatA1: {
+      desc: 'message from seatA1',
+      east: 'seatA2',
+      south: 'seatB1'
     },
-    trail: {
-      desc: 'message from the trail',
-      north: 'cabin',
-      east: 'gate',
-      south: 'pit'
+    seatA2: {
+      desc: 'message from seatA2',
+      east: 'seatA3',
+      west: 'seatA1',
+      south: 'seatB2'
     },
-    pit: {
-      desc: 'message from the pit',
-      north: 'trail'
+    seatA3: {
+      desc: 'message from seatA3',
+      west: 'seatA2',
+      south: 'seatB3'
     },
-    gate: {
-      desc: 'message from the gate',
-      west: 'trail',
-      east: 'castle'
+    seatB1: {
+      desc: 'message from seatB1',
+      north: 'seatA1',
+      east: 'seatB2',
+      south: 'seatC3'
     },
-    castle: {
-      desc: 'message from the castle',
-      west: 'gate',
-      south: 'corridor'
+    seatB2: {
+      desc: 'message from seatB2',
+      north: 'seatA2',
+      east: 'seatB3',
+      south: 'seatC2',
+      west: 'seatB1'
     },
-    corridor: {
-      desc: 'message from the corridor',
-      north: 'castle',
-      east: 'snackroom'
+    seatB3: {
+      desc: 'message from seatB3',
+      north: 'seatA3',
+      south: 'seatC3',
+      west: 'seatB2'
     },
-    snackroom: {
-      desc: 'message from the snack room',
-      west: 'corridor'
+    seatC1: {
+      desc: 'message from seatC1',
+      north: 'seatB1',
+      east: 'seatC2'
+    },
+    seatC2: {
+      desc: 'message from seatC2',
+      north: 'seatB2',
+      east: 'seatC3',
+      west: 'seatC1'
+    },
+    seatC3: {
+      desc: 'message from seatC3',
+      north: 'seatB3',
+      west: 'seatC2'
     }
   };
 

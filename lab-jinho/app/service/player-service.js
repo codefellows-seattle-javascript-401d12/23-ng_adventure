@@ -12,8 +12,8 @@ function playerService($q, $log, mapService) {
 
   let turn = 0;
   let player = service.player = {
-    name: 'bnates',
-    location: 'cabin',
+    name: 'passenger',
+    location: 'seatB2',
     hp: 16
   };
 
@@ -21,7 +21,7 @@ function playerService($q, $log, mapService) {
     {
       turn,
       desc: 'Welcome to ngAdventure',
-      location: 'cabin',
+      location: 'seatB2',
       hp: player.hp
     }
   ];
@@ -36,11 +36,11 @@ function playerService($q, $log, mapService) {
       if (!newLocation) {
         history.unshift({
           turn,
-          desc: 'You have run into a wall',
+          desc: 'Not a seat',
           location: player.location,
           hp: player.hp
         });
-        return reject('no room in that direction');
+        return reject('no seat in that direction');
       }
 
       history.unshift({
