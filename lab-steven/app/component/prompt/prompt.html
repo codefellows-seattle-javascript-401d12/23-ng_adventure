@@ -12,5 +12,8 @@
       <span>MP: </span>
       <span class="mp">{{promptCtrl.player.mp}}</span> / <span class="mp">{{promptCtrl.player.mmp}}</span>
     </li>
+    <li ng-show="promptCtrl.combat.currentlyFighting">
+      <p>You are currently fighting {{promptCtrl.combat.currentlyFighting.shortDesc}}!</p>
+    </li>
   </ul>
 </section>

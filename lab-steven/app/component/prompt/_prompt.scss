@@ -15,6 +15,12 @@
     color: $blue-highlight;
   }
 
+  li p {
+    font-weight: bold;
+    display: inline-block;
+    color: $red;
+  }
+
   .hp {
     color: $red;
   }

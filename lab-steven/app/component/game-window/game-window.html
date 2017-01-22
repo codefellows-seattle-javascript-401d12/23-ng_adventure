@@ -26,10 +26,7 @@
         <span ng-show="val.locked">(</span>{{exit}}<span ng-show="val.locked">)</span>
       </span> ]
     </p>
-    <div class="combat-log">
-      <p ng-show="gameWindowCtrl.combat.currentlyFighting">You are currently fighting {{gameWindowCtrl.combat.currentlyFighting.shortDesc}}.</p>
-      <p ng-show="gameWindowCtrl.combat.combatLog" ng-repeat="line in gameWindowCtrl.combat.combatLog track by $index">{{line}}</p>
-    </div>
+    <p class="combat-log" ng-show="gameWindowCtrl.combat.combatLog" ng-repeat="line in gameWindowCtrl.combat.combatLog track by $index">{{line}}</p>
     <pre id="bottom">{{gameWindowCtrl.player.feedback}}</pre>
   </div>
 </section>

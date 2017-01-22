@@ -9,9 +9,10 @@ adventureGame.component('prompt', {
   controllerAs: 'promptCtrl'
 });
 
-adventureGame.controller('PromptController', ['$log', 'playerService', PromptController]);
+adventureGame.controller('PromptController', ['$log', 'playerService', 'combatService', PromptController]);
 
-function PromptController($log, playerService) {
+function PromptController($log, playerService, combatService) {
   $log.debug('Prompt Controller');
+  this.combat = combatService;
   this.player = playerService.player;
 }
