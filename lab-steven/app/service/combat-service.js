@@ -15,6 +15,7 @@ function combatService($log, mapService, mobService, playerService) {
   service.currentlyFighting = '';
 
   service.startCombat = function(target) {
+    service.round = 0;
     service.combatLog = [];
     let mobArray = mapService.mapData[playerService.player.location].mobs;
     let foundMob = mobArray.filter(mob => mob.keywords.indexOf(target) !== -1)[0];
@@ -25,7 +26,20 @@ function combatService($log, mapService, mobService, playerService) {
     service.currentlyFighting = foundMob;
   };
 
-  service.castSpell = function(commandArgs){
+  service.enemyAttack = function() {
+    if (!service.currentlyFighting) return;
+    let mob = service.currentlyFighting;
+    service.combatLog.push(`${mob.attack} It deals ${mob.atk} damage!`);
+    playerService.player.hp -= mob.atk;
+    if (playerService.player.hp <= 0) {
+      service.combatLog.push('You have been slain!');
+      service.inCombat = false;
+      return playerService.player.feedback = 'You are dead.';
+    }
+    service.round++;
+  };
+
+  service.castSpell = function(commandArgs) {
     let logMessage = '';
     playerService.player.feedback = '';
     let spell = commandArgs.split(' ')[0];
@@ -43,15 +57,16 @@ function combatService($log, mapService, mobService, playerService) {
     if (playerService.player.spells[spell].inCombat) {
       logMessage += `It deals ${playerService.player.mat} damage!`;
       service.combatLog.push(logMessage);
+      service.combatLog.push(' ');
       target.hp -= playerService.player.mat;
       if (target.hp <= 0) {
         service.combatLog.push(`You've slain ${target.shortDesc}!`);
         service.inCombat = false;
-        service.currentlyFighting = '';
         mapService.mapData[playerService.player.location].mobs.splice(
           mapService.mapData[playerService.player.location].mobs.indexOf(
             mapService.mapData[playerService.player.location].mobs.find(element => element.shortDesc === service.currentlyFighting.shortDesc)
           ), 1);
+        service.currentlyFighting = '';
       }
       return;
     }

@@ -8,10 +8,14 @@
   font-family: Monospace;
   padding: 1vw 1vw 2.5vw 1vw;
 
-  .combat-log p:first-child {
-    color: red;
+  .combat-log p {
+    margin: 0.5% 0;
+
+    &:first-child {
+      color: $red;
+    }
   }
-  
+
   pre {
     white-space: pre-wrap;
     white-space: -moz-pre-wrap;

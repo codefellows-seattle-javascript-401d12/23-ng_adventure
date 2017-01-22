@@ -25,6 +25,7 @@ function PlayerInputController($log, mapService, playerService, interpreterServi
 
     if (interpreterService.acceptableCommands[baseCommand] === 'cast') {
       combatService.castSpell(commandArgs);
+      combatService.enemyAttack();
       return scrollToBottom();
     }
 

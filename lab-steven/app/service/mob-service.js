@@ -15,8 +15,9 @@ function mobService($log) {
     shortDesc: 'a black rat',
     longDesc: 'A large black rat is here, sniffing around curiously.',
     description: 'It\'s a hairy black rat.',
+    attack: 'A large black rat bites you!',
     hp: 5,
-    atk: 1
+    atk: 2
   };
 
   service.turtle = {
@@ -24,8 +25,9 @@ function mobService($log) {
     shortDesc: 'a black turtle',
     longDesc: 'A big black turtle is chilling here.',
     description: 'It\'s a turtle. But black.',
+    attack: 'A big black turtle snaps at you with its powerful jaws!',
     hp: 10,
-    atk: 2
+    atk: 3
   };
 
   return service;

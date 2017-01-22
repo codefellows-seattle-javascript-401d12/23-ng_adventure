@@ -17,7 +17,7 @@ function playerService($log, $q, mapService) {
     mhp: 20,
     mp: 20,
     mmp: 20,
-    mat: 10,
+    mat: 8,
     feedback: 'Welcome to the game. Type HELP for a list of commands.',
     inventory: [],
     history: [],
