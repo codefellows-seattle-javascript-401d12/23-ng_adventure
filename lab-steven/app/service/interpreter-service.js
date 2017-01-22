@@ -28,7 +28,8 @@ function interpreterService($log) {
     look: 'look',
     l: 'look',
     cast: 'cast',
-    c: 'cast'
+    c: 'cast',
+    fight: 'fight'
   };
 
   service.help = function() {
