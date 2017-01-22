@@ -70,7 +70,7 @@ function PlayerInputController($log, mapService, playerService, interpreterServi
       if (!foundMob) {
         examArray = playerService.player.inventory;
         let foundItem = examArray.filter(element => element.keywords.indexOf(commandArgs) !== -1)[0];
-        if (!foundItem) playerService.player.feedback = 'I don\'t see that here.';
+        if (!foundItem) playerService.player.feedback = 'I don\'t see that figure here or that item in your inventory.';
         playerService.player.feedback = foundItem.description;
       }
       playerService.player.feedback = foundMob.description;

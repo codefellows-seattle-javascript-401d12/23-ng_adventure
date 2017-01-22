@@ -43,19 +43,24 @@ function mapService($log, itemService, mobService) {
           locked: false
         }
       },
-      items: [mobService.rat]
+      mobs: [mobService.rat]
     },
     mainStreet: {
       title: 'Main Street',
       desc: 'The cobblestone street ends abruptly at a sinkhole that\'s now been filled with murky water, the path to the town center obstructed and unavailable. A run-down building stands off to the east, still in relatively good condition. Its roof is intact, and it even has a somewhat sturdy door guarding its entrance. At the far corner of the building, a door hangs open, signaling that it could be a potential route around the sinkhole.',
       exits: {
+        north: {
+          connection: 'intersection',
+          locked: false
+        },
         east: {
           connection: 'butcher',
           locked: true,
           unlockKey: itemService.gameItems.key
         }
       },
-      items: []
+      items: [],
+      mobs: [mobService.thug]
     },
     butcher: {
       title: '',

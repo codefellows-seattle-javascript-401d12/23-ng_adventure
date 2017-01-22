@@ -12,7 +12,7 @@ function playerService($log, $q, mapService, itemService) {
 
   service.player = {
     name: 'Player',
-    location: 'room1',
+    location: 'intro',
     hp: 20,
     mhp: 20,
     mp: 20,
@@ -54,7 +54,7 @@ function playerService($log, $q, mapService, itemService) {
 
   service.setName = function(name) {
     if (name === 'y' || name === 'yes' && service.player.name !== 'Player') {
-      service.player.location = 'room1';
+      service.player.location = 'gates';
       return service.player.feedback = `Welcome to the game, ${service.player.name}! Enter HELP for a list of commands.`;
     }
     if (name === 'n' || name === 'no') return service.player.feedback = 'Then enter the name you\'d like to use.';
