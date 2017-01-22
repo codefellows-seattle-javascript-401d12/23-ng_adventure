@@ -32,6 +32,11 @@ function PlayerInputController($log, mapService, playerService, interpreterServi
       return scrollToBottom();
     }
 
+    if (interpreterService.acceptableCommands[baseCommand] === 'spells') {
+      playerService.player.feedback = playerService.listSpells();
+      return scrollToBottom();
+    }
+
     if (interpreterService.acceptableCommands[baseCommand] === 'check inventory') {
       playerService.listInventory();
       return scrollToBottom();

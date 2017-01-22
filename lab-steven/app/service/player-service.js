@@ -25,14 +25,25 @@ function playerService($log, $q, mapService) {
       lightning: {
         castDescription: 'You send out a forking bolt of lightning!',
         inCombat: true,
-        cost: 2
+        cost: 2,
+        info: 'A damaging bolt of lightning.'
       },
       cure: {
         inCombat: false,
         cost: 3,
-        castDescription: 'A warm, white glow washes over you.'
+        castDescription: 'A warm, white glow washes over you.',
+        info: 'A spell that restores some HP.'
       }
     }
+  };
+
+  service.listSpells = function() {
+    service.player.feedback = 'You know the following spells:\n\n';
+    Object.keys(service.player.spells).forEach(spell => {
+      service.player.feedback +=
+      `${spell[0].toUpperCase()}${spell.slice(1)}: ${service.player.spells[spell].info} Costs ${service.player.spells[spell].cost} MP.\n`;
+    });
+    return service.player.feedback;
   };
 
   service.movePlayer = function(direction) {
