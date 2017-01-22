@@ -29,6 +29,11 @@ function PlayerInputController($log, mapService, playerService, interpreterServi
       return scrollToBottom();
     }
 
+    if (interpreterService.acceptableCommands[baseCommand] === 'drink') {
+      playerService.drinkPotion(commandArgs);
+      return scrollToBottom();
+    }
+
     if (interpreterService.acceptableCommands[baseCommand] === 'help') {
       playerService.player.feedback = interpreterService.help();
       return scrollToBottom();

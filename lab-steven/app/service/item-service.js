@@ -28,6 +28,20 @@ function itemService($log) {
       shortDesc: 'a red key',
       longDesc: 'A fiery, magical red key is lying on the floor here.',
       description: 'This is a red key\'s description.'
+    },
+    healingPotion: {
+      keywords: ['potion', 'healing', 'healing potion'],
+      shortDesc: 'a healing potion',
+      longDesc: 'A red-colored potion whose hue seems to be constantly, subtly shifting is on the ground here.',
+      description: 'It\'s a healing potion. Drink it. It heals you.',
+      restoreValue: 10
+    },
+    manaPotion: {
+      keywords: ['potion', 'mana', 'mana potion'],
+      shortDesc: 'a mana potion',
+      longDesc: 'A blue-colored potion whose contents are almost sickeningly thick is sitting on the ground here.',
+      description: 'It\'s a mana potion. Drink it. It restores MP.',
+      restoreValue: 10
     }
   };
 

@@ -21,7 +21,7 @@ function mapService($log, itemService, mobService) {
           unlockKey: itemService.gameItems.key
         }
       },
-      items: [itemService.gameItems.key, itemService.gameItems.key, itemService.gameItems.blueKey],
+      items: [itemService.gameItems.key, itemService.gameItems.key, itemService.gameItems.blueKey, itemService.gameItems.healingPotion, itemService.gameItems.healingPotion, itemService.gameItems.manaPotion],
       mobs: [mobService.rat, mobService.turtle]
     },
     room2: {
@@ -57,7 +57,7 @@ function mapService($log, itemService, mobService) {
     if (direction === 'e') direction = 'east';
     if (direction === 'w') direction = 'west';
     if (direction === 's') direction = 'south';
-    
+
     if (service.mapData[currentRoom].exits[direction]) {
       if (service.mapData[currentRoom].exits[direction].locked) {
         if (playerInventory.find((invItem => service.mapData[currentRoom].exits[direction].unlockKey === invItem))) {

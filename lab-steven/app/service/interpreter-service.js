@@ -32,7 +32,10 @@ function interpreterService($log) {
     fight: 'fight',
     spells: 'spells',
     spellbook: 'spells',
-    magic: 'spells'
+    magic: 'spells',
+    drink: 'drink',
+    quaff: 'drink',
+    use: 'drink'
   };
 
   service.help = function() {
@@ -46,7 +49,8 @@ function interpreterService($log) {
     'UNLOCK <direction>: Unlocks a locked door in the stated direction if you have the correct key. Must fully type the direction.\n\n' +
     'LOOK, L <item or mob>: Examine a mob or an item in your inventory or mob more closely.\n\n' +
     'CAST, C <spell name>: Cast a spell. Spells will automatically target either yourself or your current enemy.\n\n' +
-    'SPELLS, SPELLBOOK, MAGIC: List the spells you know.\n\n';
+    'SPELLS, SPELLBOOK, MAGIC: List the spells you know.\n\n' +
+    'DRINK, QUAFF, USE <item>: Consumes a potion in your inventory.\n\n';
   };
 
   return service;

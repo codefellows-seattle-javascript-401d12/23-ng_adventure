@@ -3,9 +3,9 @@
 const angular = require('angular');
 const adventureGame = angular.module('adventureGame');
 
-adventureGame.factory('playerService', ['$log', '$q', 'mapService', playerService]);
+adventureGame.factory('playerService', ['$log', '$q', 'mapService', 'itemService', playerService]);
 
-function playerService($log, $q, mapService) {
+function playerService($log, $q, mapService, itemService) {
   $log.debug('playerService');
 
   let service = {};
@@ -34,6 +34,31 @@ function playerService($log, $q, mapService) {
         castDescription: 'A warm, white glow washes over you.',
         info: 'A spell that restores some HP.'
       }
+    }
+  };
+
+  service.drinkPotion = function(target) {
+    let inventory = service.player.inventory;
+    if (!target) return service.player.feedback = 'What do you want to drink?';
+    let foundItem = inventory.filter(element => element.keywords.indexOf(target) !== -1)[0];
+    if (!foundItem) return service.player.feedback = 'You don\'t seem to have any of those in your inventory.';
+
+    service.player.inventory.splice(
+      service.player.inventory.indexOf(
+        service.player.inventory.find(element => element.shortDesc === foundItem.shortDesc)
+      ), 1);
+
+    if (foundItem.shortDesc === itemService.gameItems.healingPotion.shortDesc) {
+      service.player.feedback = `You consume ${foundItem.shortDesc} and a warm, white glow briefly surrounds you. You restore ${foundItem.restoreValue} HP.`;
+      service.player.hp += foundItem.restoreValue;
+      if (service.player.hp > service.player.mhp) service.player.hp = service.player.mhp;
+      return;
+    }
+    if (foundItem.shortDesc === itemService.gameItems.manaPotion.shortDesc) {
+      service.player.feedback = `You consume ${foundItem.shortDesc} and feel a refreshing surge of energy for a moment. You restore ${foundItem.restoreValue} MP.`;
+      service.player.mp += foundItem.restoreValue;
+      if (service.player.mp > service.player.mmp) service.player.mp = service.player.mmp;
+      return;
     }
   };
 
