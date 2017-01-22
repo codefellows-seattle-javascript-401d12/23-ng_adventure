@@ -53,23 +53,27 @@ function playerService($log, $q, mapService, itemService) {
     let foundItem = inventory.filter(element => element.keywords.indexOf(target) !== -1)[0];
     if (!foundItem) return service.player.feedback = 'You don\'t seem to have any of those in your inventory.';
 
-    service.player.inventory.splice(
-      service.player.inventory.indexOf(
-        service.player.inventory.find(element => element.shortDesc === foundItem.shortDesc)
-      ), 1);
+    function removeItem() {
+      service.player.inventory.splice(
+        service.player.inventory.indexOf(
+          service.player.inventory.find(element => element.shortDesc === foundItem.shortDesc)
+        ), 1);
+    }
 
     if (foundItem.shortDesc === itemService.gameItems.healingPotion.shortDesc) {
       service.player.feedback = `You consume ${foundItem.shortDesc} and a warm, white glow briefly surrounds you. You restore ${foundItem.restoreValue} HP.`;
       service.player.hp += foundItem.restoreValue;
       if (service.player.hp > service.player.mhp) service.player.hp = service.player.mhp;
-      return;
+      return removeItem();
     }
     if (foundItem.shortDesc === itemService.gameItems.manaPotion.shortDesc) {
       service.player.feedback = `You consume ${foundItem.shortDesc} and feel a refreshing surge of energy for a moment. You restore ${foundItem.restoreValue} MP.`;
       service.player.mp += foundItem.restoreValue;
       if (service.player.mp > service.player.mmp) service.player.mp = service.player.mmp;
-      return;
+      return removeItem();
     }
+
+    return service.player.feedback = 'You can\'t drink that.';
   };
 
   service.listSpells = function() {
