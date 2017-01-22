@@ -93,13 +93,23 @@ function mapService($log, itemService, mobService) {
     },
     townCenter: {
       title: 'Town Square',
-      desc: '',
+      desc: 'With a sprawling layout that\'s been made even more chaotic by the destruction and collapse of most of the city\'s buildings, statues, and monuments, the town square is a grim reminder of the glory that Tempest once had. The only structure still standing is the tower on the southern end of the square, looking in peak condition. Its cylindrical walls seem to defy nature itself, standing as a bulwark against the elements in a stubborn display of supernatural stalwartness.',
       exits: {
         east: {
           connection: 'alley',
           locked: false
+        },
+        south: {
+          connection: 'tower',
+          locked: true,
+          unlockKey: itemService.gameItems.ornateKey
         }
       }
+    },
+    tower: {
+      title: '',
+      desc: '',
+      exits: {}
     }
   };
 
