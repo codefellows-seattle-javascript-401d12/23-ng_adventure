@@ -21,15 +21,15 @@ function mobService($log, itemService) {
     inventory: []
   };
 
-  service.turtle = {
-    keywords: ['black', 'turtle', 'black turtle'],
-    shortDesc: 'a black turtle',
-    longDesc: 'A big black turtle is chilling here.',
-    description: 'It\'s a turtle. But black.',
-    attack: 'A big black turtle snaps at you with its powerful jaws!',
+  service.thug = {
+    keywords: ['man', 'thug', 'rough', 'shady', 'shady-looking'],
+    shortDesc: 'a rough thug',
+    longDesc: 'A shady-looking thug stands here, eyeing you suspiciously.',
+    description: 'Wearing a garb of patchwork clothes, this somewhat hulking figure watches your every move carefully. He\'s holding a simple key, idly twirling it in his grasp and letting it dance across his knuckles. In his other hand, he\'s holding a mean-looking knife. His face has a long scar across his nose, with a disfiguring mark running up the side of his cheek and over a now milky-white eye, with much of his appearance obscured by a hood that hangs over the top half of his visage.',
+    attack: 'A rough thug stabs you!',
     hp: 10,
     atk: 3,
-    inventory: []
+    inventory: [itemService.gameItems.healingPotion, itemService.gameItems.key, itemService.gameItems.manaPotion]
   };
 
   return service;
