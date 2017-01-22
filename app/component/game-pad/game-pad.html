@@ -1,14 +1,24 @@
-<section class="gamepad">
-  <form name="gamepad novalidate">
+<!-- <section class="gamepad">
+  <form name="gamepad" novalidate>
     <label for="direction">head to the</label>
-    <button
+    <input
       type="button"
-      value="{{ direction }}"
-      ng-click="gamePadCtrl.movePlayer()"
-      ng-model="gamePadCtrl.moveDirection">North</button>
-    <button type="button" value="{{ direction }}" ng-click="gamePadCtrl.movePlayer()">South</button>
-    <button type="button" value="{{ direction }}" ng-click="gamePadCtrl.movePlayer()">East</button>
-    <button type="button" value="{{ direction }}" ng-click="gamePadCtrl.movePlayer()">West</button>
+      ng-click="gamePadCtrl.movePlayerSouth()"
+      ng-model="gamePadCtrl.moveDirection"
+      ng-repeat="direction in gamePadCtrl.directions"
+      value="{{ direction }}">{{ direction }}
+    </input>
+  </form>
+</section> -->
 
+<section class="gamepad">
+  <form name="gamepad" novalidate>
+    <label for="direction">travel to the</label>
+    <button type="button" ng-click="gamePadCtrl.movePlayer()">move player</button>
+    <select ng-model="gamePadCtrl.moveDirection">
+      <option ng-repeat="direction in gamePadCtrl.directions" value="{{ direction }}">
+        {{ direction }}
+      </option>
+    </select>
   </form>
 </section>
