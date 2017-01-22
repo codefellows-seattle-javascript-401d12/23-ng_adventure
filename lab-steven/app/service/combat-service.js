@@ -37,7 +37,6 @@ function combatService($log, mapService, mobService, playerService) {
       if (target.hp <= 0) service.combatLog.push(`You've slain ${target.shortDesc}!`);
       service.currentlyFighting = '';
       mapService.mapData[playerService.player.location].mobs.splice(target, 1);
-      service.inCombat = false;
       return;
     }
     logMessage += `It heals you for ${playerService.player.mat} HP.`;

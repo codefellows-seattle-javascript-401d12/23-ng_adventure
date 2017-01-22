@@ -19,28 +19,23 @@ function PlayerInputController($log, mapService, playerService, interpreterServi
     if (baseCommand === '') return;
     let commandArgs = command.toLowerCase().split(' ').splice(1).join(' ').trim();
     this.command = '';
+    if (!combatService.inCombat) combatService.combatLog = [];
 
     if (!interpreterService.acceptableCommands[baseCommand]) return playerService.player.feedback = 'I\'m not sure what you\'re trying to do.';
 
-    if (interpreterService.acceptableCommands[baseCommand] === 'cast') combatService.castSpell(commandArgs);
-
-    if (interpreterService.acceptableCommands[baseCommand] === 'help') playerService.player.feedback = interpreterService.help();
-
-    if (combatService.inCombat) {
-      playerService.player.feedback = 'You can\'t do that while you\'re in the middle of combat!';
+    if (interpreterService.acceptableCommands[baseCommand] === 'cast') {
+      combatService.castSpell(commandArgs);
       return scrollToBottom();
     }
 
-    if (interpreterService.acceptableCommands[baseCommand] === 'direction') playerService.movePlayer(baseCommand);
+    if (interpreterService.acceptableCommands[baseCommand] === 'help') {
+      playerService.player.feedback = interpreterService.help();
+      return scrollToBottom();
+    }
 
-    if (interpreterService.acceptableCommands[baseCommand] === 'add inventory') playerService.addInventory(commandArgs);
-
-    if (interpreterService.acceptableCommands[baseCommand] === 'remove inventory') playerService.removeInventory(commandArgs);
-
-    if (interpreterService.acceptableCommands[baseCommand] === 'check inventory') playerService.listInventory();
-
-    if (interpreterService.acceptableCommands[baseCommand] === 'unlock') {
-      playerService.player.feedback = mapService.unlockDoor(commandArgs, playerService.player.location, playerService.player.inventory);
+    if (interpreterService.acceptableCommands[baseCommand] === 'check inventory') {
+      playerService.listInventory();
+      return scrollToBottom();
     }
 
     if (interpreterService.acceptableCommands[baseCommand] === 'look') {
@@ -56,10 +51,26 @@ function PlayerInputController($log, mapService, playerService, interpreterServi
       return scrollToBottom();
     }
 
+    if (combatService.inCombat) {
+      playerService.player.feedback = 'You can\'t do that while you\'re in the middle of combat!';
+      return scrollToBottom();
+    }
+
+    if (interpreterService.acceptableCommands[baseCommand] === 'direction') playerService.movePlayer(baseCommand);
+
+    if (interpreterService.acceptableCommands[baseCommand] === 'add inventory') playerService.addInventory(commandArgs);
+
+    if (interpreterService.acceptableCommands[baseCommand] === 'remove inventory') playerService.removeInventory(commandArgs);
+
+    if (interpreterService.acceptableCommands[baseCommand] === 'unlock') {
+      playerService.player.feedback = mapService.unlockDoor(commandArgs, playerService.player.location, playerService.player.inventory);
+    }
+
     function scrollToBottom() {
       setTimeout(function() {
         $location.hash('bottom');
         $anchorScroll();
+        combatService.inCombat = false;
       }, 0);
     }
 
