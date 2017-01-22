@@ -47,6 +47,7 @@ function PlayerInputController($log, mapService, playerService, interpreterServi
 
     if (interpreterService.acceptableCommands[baseCommand] === 'drink') {
       playerService.drinkPotion(commandArgs);
+      if (combatService.inCombat) combatService.enemyAttack();
       return scrollToBottom();
     }
 
