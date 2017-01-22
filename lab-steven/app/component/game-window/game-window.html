@@ -1,32 +1,34 @@
 <section class="game-window">
-  <div class="history" ng-show="gameWindowCtrl.player.history" ng-repeat="previous in gameWindowCtrl.player.history track by $index">
-    <h2>{{gameWindowCtrl.mapData[previous].title}}</h2>
-    <p>{{gameWindowCtrl.mapData[previous].desc}}</p>
-    <p class="exits">Exits: [
-      <span ng-repeat="(exit, val) in gameWindowCtrl.mapData[previous].exits">
-        <span ng-show="val.locked">( </span>{{exit}} <span ng-show="val.locked">)</span>
-      </span> ]
-    </p>
-    <p>-----------------------------</p>
-  </div>
+  <div class="text">
+    <div class="history" ng-show="gameWindowCtrl.player.history" ng-repeat="previous in gameWindowCtrl.player.history track by $index">
+      <h2>{{gameWindowCtrl.mapData[previous].title}}</h2>
+      <p>{{gameWindowCtrl.mapData[previous].desc}}</p>
+      <p class="exits">Exits: [
+        <span ng-repeat="(exit, val) in gameWindowCtrl.mapData[previous].exits">
+          <span ng-show="val.locked">( </span>{{exit}} <span ng-show="val.locked">)</span>
+        </span> ]
+      </p>
+      <p>-----------------------------</p>
+    </div>
 
-  <div>
-    <h2>{{gameWindowCtrl.mapData[gameWindowCtrl.player.location].title}}</h2>
-    <p>{{gameWindowCtrl.mapData[gameWindowCtrl.player.location].desc}}</p>
-    <div class="items">
-      <p
-      ng-show="{{gameWindowCtrl.mapData[gameWindowCtrl.player.location].items.length > 0}}"
-      ng-repeat="item in gameWindowCtrl.mapData[gameWindowCtrl.player.location].items track by $index">{{item.longDesc}}</p>
+    <div>
+      <h2>{{gameWindowCtrl.mapData[gameWindowCtrl.player.location].title}}</h2>
+      <p>{{gameWindowCtrl.mapData[gameWindowCtrl.player.location].desc}}</p>
+      <div class="items">
+        <p
+        ng-show="{{gameWindowCtrl.mapData[gameWindowCtrl.player.location].items.length > 0}}"
+        ng-repeat="item in gameWindowCtrl.mapData[gameWindowCtrl.player.location].items track by $index">{{item.longDesc}}</p>
+      </div>
+      <div class="mobs" ng-show="gameWindowCtrl.mapData[gameWindowCtrl.player.location].mobs">
+        <p ng-repeat="mob in gameWindowCtrl.mapData[gameWindowCtrl.player.location].mobs track by $index">{{mob.longDesc}}</p>
+      </div>
+      <p class="exits">Exits:  [
+        <span ng-repeat="(exit, val) in gameWindowCtrl.mapData[gameWindowCtrl.player.location].exits">
+          <span ng-show="val.locked">(</span>{{exit}}<span ng-show="val.locked">)</span>
+        </span> ]
+      </p>
+      <p class="combat-log" ng-show="gameWindowCtrl.combat.combatLog" ng-repeat="line in gameWindowCtrl.combat.combatLog track by $index">{{line}}</p>
+      <pre id="bottom">{{gameWindowCtrl.player.feedback}}</pre>
     </div>
-    <div class="mobs" ng-show="gameWindowCtrl.mapData[gameWindowCtrl.player.location].mobs">
-      <p ng-repeat="mob in gameWindowCtrl.mapData[gameWindowCtrl.player.location].mobs track by $index">{{mob.longDesc}}</p>
-    </div>
-    <p class="exits">Exits:  [
-      <span ng-repeat="(exit, val) in gameWindowCtrl.mapData[gameWindowCtrl.player.location].exits">
-        <span ng-show="val.locked">(</span>{{exit}}<span ng-show="val.locked">)</span>
-      </span> ]
-    </p>
-    <p class="combat-log" ng-show="gameWindowCtrl.combat.combatLog" ng-repeat="line in gameWindowCtrl.combat.combatLog track by $index">{{line}}</p>
-    <pre id="bottom">{{gameWindowCtrl.player.feedback}}</pre>
   </div>
 </section>
