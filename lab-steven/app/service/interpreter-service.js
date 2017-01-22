@@ -46,8 +46,9 @@ function interpreterService($log) {
     'GET <item keyword> (ex: "get key" or "get blue key"): Picks an item up in your current room.\n\n' +
     'DROP <item keyword> (ex: "drop key" or "drop blue key"): Drops an item from your inventory into the current room.\n\n' +
     'INV, INVENTORY: Displays your current inventory.\n\n' +
-    'UNLOCK <direction>: Unlocks a locked door in the stated direction if you have the correct key. Must fully type the direction.\n\n' +
-    'LOOK, L <item or mob>: Examine a mob or an item in your inventory or mob more closely.\n\n' +
+    'UNLOCK <direction>: Unlocks a locked door in the stated direction if you have the correct key.\n\n' +
+    'LOOK, L <item or mob>: Examine a mob or an item in your inventory more closely.\n\n' +
+    'FIGHT <target>: Start combat with the targeted mob.\n\n' +
     'CAST, C <spell name>: Cast a spell. Spells will automatically target either yourself or your current enemy.\n\n' +
     'SPELLS, SPELLBOOK, MAGIC: List the spells you know.\n\n' +
     'DRINK, QUAFF, USE <item>: Consumes a potion in your inventory.\n\n';

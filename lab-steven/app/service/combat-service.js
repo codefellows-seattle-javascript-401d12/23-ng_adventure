@@ -29,8 +29,12 @@ function combatService($log, mapService, mobService, playerService) {
   service.enemyAttack = function() {
     if (!service.currentlyFighting) return;
     let mob = service.currentlyFighting;
-    service.combatLog.push(`${mob.attack} It deals ${mob.atk} damage!`);
-    playerService.player.hp -= mob.atk;
+    let damage = mob.atk;
+    playerService.player.states.forEach(state => {
+      if (state.damageReduction) damage -= state.damageReduction;
+    });
+    service.combatLog.push(`${mob.attack} It deals ${damage} damage!`);
+    playerService.player.hp -= damage;
     if (playerService.player.hp <= 0) {
       service.combatLog.push('YOU HAVE BEEN SLAIN!');
       service.inCombat = false;
@@ -56,24 +60,28 @@ function combatService($log, mapService, mobService, playerService) {
     playerService.player.mp -= playerService.player.spells[spell].cost;
 
     if (playerService.player.spells[spell].inCombat) {
-      logMessage += `It deals ${playerService.player.mat} damage!`;
-      service.combatLog.push(logMessage);
-      service.combatLog.push(' ');
-      target.hp -= playerService.player.mat;
-      if (target.hp <= 0) {
-        service.combatLog.push(`You've slain ${target.shortDesc}!`);
-        service.inCombat = false;
-        target.inventory.forEach(item => {
-          service.combatLog.push(`${target.shortDesc[0].toUpperCase()}${target.shortDesc.slice(1)} dropped ${item.shortDesc}.`);
-          mapService.mapData[playerService.player.location].items.push(item);
-        });
-        mapService.mapData[playerService.player.location].mobs.splice(
-          mapService.mapData[playerService.player.location].mobs.indexOf(
-            mapService.mapData[playerService.player.location].mobs.find(element => element.shortDesc === service.currentlyFighting.shortDesc)
-          ), 1);
-        service.currentlyFighting = '';
+      if (playerService.player.spells[spell].damage) {
+        logMessage += `It deals ${playerService.player.mat} damage!`;
+        service.combatLog.push(logMessage);
+        service.combatLog.push(' ');
+        target.hp -= playerService.player.mat;
+        if (target.hp <= 0) {
+          service.combatLog.push(`You've slain ${target.shortDesc}!`);
+          service.inCombat = false;
+          playerService.service.states = [];
+          target.inventory.forEach(item => {
+            service.combatLog.push(`${target.shortDesc[0].toUpperCase()}${target.shortDesc.slice(1)} dropped ${item.shortDesc}.`);
+            mapService.mapData[playerService.player.location].items.push(item);
+          });
+          mapService.mapData[playerService.player.location].mobs.splice(
+            mapService.mapData[playerService.player.location].mobs.indexOf(
+              mapService.mapData[playerService.player.location].mobs.find(element => element.shortDesc === service.currentlyFighting.shortDesc)
+            ), 1);
+          service.currentlyFighting = '';
+        }
+        return;
       }
-      return;
+      playerService.player.states.push(playerService.player.spells[spell].addState);
     }
     logMessage += `It heals you for ${playerService.player.mat} HP.`;
     playerService.player.hp += playerService.player.mat;

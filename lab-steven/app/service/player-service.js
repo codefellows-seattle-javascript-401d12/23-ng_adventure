@@ -12,7 +12,7 @@ function playerService($log, $q, mapService, itemService) {
 
   service.player = {
     name: 'Player',
-    location: 'intro',
+    location: 'room1',
     hp: 20,
     mhp: 20,
     mp: 20,
@@ -21,18 +21,31 @@ function playerService($log, $q, mapService, itemService) {
     feedback: '',
     inventory: [],
     history: [],
+    states: [],
     spells: {
       lightning: {
         castDescription: 'You send out a forking bolt of lightning!',
         inCombat: true,
+        damage: true,
         cost: 2,
         info: 'A damaging bolt of lightning.'
       },
       cure: {
         inCombat: false,
         cost: 3,
+        damage: false,
         castDescription: 'A warm, white glow washes over you.',
         info: 'A spell that restores some HP.'
+      },
+      shield: {
+        inCombat: true,
+        cost: 3,
+        damage: false,
+        duration: 3,
+        damageReduction: 1,
+        addState: 'Shield',
+        castDescription: 'A barrier of blue light surrounds you.',
+        info: 'Reduces incoming damage by 1 for 3 rounds.'
       }
     }
   };
