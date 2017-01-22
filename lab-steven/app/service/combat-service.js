@@ -31,7 +31,12 @@ function combatService($log, mapService, mobService, playerService) {
     let mob = service.currentlyFighting;
     let damage = mob.atk;
     playerService.player.states.forEach(state => {
-      if (state.damageReduction) damage -= state.damageReduction;
+      if (playerService.player.spells[state].damageReduction) damage -= playerService.player.spells[state].damageReduction;
+      playerService.player.spells[state].remaining--;
+      if (playerService.player.spells[state].remaining === 0) {
+        playerService.player.states.splice(state, 1);
+        service.combatLog.push(`${state[0].toUpperCase()}${state.slice(1)} has worn off.`);
+      }
     });
     service.combatLog.push(`${mob.attack} It deals ${damage} damage!`);
     playerService.player.hp -= damage;
@@ -63,7 +68,6 @@ function combatService($log, mapService, mobService, playerService) {
       if (playerService.player.spells[spell].damage) {
         logMessage += `It deals ${playerService.player.mat} damage!`;
         service.combatLog.push(logMessage);
-        service.combatLog.push(' ');
         target.hp -= playerService.player.mat;
         if (target.hp <= 0) {
           service.combatLog.push(`You've slain ${target.shortDesc}!`);
@@ -81,7 +85,14 @@ function combatService($log, mapService, mobService, playerService) {
         }
         return;
       }
-      playerService.player.states.push(playerService.player.spells[spell].addState);
+      if (playerService.player.states.indexOf(playerService.player.spells[spell].addState) === -1) {
+        service.combatLog.push(logMessage);
+        playerService.player.states.push(playerService.player.spells[spell].addState);
+        return;
+      }
+      service.combatLog.push(`You refresh the duration on ${playerService.player.spells[spell].addState}.`);
+      playerService.player.spells[spell].remaining = playerService.player.spells[spell].duration;
+      return;
     }
     logMessage += `It heals you for ${playerService.player.mat} HP.`;
     playerService.player.hp += playerService.player.mat;

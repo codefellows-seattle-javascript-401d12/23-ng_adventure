@@ -35,7 +35,10 @@ function interpreterService($log) {
     magic: 'spells',
     drink: 'drink',
     quaff: 'drink',
-    use: 'drink'
+    use: 'drink',
+    states: 'states',
+    st: 'states',
+    buffs: 'states'
   };
 
   service.help = function() {
@@ -51,7 +54,8 @@ function interpreterService($log) {
     'FIGHT <target>: Start combat with the targeted mob.\n\n' +
     'CAST, C <spell name>: Cast a spell. Spells will automatically target either yourself or your current enemy.\n\n' +
     'SPELLS, SPELLBOOK, MAGIC: List the spells you know.\n\n' +
-    'DRINK, QUAFF, USE <item>: Consumes a potion in your inventory.\n\n';
+    'DRINK, QUAFF, USE <item>: Consumes a potion in your inventory.\n\n' +
+    'STATES, ST, BUFFS: Shows states currently affecting you and their remaining duration.\n\n';
   };
 
   return service;

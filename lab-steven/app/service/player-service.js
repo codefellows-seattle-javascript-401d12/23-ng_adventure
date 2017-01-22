@@ -42,8 +42,9 @@ function playerService($log, $q, mapService, itemService) {
         cost: 3,
         damage: false,
         duration: 3,
+        remaining: 3,
         damageReduction: 1,
-        addState: 'Shield',
+        addState: 'shield',
         castDescription: 'A barrier of blue light surrounds you.',
         info: 'Reduces incoming damage by 1 for 3 rounds.'
       }
@@ -96,6 +97,12 @@ function playerService($log, $q, mapService, itemService) {
       `${spell[0].toUpperCase()}${spell.slice(1)}: ${service.player.spells[spell].info} Costs ${service.player.spells[spell].cost} MP.\n`;
     });
     return service.player.feedback;
+  };
+
+  service.listStates = function() {
+    service.player.feedback = 'Currently affected by:\n\n';
+    service.player.states.forEach(state => service.player.feedback += `${state}: ` +
+    `${service.player.spells[state].remaining} rounds left\n`);
   };
 
   service.movePlayer = function(direction) {

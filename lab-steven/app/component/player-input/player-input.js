@@ -25,8 +25,15 @@ function PlayerInputController($log, mapService, playerService, interpreterServi
 
     if (!interpreterService.acceptableCommands[baseCommand]) return playerService.player.feedback = 'I\'m not sure what you\'re trying to do.';
 
+    if (interpreterService.acceptableCommands[baseCommand] === 'states') {
+      playerService.listStates();
+      return scrollToBottom();
+    }
     if (interpreterService.acceptableCommands[baseCommand] === 'cast') {
       combatService.castSpell(commandArgs);
+      if (playerService.player.feedback === 'You don\'t have enough MP.' || playerService.player.feedback === 'You don\'t know that spell.') {
+        return scrollToBottom();
+      }
       combatService.enemyAttack();
       return scrollToBottom();
     }
