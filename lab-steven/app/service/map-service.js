@@ -104,7 +104,8 @@ function mapService($log, itemService, mobService) {
           locked: true,
           unlockKey: itemService.gameItems.ornateKey
         }
-      }
+      },
+      mobs: [mobService.belzar]
     },
     tower: {
       title: 'Tower of Tempest',
