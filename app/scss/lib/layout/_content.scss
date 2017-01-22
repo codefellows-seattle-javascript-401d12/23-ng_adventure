@@ -1,0 +1,23 @@
+main {
+  min-height: 800px;
+  width: 80%;
+  margin: 5% 10%;
+}
+
+section {
+  margin: 5% 0;
+}
+
+img {
+  text-align: center;
+  max-width: 100%;
+  height: auto;
+  margin: 5%;
+}
+
+h3 {
+  padding-top: 1vw;
+  font-size: 1.2vw;
+  text-align: center;
+  color: $btn-primary;
+}
