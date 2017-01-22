@@ -119,6 +119,7 @@ function playerService($log, $q, mapService, itemService) {
 
     service.player.history.push(service.player.location);
     service.player.location = newLocation.connection;
+    if (service.player.location === 'tower') return service.player.feedback = 'Congratulations! You\'ve reached the end of the Angular adventure game! For now...';
     service.player.feedback = `You move ${direction}.`;
   };
 

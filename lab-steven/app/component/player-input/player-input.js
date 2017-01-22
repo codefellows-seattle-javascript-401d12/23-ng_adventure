@@ -17,6 +17,7 @@ function PlayerInputController($log, mapService, playerService, interpreterServi
   this.interpretCommand = function(command) {
     this.command = '';
     if (playerService.player.location === 'intro') return playerService.setName(command);
+    if (playerService.player.location === 'tower') return;
     if (playerService.player.hp <= 0) return playerService.player.feedback = 'Dead people can\'t do that. You\'ll have to start over.';
     let baseCommand = command.toLowerCase().split(' ')[0];
     if (baseCommand === '') return;
