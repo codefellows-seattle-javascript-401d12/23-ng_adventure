@@ -13,45 +13,31 @@ function mappingService($log) {
   service.mapData = {
     arcadiaPlanitia: {
       desc: "Welcome to the arcadiaPlanitia station zone! Traverse these harsh lands wisely.",
-      down: "olympusMons",
-      up: null,
-      left: null,
-      right: null
+      down: "olympusMons"
     },
     olympusMons: {
       desc: "Welcome to the olympusMons station zone. Where will you go next, astronaut?",
       up: "arcadiaPlanitia",
       right: "acidaliaPlanitia",
-      down: "tharsisMontes",
-      left: null
+      down: "tharsisMontes"
     },
     tharsisMontes: {
       desc: "Well done, astronaut. Keep on moving to find more science samples.",
-      up: "olympusMons",
-      right: null,
-      down: null,
-      left: null
+      up: "olympusMons"
     },
     acidaliaPlanitia: {
       desc: "You are starting to run out of oxygen. It's time to get a move on.",
       left: "olympusMons",
-      right: "vastitasBorealis",
-      up: null,
-      down: null
+      right: "vastitasBorealis"
     },
     vastitasBorealis: {
       desc: "Wow. This place feels inhabitable. Go to Utopia Planitia to survive.",
       left: "acidaliaPlanitia",
-      right: "utopiaPlanitia",
-      up: null,
-      down: null
+      right: "utopiaPlanitia"
     },
     utopiaPlanitia: {
       desc: "Welcome to Utopia Planitia! You have two years of supplies to survive! Good luck!",
-      left: "vastitasBorealis",
-      up: null,
-      down: null,
-      right: null
+      left: "vastitasBorealis"
     }
   };
   return service;
