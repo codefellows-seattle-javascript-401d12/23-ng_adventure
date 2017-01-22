@@ -11,11 +11,9 @@ function combatService($log, mapService, mobService, playerService) {
   let service = {};
 
   service.inCombat = false;
-  service.round = 0;
   service.currentlyFighting = '';
 
   service.startCombat = function(target) {
-    service.round = 0;
     service.combatLog = [];
     let mobArray = mapService.mapData[playerService.player.location].mobs;
     let foundMob = mobArray.filter(mob => mob.keywords.indexOf(target) !== -1)[0];
@@ -46,7 +44,6 @@ function combatService($log, mapService, mobService, playerService) {
       service.currentlyFighting = '';
       return playerService.player.feedback = 'You are dead.';
     }
-    service.round++;
   };
 
   service.combatEnd = function(target) {
