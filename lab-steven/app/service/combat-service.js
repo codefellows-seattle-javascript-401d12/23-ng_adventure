@@ -63,6 +63,10 @@ function combatService($log, mapService, mobService, playerService) {
       if (target.hp <= 0) {
         service.combatLog.push(`You've slain ${target.shortDesc}!`);
         service.inCombat = false;
+        target.inventory.forEach(item => {
+          service.combatLog.push(`${target.shortDesc[0].toUpperCase()}${target.shortDesc.slice(1)} dropped ${item.shortDesc}.`);
+          mapService.mapData[playerService.player.location].items.push(item);
+        });
         mapService.mapData[playerService.player.location].mobs.splice(
           mapService.mapData[playerService.player.location].mobs.indexOf(
             mapService.mapData[playerService.player.location].mobs.find(element => element.shortDesc === service.currentlyFighting.shortDesc)

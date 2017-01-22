@@ -3,9 +3,9 @@
 const angular = require('angular');
 const adventureGame = angular.module('adventureGame');
 
-adventureGame.factory('mobService', ['$log', mobService]);
+adventureGame.factory('mobService', ['$log', 'itemService', mobService]);
 
-function mobService($log) {
+function mobService($log, itemService) {
   $log.log('Mob service.');
 
   let service = {};
@@ -17,7 +17,8 @@ function mobService($log) {
     description: 'It\'s a hairy black rat.',
     attack: 'A large black rat bites you!',
     hp: 5,
-    atk: 2
+    atk: 2,
+    inventory: [itemService.gameItems.key]
   };
 
   service.turtle = {
