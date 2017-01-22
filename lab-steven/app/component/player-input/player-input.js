@@ -79,8 +79,12 @@ function PlayerInputController($log, mapService, playerService, interpreterServi
       if (!foundMob) {
         examArray = playerService.player.inventory;
         let foundItem = examArray.filter(element => element.keywords.indexOf(commandArgs) !== -1)[0];
-        if (!foundItem) playerService.player.feedback = 'I don\'t see that figure here or that item in your inventory.';
+        if (!foundItem) {
+          playerService.player.feedback = 'I don\'t see that figure here or that item in your inventory.';
+          return scrollToBottom();
+        }
         playerService.player.feedback = foundItem.description;
+        return scrollToBottom();
       }
       playerService.player.feedback = foundMob.description;
       return scrollToBottom();
