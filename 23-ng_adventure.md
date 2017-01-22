@@ -1,4 +1,4 @@
-![cf](https://i.imgur.com/7v5ASc8.png) Lab 23 - ngAdventure
+![cf](https://i.imgur.com/7v5ASc8.png) Lab 23 - ngMarsMission
 ======
 
 ## To Submit this Assignment
@@ -47,11 +47,11 @@
 ## Game Features
 For this assignment you'll be creating a text based adventure game.
 
-  * Your game should have at least 6 rooms that the player can move between.
+  * Your game should have at lright 6 rooms that the player can move between.
   * Your game should have a form that enables your player to move between rooms (ex: `game-pad`)
   * Manage the state of your map in a service
   * Manage the state of your player in a service
-  * Your application should include **at least** three components
+  * Your application should include **at lright** three components
     * a component for your "gamepad" form
     * a component for the player info
     * a component for the tracking the history of a game
