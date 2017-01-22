@@ -38,7 +38,9 @@ function interpreterService($log) {
     use: 'drink',
     states: 'states',
     st: 'states',
-    buffs: 'states'
+    buffs: 'states',
+    attack: 'attack',
+    at: 'attack'
   };
 
   service.help = function() {
@@ -53,6 +55,7 @@ function interpreterService($log) {
     'LOOK, L <item or mob>: Examine a mob or an item in your inventory more closely.\n\n' +
     'FIGHT <target>: Start combat with the targeted mob.\n\n' +
     'CAST, C <spell name>: Cast a spell. Spells will automatically target either yourself or your current enemy.\n\n' +
+    'ATTACK, AT <target>: Attack the target with your fists. Deals less damage than spells, but doesn\'t cost MP.\n\n' +
     'SPELLS, SPELLBOOK, MAGIC: List the spells you know.\n\n' +
     'DRINK, QUAFF, USE <item>: Consumes a potion in your inventory.\n\n' +
     'STATES, ST, BUFFS: Shows states currently affecting you and their remaining duration.\n\n';

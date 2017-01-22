@@ -38,6 +38,12 @@ function PlayerInputController($log, mapService, playerService, interpreterServi
       return scrollToBottom();
     }
 
+    if (interpreterService.acceptableCommands[baseCommand] === 'attack') {
+      combatService.attack();
+      combatService.enemyAttack();
+      return scrollToBottom();
+    }
+
     if (interpreterService.acceptableCommands[baseCommand] === 'drink') {
       playerService.drinkPotion(commandArgs);
       return scrollToBottom();

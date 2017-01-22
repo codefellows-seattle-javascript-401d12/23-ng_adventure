@@ -49,6 +49,32 @@ function combatService($log, mapService, mobService, playerService) {
     service.round++;
   };
 
+  service.combatEnd = function(target) {
+    service.combatLog.push(`You've slain ${target.shortDesc}!`);
+    service.inCombat = false;
+    playerService.player.states = [];
+    target.inventory.forEach(item => {
+      service.combatLog.push(`${target.shortDesc[0].toUpperCase()}${target.shortDesc.slice(1)} dropped ${item.shortDesc}.`);
+      mapService.mapData[playerService.player.location].items.push(item);
+    });
+    mapService.mapData[playerService.player.location].mobs.splice(
+      mapService.mapData[playerService.player.location].mobs.indexOf(
+        mapService.mapData[playerService.player.location].mobs.find(element => element.shortDesc === service.currentlyFighting.shortDesc)
+      ), 1);
+    service.currentlyFighting = '';
+  };
+
+  service.attack = function() {
+    playerService.player.feedback = '';
+    let target = service.currentlyFighting;
+    if (!service.inCombat) return playerService.player.feedback = 'You are not in combat.';
+    service.combatLog.push(`You attack ${target.shortDesc} wildly! You deal ${playerService.player.atk} damage!`);
+    target.hp -= playerService.player.atk;
+    if (target.hp <= 0) {
+      service.combatEnd(target);
+    }
+  };
+
   service.castSpell = function(commandArgs) {
     let logMessage = '';
     playerService.player.feedback = '';
@@ -70,18 +96,7 @@ function combatService($log, mapService, mobService, playerService) {
         service.combatLog.push(logMessage);
         target.hp -= playerService.player.mat;
         if (target.hp <= 0) {
-          service.combatLog.push(`You've slain ${target.shortDesc}!`);
-          service.inCombat = false;
-          playerService.service.states = [];
-          target.inventory.forEach(item => {
-            service.combatLog.push(`${target.shortDesc[0].toUpperCase()}${target.shortDesc.slice(1)} dropped ${item.shortDesc}.`);
-            mapService.mapData[playerService.player.location].items.push(item);
-          });
-          mapService.mapData[playerService.player.location].mobs.splice(
-            mapService.mapData[playerService.player.location].mobs.indexOf(
-              mapService.mapData[playerService.player.location].mobs.find(element => element.shortDesc === service.currentlyFighting.shortDesc)
-            ), 1);
-          service.currentlyFighting = '';
+          service.combatEnd(target);
         }
         return;
       }

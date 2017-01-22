@@ -18,6 +18,7 @@ function playerService($log, $q, mapService, itemService) {
     mp: 20,
     mmp: 20,
     mat: 8,
+    atk: 4,
     feedback: '',
     inventory: [],
     history: [],

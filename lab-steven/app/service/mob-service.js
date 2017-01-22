@@ -28,7 +28,8 @@ function mobService($log, itemService) {
     description: 'It\'s a turtle. But black.',
     attack: 'A big black turtle snaps at you with its powerful jaws!',
     hp: 10,
-    atk: 3
+    atk: 3,
+    inventory: []
   };
 
   return service;
