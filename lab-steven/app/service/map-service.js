@@ -107,8 +107,8 @@ function mapService($log, itemService, mobService) {
       }
     },
     tower: {
-      title: '',
-      desc: '',
+      title: 'Tower of Tempest',
+      desc: 'The door into the tower has shut behind you, leaving you with no avenue of escape or direction to go except up. A spiraling staircase stretches on into a fog of darkness that eventually seems to consume its steps. There are no windows, though the sound of rain pouring against the stone echoes around this chamber. The only dim light comes from a handful of wispy balls of a faint blue glow, apparitions of magic that float through the air lazily. It seems your adventure has only just begun...',
       exits: {}
     }
   };

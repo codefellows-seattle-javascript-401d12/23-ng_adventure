@@ -32,5 +32,16 @@ function mobService($log, itemService) {
     inventory: [itemService.gameItems.healingPotion, itemService.gameItems.key, itemService.gameItems.manaPotion]
   };
 
+  service.belzar = {
+    keywords: ['belzar'],
+    shortDesc: 'Belzar',
+    longDesc: 'Belzar is here, floating above the ground, awaiting your challenge.',
+    description: 'Belzar is a rival mage blocking the entrance to the tower. He\'s dressed in blue and purple robes that flow around him like a shielding second skin. His face is masked, a solid white, smooth piece of porcelain hiding everything from view. Even the eyes of the mask are dim, a subtle purple glow the only indication of his sight. An ornate key hangs from his belt, the only way into the tower.',
+    attack: 'Belzar hurls a crackling ball of energy at you!',
+    hp: 25,
+    atk: 5,
+    inventory: [itemService.gameItems.ornateKey]
+  };
+
   return service;
 }

@@ -24,6 +24,12 @@ function itemService($log) {
       description: 'Bottled in a flask with a wide, flat bottom and a narrow, long-necked top, this potion almost seems to shimmer when looked at in the right light. Healing potions are capable of restoring 10 HP when consumed with the DRINK command.',
       restoreValue: 10
     },
+    ornateKey: {
+      keywords: ['key', 'ornate', 'ornate key'],
+      shortDesc: 'an ornate key',
+      longDesc: 'An ornately designed key, with spiraling patterns carved into its head, is lying on the ground here.',
+      description: 'This key is comprised of silver, with detailed and intricate patterns scrawled across its head that eventually wind down the length until they reach the row of teeth at its tip. There\'s a small, spherical purple gem resting in the center of its head.'
+    },
     manaPotion: {
       keywords: ['potion', 'mana', 'mana potion'],
       shortDesc: 'a mana potion',
