@@ -10,13 +10,12 @@ function combatService($log, mapService, mobService, playerService) {
 
   let service = {};
 
-  service.combatLog = [];
-
   service.inCombat = false;
   service.round = 0;
   service.currentlyFighting = '';
 
   service.startCombat = function(target) {
+    service.combatLog = [];
     let mobArray = mapService.mapData[playerService.player.location].mobs;
     let foundMob = mobArray.filter(mob => mob.keywords.indexOf(target) !== -1)[0];
     if (!foundMob) return playerService.player.feedback = 'I don\'t see that here.';
@@ -47,6 +46,7 @@ function combatService($log, mapService, mobService, playerService) {
       target.hp -= playerService.player.mat;
       if (target.hp <= 0) {
         service.combatLog.push(`You've slain ${target.shortDesc}!`);
+        service.inCombat = false;
         service.currentlyFighting = '';
         mapService.mapData[playerService.player.location].mobs.splice(
           mapService.mapData[playerService.player.location].mobs.indexOf(
@@ -59,7 +59,7 @@ function combatService($log, mapService, mobService, playerService) {
     playerService.player.hp += playerService.player.mat;
     if (playerService.player.hp > playerService.player.mhp) playerService.player.hp = playerService.player.mhp;
     if (service.inCombat) return service.combatLog.push(logMessage);
-    playerService.player.feedback = `It heals you for ${playerService.player.mat} HP.`;
+    return playerService.player.feedback = `It heals you for ${playerService.player.mat} HP.`;
   };
 
   return service;

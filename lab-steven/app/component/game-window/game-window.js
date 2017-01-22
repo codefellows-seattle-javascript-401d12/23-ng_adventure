@@ -14,7 +14,6 @@ adventureGame.controller('GameWindowController', ['$log', 'mapService', 'itemSer
 function GameWindowController($log, mapService, itemService, playerService, combatService) {
   $log.debug('Game Window Controller');
 
-  this.combatLog = combatService.combatLog;
   this.combat = combatService;
   this.mapData = mapService.mapData;
   this.player = playerService.player;
