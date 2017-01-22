@@ -32,8 +32,9 @@ function combatService($log, mapService, mobService, playerService) {
     service.combatLog.push(`${mob.attack} It deals ${mob.atk} damage!`);
     playerService.player.hp -= mob.atk;
     if (playerService.player.hp <= 0) {
-      service.combatLog.push('You have been slain!');
+      service.combatLog.push('YOU HAVE BEEN SLAIN!');
       service.inCombat = false;
+      service.currentlyFighting = '';
       return playerService.player.feedback = 'You are dead.';
     }
     service.round++;

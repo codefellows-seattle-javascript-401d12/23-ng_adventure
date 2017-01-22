@@ -15,10 +15,11 @@ function PlayerInputController($log, mapService, playerService, interpreterServi
   $log.debug('PlayerInputController');
 
   this.interpretCommand = function(command) {
+    this.command = '';
+    if (playerService.player.hp <= 0) return playerService.player.feedback = 'Dead people can\'t do that. You\'ll have to start over.';
     let baseCommand = command.toLowerCase().split(' ')[0];
     if (baseCommand === '') return;
     let commandArgs = command.toLowerCase().split(' ').splice(1).join(' ').trim();
-    this.command = '';
     if (!combatService.inCombat) combatService.combatLog = [];
 
     if (!interpreterService.acceptableCommands[baseCommand]) return playerService.player.feedback = 'I\'m not sure what you\'re trying to do.';

@@ -15,5 +15,8 @@
     <li ng-show="promptCtrl.combat.currentlyFighting">
       <p>You are currently fighting {{promptCtrl.combat.currentlyFighting.shortDesc}}!</p>
     </li>
+    <li ng-show="promptCtrl.player.hp <= 0">
+      <p>YOU ARE DEAD.</p>
+    </li>
   </ul>
 </section>

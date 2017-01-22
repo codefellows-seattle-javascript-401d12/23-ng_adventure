@@ -13,7 +13,7 @@ function playerService($log, $q, mapService, itemService) {
   service.player = {
     name: 'Monkay',
     location: 'room1',
-    hp: 20,
+    hp: 1,
     mhp: 20,
     mp: 20,
     mmp: 20,
