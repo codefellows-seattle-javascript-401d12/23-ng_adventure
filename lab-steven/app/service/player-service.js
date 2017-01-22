@@ -11,14 +11,14 @@ function playerService($log, $q, mapService, itemService) {
   let service = {};
 
   service.player = {
-    name: 'Monkay',
-    location: 'room1',
-    hp: 1,
+    name: 'Player',
+    location: 'intro',
+    hp: 20,
     mhp: 20,
     mp: 20,
     mmp: 20,
     mat: 8,
-    feedback: 'Welcome to the game. Type HELP for a list of commands.',
+    feedback: '',
     inventory: [],
     history: [],
     spells: {
@@ -35,6 +35,16 @@ function playerService($log, $q, mapService, itemService) {
         info: 'A spell that restores some HP.'
       }
     }
+  };
+
+  service.setName = function(name) {
+    if (name === 'y' || name === 'yes' && service.player.name !== 'Player') {
+      service.player.location = 'room1';
+      return service.player.feedback = `Welcome to the game, ${service.player.name}! Enter HELP for a list of commands.`;
+    }
+    if (name === 'n' || name === 'no') return service.player.feedback = 'Then enter the name you\'d like to use.';
+    service.player.name = name;
+    service.player.feedback = `Are you sure you want the name ${name}? Enter y or yes to confirm, or n or no to choose a new one.`;
   };
 
   service.drinkPotion = function(target) {

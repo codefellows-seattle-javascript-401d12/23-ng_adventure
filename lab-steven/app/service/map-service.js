@@ -11,6 +11,13 @@ function mapService($log, itemService, mobService) {
   let service = {};
 
   service.mapData = {
+    intro: {
+      title: 'Intro',
+      desc: 'Enter your name. You won\'t be able to leave until you select a name.',
+      exits: {},
+      items: [],
+      mobs: []
+    },
     room1: {
       title: 'Room 1',
       desc: 'This is the description for room 1. It\'s just placeholder text and will thus be gone in the near future.',
