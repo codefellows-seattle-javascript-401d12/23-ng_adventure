@@ -1,7 +1,7 @@
 {
   "name": "lab-steven",
   "version": "1.0.0",
-  "description": "",
+  "description": "Text-based adventure game built with Angular.",
   "main": "karma.conf.js",
   "directories": {
     "test": "test"
