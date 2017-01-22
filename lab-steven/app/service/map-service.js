@@ -47,7 +47,7 @@ function mapService($log, itemService, mobService) {
     },
     mainStreet: {
       title: 'Main Street',
-      desc: 'The cobblestone street ends abruptly at a sinkhole that\'s now been filled with murky water, the path to the town center obstructed and unavailable. A run-down building stands off to the east, still in relatively good condition. Its roof is intact, and it even has a somewhat sturdy door guarding its entrance. At the far corner of the building, a door hangs open, signaling that it could be a potential route around the sinkhole.',
+      desc: 'The cobblestone street ends abruptly at a sinkhole, wide enough to swallow up the entire pathway, that\'s now been filled with murky water, the path to the town center obstructed and unavailable. A run-down building stands off to the east, still in relatively good condition. Its roof is intact, and it even has a somewhat sturdy door guarding its entrance. At the far corner of the building, a door hangs open, signaling that it could be a potential route around the sinkhole.',
       exits: {
         north: {
           connection: 'intersection',
@@ -63,13 +63,41 @@ function mapService($log, itemService, mobService) {
       mobs: [mobService.thug]
     },
     butcher: {
-      title: '',
-      desc: '',
+      title: 'Abandoned Butcher',
+      desc: 'Rusted hooks hang at the end of even more rusted chains in seemingly random places around the inside of this building. Although it appears to offer a little respite from the downpour outside, the floors have been warped so badly that it\'s almost impossible to flatly plant your feet in any one place. The sturdy door to the west leads out into Main Street. At the southern end of the old butcher\'s shop, a door is on its last leg, about to collapse from what\'s left of its rusted hinge, leading out into an alleyway.',
       exits: {
         west: {
           connection: 'mainStreet',
           locked: true,
           unlockKey: itemService.gameItems.key
+        },
+        south: {
+          connection: 'alley',
+          locked: false
+        }
+      }
+    },
+    alley: {
+      title: 'Alley',
+      desc: 'Made up of a dirt path that has practically been turned into a marsh by the unrelenting rains of Tempest, this alleyway ends abruptly at a crumbling stone wall. Littered with holes, there\'s a pile of bricks haphazardly strewn about at the base of the wall. To the west, the muddy path connects into Main Street, offering a way around the sinkhole that\'s eaten up part of the street.',
+      exits: {
+        north: {
+          connection: 'butcher',
+          locked: false
+        },
+        west: {
+          connection: 'townCenter',
+          locked: false
+        }
+      }
+    },
+    townCenter: {
+      title: 'Town Square',
+      desc: '',
+      exits: {
+        east: {
+          connection: 'alley',
+          locked: false
         }
       }
     }
