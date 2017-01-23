@@ -13,5 +13,6 @@ ngMarsMission.controller('PlayerInfoController', ['$log', 'playerService', Playe
 
 function PlayerInfoController($log, playerService) {
   $log.debug('PlayerInfoController');
+
   this.player = playerService.player;
 };
