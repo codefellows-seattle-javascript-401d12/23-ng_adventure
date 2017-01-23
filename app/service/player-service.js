@@ -32,27 +32,24 @@ function playerService($q, $log, mapService) {
 
       let current = player.location;
       let newLocation = mapService.mapData[current][direction];
-      let twoMovesAgo = history.map(function(twoMovesBack) {
-        return twoMovesBack.location;
-      })[0];
 
       if (!newLocation) {
         history.unshift({
           turn,
           description: 'there\'s no place to go in that direction!',
-          location: player.location,
+          location: player.location.split('_').join(' '),
           oxygen: player.oxygen,
         });
         return reject('no room in that direction');
       };
 
-      if (newLocation === 'medicalStation' && twoMovesAgo !== 'medicalStation') {
+      if (newLocation === 'medical_station') {
         if (!mapService.mapData[current].visited) {
           mapService.mapData[current]['visited'] = true;
 
           history.unshift({
             turn,
-            location: player.location,
+            location: player.location.split('_').join(' '),
             description: mapService.mapData[newLocation].description,
             oxygen: player.oxygen += 7
           });
@@ -65,11 +62,10 @@ function playerService($q, $log, mapService) {
       mapService.mapData[current]['visited'] = true;
       history.unshift({
         turn,
-        location: player.location,
+        location: player.location.split('_').join(' '),
         description: mapService.mapData[newLocation].description,
         oxygen: player.oxygen -= 1,
       });
-
       player.location = newLocation;
       return resolve(player.location);
     });
