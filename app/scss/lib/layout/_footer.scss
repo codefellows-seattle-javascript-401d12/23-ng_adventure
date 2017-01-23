@@ -1,1 +1,15 @@
 @import "../theme/vars";
+
+footer {
+  height: 8vw;
+  background: $brand-primary;
+  text-align: left;
+  color: $white;
+
+  span {
+    float: right;
+    padding-top: $gutter-sm;
+    padding-right: 1vw;
+  }
+
+}

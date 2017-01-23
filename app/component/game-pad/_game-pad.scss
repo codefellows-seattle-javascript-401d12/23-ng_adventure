@@ -1,0 +1,26 @@
+@import "../../scss/lib/theme/vars";
+
+.gamepad {
+  background: $brand-secondary;
+  padding: 2vw;
+
+
+  label {
+    display: block;
+    color: $white;
+    text-align: center;
+    font-size: 3vw;
+    margin-bottom: 1vw;
+
+  }
+
+  button {
+    width: 20%;
+    margin: 1vw 2vw 0 0;
+    color: $white;
+  }
+}
+
+.btn-container {
+  padding-left: 2.5vw;
+}
