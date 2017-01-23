@@ -5,7 +5,10 @@
   "main": "index.js",
   "scripts": {
     "build": "./node_modules/webpack/bin/webpack.js",
-    "watch": "./node_modules/webpack-dev-server/bin/webpack-dev-server.js --inline --hot"
+    "watch": "./node_modules/webpack-dev-server/bin/webpack-dev-server.js --inline --hot",
+    "lint": "gulp lint",
+    "test-watch": "./node_modules/karam/bin/karma start",
+    "test": "./node_modules/karma/bin/karma start --single-run"
   },
   "repository": {
     "type": "git",
@@ -36,6 +39,8 @@
     "webpack": "^1.14.0"
   },
   "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-eslint": "^3.0.1",
     "image-webpack-loader": "^3.1.0",
     "webpack-dev-server": "^1.16.2"
   }
