@@ -1,0 +1,40 @@
+{
+  "name": "23-ng_adventure",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "./node_modules/webpack/bin/webpack.js",
+    "build-watch": "./node_modules/webpack-dev-server/bin/webpack-dev-server.js --inline --hot"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/meganreardon/23-ng_adventure.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/meganreardon/23-ng_adventure/issues"
+  },
+  "homepage": "https://github.com/meganreardon/23-ng_adventure#readme",
+  "dependencies": {
+    "angular": "^1.6.1",
+    "babel-core": "^6.22.1",
+    "babel-loader": "^6.2.10",
+    "babel-preset-es2015": "^6.22.0",
+    "css-loader": "^0.26.1",
+    "extract-text-webpack-plugin": "^1.0.1",
+    "file-loader": "^0.9.0",
+    "html-loader": "^0.4.4",
+    "html-webpack-plugin": "^2.26.0",
+    "node-sass": "^4.3.0",
+    "resolve-url-loader": "^1.6.1",
+    "sass-loader": "^4.1.1",
+    "url-loader": "^0.5.7",
+    "webpack": "^1.14.0"
+  },
+  "devDependencies": {
+    "webpack-dev-server": "^1.16.2"
+  }
+}
