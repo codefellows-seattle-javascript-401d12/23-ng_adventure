@@ -1,4 +1,15 @@
 <section class="history">
+  <h2>Description</h2>
+
+  <ul ng-repeat="stat in gameHistoryCtrl.history">
+    <li>
+      <span>description:</span>
+      <span>{{ stat.desc }}</span>
+    </li>
+  </ul>
+</section>
+
+<section class="history">
   <h2>history</h2>
 
   <ul ng-repeat="stat in gameHistoryCtrl.history">
@@ -10,9 +21,9 @@
       <span>location:</span>
       <span>{{ stat.location }}</span>
     </li>
-    <li>
+    <!-- <li>
       <span>description:</span>
       <span>{{ stat.desc }}</span>
-    </li>
+    </li> -->
   </ul>
 </section>
