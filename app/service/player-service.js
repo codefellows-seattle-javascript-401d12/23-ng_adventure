@@ -12,9 +12,9 @@ function playerService($q, $log, mapService) {
 
   let turn = 0;
   let player = service.player = {
-    name: 'Mossart',
+    name: 'Moezart',
     location: 'entrance',
-    hp: 0
+    hp: 0,
   };
 
   let history = service.history = [
@@ -29,7 +29,7 @@ function playerService($q, $log, mapService) {
   service.movePlayer = function(direction) {
     return new $q((resolve, reject) => {
       turn++;
-      
+
       let current = player.location;
       let newLocation = mapService.mapData[current][direction];
 
@@ -47,7 +47,8 @@ function playerService($q, $log, mapService) {
         turn,
         location: player.location,
         desc: mapService.mapData[newLocation].desc,
-        hp: player.hp
+        hp: player.hp,
+        image: mapService.mapData.image
       });
 
       player.location = newLocation;

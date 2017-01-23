@@ -1,0 +1,14 @@
+@import "../theme/vars";
+
+header {
+  height: 10vw;
+  // background: $brand-secondary;
+  background-image: url(http://www.midtownmiamimagazine.com/wp-content/uploads/2016/07/music-festival-midtown-miami.jpg);
+
+
+  h1 {
+    padding-top: 2.5vw;
+    text-align: center;
+    color: $btn-primary;
+  }
+}

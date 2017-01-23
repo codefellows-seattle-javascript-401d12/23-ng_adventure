@@ -14,12 +14,15 @@ function mapService($log) {
     entrance: {
       desc: 'Nice! You got in to the show! Hurry to the main stage to see your favorite artist!',
       down: 'coatCheck',
-      right: 'room'
+      right: 'room',
+      image: 'http://moneyinc.com/wp-content/uploads/2016/05/Summer-Music-Festival.jpg'
     },
     coatCheck: {
       desc: 'Leave your heavy coat here, things will get way too hot when you are in the mix.',
       down: 'merchandise',
-      right: 'pathwayToNoise'
+      right: 'pathwayToNoise',
+      up: 'entrance',
+      image: 'http://moneyinc.com/wp-content/uploads/2016/05/Summer-Music-Festival.jpg'
     },
     merchandise: {
       desc: 'You found the merch tables! Snag some gear and get moving!',
