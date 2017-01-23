@@ -58,9 +58,10 @@ function playerService($q, $log, mapService) {
       //   player.inventory += 'key';
       // }
 
-      if(player.location === 'stairs') {
-        console.log('THE END');
-      }
+      // NOTE: keep until I know I don't want to do something with the JS at the end of the game
+      // if(player.location === 'stairs') {
+      //   console.log('THE END');
+      // }
 
       history.unshift({
         turn,

@@ -76,7 +76,7 @@ function mapService($log) {
       west: 'stairs'
     },
     stairs: {
-      description: 'A staircase leads down into pitch black. Despite feeling afraid you descend. You have been eaten by a grue. THE END.'
+      description: 'A staircase leads down into pitch black. You descend. You have been eaten by a grue. THE END.'
     }
   };
 
