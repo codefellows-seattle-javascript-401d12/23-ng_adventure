@@ -1,6 +1,8 @@
 // GLOBAL STYLES
 
 body {
+  overflow: hidden;
+  font-family: $one;
   background-image: url('../../images/footer.jpg');
   background-size: cover;
   padding: none;
@@ -10,5 +12,67 @@ body {
 }
 
 h1 {
-  font-size: 5vw;
+  font-size: $xx-large;
+}
+
+h2 {
+  width: 100%;
+  background-color: $emgreen;
+  font-size: $large;
+  font-weight: bold;
+}
+
+//-------------------
+#one {
+  font-family: $one;
+}
+
+#two {
+  font-family: $two
+}
+
+#three {
+  font-family: $three;
+}
+
+#four {
+  font-family: $four;
+}
+
+#five {
+  font-family: $five;
+}
+
+#six {
+  font-family: $six;
+}
+
+//-------------------
+section {
+  padding-bottom: $large;
+  background: transparent;
+  width: 100%;
+  text-align: left;
+}
+form {
+  font-size: $large - .25vw;
+}
+button {
+  font-weight: bolder;
+  font-family: $one;
+  font-size: $large - $x-small;
+  border: solid $xx-small $emgreen;
+  border-radius: 3px;
+  background: $white;
+  outline-color: $emgreen;
+}
+
+select {
+  font-size: $large - $x-small;
+  font-family: $one;
+  border: solid $x-small $emgreen;
+  border-radius: 3px;
+  height: 5%;
+  width: 20%;
+  outline-color: $emgreen;
 }
