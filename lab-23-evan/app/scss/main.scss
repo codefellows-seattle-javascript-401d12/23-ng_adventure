@@ -1,0 +1,9 @@
+@import './base/reset';
+@import './base/base';
+@import './theme/vars';
+@import './layout/header';
+@import './layout/content';
+@import './layout/footer';
+@import '../components/game-pad/game-pad';
+@import '../components/player-info/player-info';
+@import '../components/game-history/game-history';
