@@ -41,6 +41,10 @@ module.exports = {
       {
         test: /\.(woff|tff|svg|eot).*/,
         loader: 'url?limit=100000&namefont/[hash].[ent]'
+      },
+      {
+        test: /.*\.(gif|png|jpe?g|svg)$/i,
+        loader: 'file?hash=sha512&digest=hex&name=[hash].[ext]'
       }
     ]
   }

@@ -14,4 +14,5 @@ ngSoundSearch.controller('PlayerInfoController', ['$log', 'playerService', Playe
 function PlayerInfoController($log, playerService) {
   $log.debug('PlayerInfoController');
   this.player = playerService.player;
+  console.log('PlayerService.player:', playerService.player);
 }

@@ -14,6 +14,7 @@ function playerService($q, $log, mapService) {
   let player = service.player = {
     name: 'Moezart',
     location: 'entrance',
+    currentLocation: 'Entrance',
     hp: 0,
   };
 
@@ -22,6 +23,7 @@ function playerService($q, $log, mapService) {
       turn,
       desc: 'Welcome to Sound Search! Make your way through the venue to the main stage to see your favorite artists! Hurry, they are going to start soon!',
       location: 'entrance',
+      currentLocation: 'Entrance',
       hp: player.hp
     }
   ];
@@ -46,12 +48,15 @@ function playerService($q, $log, mapService) {
       history.unshift({
         turn,
         location: player.location,
+        currentLocation: mapService.mapData[current].currentLocation,
         desc: mapService.mapData[newLocation].desc,
         hp: player.hp,
-        image: mapService.mapData.image
+        image: mapService.mapData[newLocation].image
       });
 
       player.location = newLocation;
+      player.currentLocation = mapService.mapData[newLocation].currentLocation;
+      console.log('player:', player);
       return resolve(player.location);
     });
   };
