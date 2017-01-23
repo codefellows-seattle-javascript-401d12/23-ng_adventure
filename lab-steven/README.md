@@ -9,4 +9,4 @@ The aesthetic of the site is designed to mock up the functionality of a telnet c
 To install this app, clone down this repository, then navigate to the `lab-steven` directory and run `npm i`.
 
 ###Usage
-In order to use the app, after you've done `npm i`, run `npm run watch` to create a dev server using Webpack on your localhost port. Then open up your browser and navigate to `localhost:<port>`, where <port> is whatever port Webpack's dev server is running on.
+In order to use the app, after you've done `npm i`, run `npm run watch` to create a dev server using Webpack on your localhost port. Then open up your browser and navigate to `localhost:<port>`, where port is whatever port Webpack's dev server is running on.
