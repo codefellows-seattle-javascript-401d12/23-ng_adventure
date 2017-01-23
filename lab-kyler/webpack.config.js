@@ -5,6 +5,7 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 module.exports = {
   entry: `${__dirname}/app/entry.js`,
+  devtool: 'eval',
   output: {
     filename: 'bundle.js',
     path: 'build'
@@ -16,7 +17,7 @@ module.exports = {
   },
   plugins: [
     new HtmlWebpackPlugin({ template: `${__dirname}/app/index.html` }),
-    new ExtractTextPlugin('bundle.js')
+    new ExtractTextPlugin('bundle.css')
   ],
   module: { loaders: [
     {
@@ -33,7 +34,7 @@ module.exports = {
       loader: ExtractTextPlugin.extract('style', 'css!resolve-url!sass?sourceMap')
     },
     {
-      test: /\.(woff|ttf|svg|eat).*/,
+      test: /\.(woff|ttf|svg|eot).*/,
       loader: 'url?limit=10000&name=font/[hash].[ext]'
     }
   ]}

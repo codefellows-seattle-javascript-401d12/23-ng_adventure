@@ -1,0 +1,31 @@
+.turn-column {
+  width: 100px;
+
+}
+
+.location-column {
+  margin: 5px;
+}
+
+ .historyh2 {
+   text-align: center;
+   margin-top: 5vw;
+   text-transform: capitalize;
+ }
+
+table {
+  border: 1px solid black;
+  table-layout: fixed;
+  width: 50vw;
+  margin: 5vw 15vw;
+}
+
+.thturn {
+  border: 1px solid black;
+  width: 15vw;
+}
+
+.thlocation {
+  border: 1px solid black;
+  width: 30vw;
+}

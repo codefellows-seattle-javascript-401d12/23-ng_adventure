@@ -1,0 +1,10 @@
+@import "lib/base/reset";
+@import "lib/base/base";
+
+@import "lib/layout/header";
+@import "lib/layout/footer";
+@import "lib/layout/content";
+
+@import "../component/game-pad/game-pad";
+@import "../component/player-info/player-info";
+@import "../component/game-history/game-history";

@@ -12,12 +12,13 @@ function mapService($log) {
 
   service.mapData = {
     entry: {
-      desc: 'youre in the entry way. Want some free stickers?',
+      desc: 'You are in the entry way. Want some free stickers?',
       south: 'hallway',
-      north: 'eventSpace'
+      north: 'eventSpace',
+      west: 'watercooler'
     },
     hallway: {
-      desc: 'youre in the hallway with terrible green carpeting. Corporate drones sneer at CF students as they walk to and from offices unknown.',
+      desc: 'You are in the hallway with terrible green carpeting. Corporate drones sneer at CF students as they walk by.',
       north: 'entry'
     },
     eventSpace: {
@@ -27,24 +28,32 @@ function mapService($log) {
       west: 'lounge'
     },
     lounge: {
-      desc: 'you are in the land of couches and weird rugs. A dangling power outlet hits you in the face.',
+      desc: 'You are in the land of couches and weird rugs. A dangling power outlet hits you in the face.',
       east: 'eventSpace',
       west: 'lovelace',
       south: 'watercooler'
     },
     watercooler: {
-      desc: 'water',
-      west: 'coworking'
+      desc: 'You are at the water cooler. Thirsty?',
+      west: 'coworking',
+      east: 'entry'
     },
     lovelace: {
-      desc: 'You interrupted a python class. Theyre performing some kind of sacred indentation ceremony.',
+      desc: 'You interrupted a python class. They are performing some kind of sacred indentation ceremony.',
       east: 'lounge',
     },
     coworking: {
-      desc: 'You are sat at a shitty metal desk with your macbook. So are 50 other people.',
+      desc: 'You are sat at a crappy metal desk with your macbook, same as 50 other people.',
       east: 'watercooler',
-      west: 'lovelace',
-      south: 'watercooler'
+      west: 'staff'
+    },
+    kitchen: {
+      desc: 'You are in the kitchen. They have coffee for before lecture, and beer for after.',
+      west: 'eventSpace'
+    },
+    staff: {
+      desc: 'You are amongst Code Fellows staff. They are all trying to skateboard and work at the same time.',
+      east: 'coworking'
     }
   };
 

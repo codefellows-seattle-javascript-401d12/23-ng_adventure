@@ -1,18 +1,11 @@
 <section class="history">
-  <h2>history</h2>
+  <h2 class="historyh2">move history</h2>
 
-  <ul ng-repeat="stat in gameHistoryCtrl.history">
-    <li>
-      <span>turn:</span>
-      <span>{{ stat.turn }}</span>
-    </li>
-    <li>
-      <span>location:</span>
-      <span>{{ stat.location }}</span>
-    </li>
-    <li>
-      <span>description:</span>
-      <span>{{ stat.desc }}</span>
-    </li>
-  </ul>
+  <table>
+    <tr><td class="thturn">Turn#</td><td class="thlocation">Location</td></tr>
+    <tr ng-repeat="i in gameHistoryCtrl.history">
+      <td class="turn-column">{{ i.turn }}</td>
+      <td class="location-column">{{ i.location }}</td>
+    </tr>
+  </table>
 </section>

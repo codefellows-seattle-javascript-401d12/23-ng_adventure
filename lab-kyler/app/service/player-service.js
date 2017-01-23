@@ -10,25 +10,23 @@ function playerService($q, $log, mapService) {
   $log.debug('playerService');
 
   let service = {};
-  let player = service.player;
-  let history = service.history;
-
   let turn = 0;
-
-  player = {
+  let player = service.player = {
     name: 'kyler',
     location: 'entry',
     hp: 100
   };
 
-  history = [
+  let history = service.history = [
     {
       turn,
-      desc: 'welcome to the game',
+      desc: 'Welcome to Code Fellows! Choose a direction to start exploring.',
       location: 'entry',
       hp: player.hp
     }
   ];
+
+
 
   service.movePlayer = function(direction) {
     return new $q( (resolve, reject) => { //Promise
@@ -40,7 +38,7 @@ function playerService($q, $log, mapService) {
       if(!newLocation) {
         history.unshift({
           turn,
-          desc: 'you ran straight into a wall, ruining somebodys whiteboard session.',
+          desc: 'You ran straight into a wall and ruined a whiteboard session.',
           location: player.location,
           hp: player.hp
         });
