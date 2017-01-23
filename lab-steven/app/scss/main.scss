@@ -1,0 +1,9 @@
+@import "./base/reset";
+@import './theme/vars';
+@import "./base/base";
+@import "./layout/header";
+@import "./layout/content";
+@import "./layout/footer";
+@import "../component/game-window/game-window";
+@import "../component/player-input/player-input";
+@import "../component/prompt/prompt"

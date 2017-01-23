@@ -1,0 +1,11 @@
+header {
+  h2 {
+    font-size: $font-large;
+    text-align: center;
+    background: linear-gradient($dark-gray, $dark-blue);
+    font-family: 'Lucinda Console', Monospace;
+    font-style: italic;
+    padding: 2vw;
+    color: $white / 2;
+  }
+}

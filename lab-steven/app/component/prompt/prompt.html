@@ -1,0 +1,22 @@
+<section class="prompt">
+  <ul>
+    <li>
+      <span>Name:</span>
+      <span>{{promptCtrl.player.name}}</span>
+    </li>
+    <li>
+      <span>HP: </span>
+      <span class="hp">{{promptCtrl.player.hp}}</span> / <span class="hp">{{promptCtrl.player.mhp}}</span>
+    </li>
+    <li>
+      <span>MP: </span>
+      <span class="mp">{{promptCtrl.player.mp}}</span> / <span class="mp">{{promptCtrl.player.mmp}}</span>
+    </li>
+    <li ng-show="promptCtrl.combat.currentlyFighting">
+      <p>You are currently fighting {{promptCtrl.combat.currentlyFighting.shortDesc}}!</p>
+    </li>
+    <li ng-show="promptCtrl.player.hp <= 0">
+      <p>YOU ARE DEAD.</p>
+    </li>
+  </ul>
+</section>

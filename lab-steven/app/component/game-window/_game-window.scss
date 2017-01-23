@@ -1,0 +1,61 @@
+.game-window {
+  background: $black;
+  height: 50vh;
+  overflow: auto;
+  color: $white;
+  border: 7px ridge $gray;
+  border-bottom: none;
+  font-family: Monospace;
+  padding: 1vw 1vw 2.5vw 1vw;
+
+  .combat-log {
+    margin: 0.5% 0;
+  }
+
+  .text {
+    width: 80%;
+  }
+
+  pre {
+    white-space: pre-wrap;
+    white-space: -moz-pre-wrap;
+    white-space: -pre-wrap;
+    white-space: -o-pre-wrap;
+    word-wrap: break-word;
+  }
+
+  div {
+    margin-bottom: 2%;
+  }
+
+  div h2 {
+    color: $blue-highlight;
+  }
+
+  div.history > p:last-child {
+    color: $green;
+  }
+
+  .items {
+    margin: 0.5% 0 1.7% 1%;
+    color: $blue-dull;
+  }
+
+  .exits {
+    margin: 1% 0;
+    color: $blue-highlight;
+  }
+
+  div p span {
+    color: $blue-dull;
+  }
+
+  div p > span:first-child {
+    margin: 0 0.3vw;
+  }
+
+  #bottom {
+    color: $green;
+    margin: 2% 0;
+  }
+}
