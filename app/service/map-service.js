@@ -62,7 +62,7 @@ function mapService($log) {
     },
     stairs: {
       description: 'A staircase leads down into pitch black.',
-      west: 'cellar'
+      east: 'cellar'
     }
   };
 
