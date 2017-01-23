@@ -19,7 +19,7 @@ function GamePadController($log, playerService) {
 
   this.movePlayer = function() {
     playerService.movePlayer(this.moveDirection)
-    .then( location  => {
+    .then( location => {
       $log.log(`player current at ${location}`);
     })
     .catch( err => {

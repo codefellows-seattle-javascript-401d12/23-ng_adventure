@@ -3,8 +3,8 @@
     <label for="direction">travel to the </label>
     <button type="button" ng-click="gamePadCtrl.movePlayer()">move player</button>
     <select ng-model="gamePadCtrl.moveDirection">
-      <option ng-repeat="direction in  gamePadCtrl.directions" value="{{ directions }}">
-        {{ directions }}
+      <option ng-repeat="direction in  gamePadCtrl.directions" value="{{ direction }}">
+        {{ direction }}
       </option>
     </select>
   </form>

@@ -1,7 +1,7 @@
 'use strict';
 
 const HTMLPlugin = require('html-webpack-plugin');
-const ExtractTextPlugin = require('extract-text-plugin');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 const plugins = [
   new HTMLPlugin({

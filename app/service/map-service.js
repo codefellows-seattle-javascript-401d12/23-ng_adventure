@@ -13,7 +13,8 @@ function mapService($log) {
   service.mapData = {
     entrance: {
       desc: 'Nice! You got in to the show! Hurry to the main stage to see your favorite artist!',
-      down: 'coatCheck'
+      down: 'coatCheck',
+      right: 'room'
     },
     coatCheck: {
       desc: 'Leave your heavy coat here, things will get way too hot when you are in the mix.',
@@ -33,7 +34,7 @@ function mapService($log) {
       desc: 'You made it to the Super Sonic Stage. Looks like the openers are still playing. You still got time!',
       up: 'beerGarden',
       left: 'pathwayToNoise',
-      right: 'pathwyToRelief'
+      right: 'pathwayToRelief'
     },
     beerGarden: {
       desc: 'Nice, you found the beer garden! Grab a quick refreshment and chug it cause you done have much time.',
@@ -58,7 +59,7 @@ function mapService($log) {
       up: 'pathwayOfPulsation',
       left: 'pathwayToDrop'
     },
-    pahtwayToDrop: {
+    pathwayToDrop: {
       desc: 'Just cut through this crowd and you are there!',
       down: 'dynamicsOfLife',
       left: 'nextBeerGarden'
@@ -71,5 +72,6 @@ function mapService($log) {
       desc: 'Yay! You made it the Dynamics of Life Main Stage! Your favorite artist is just about to start, you did it!'
     }
   };
+
   return service;
 }

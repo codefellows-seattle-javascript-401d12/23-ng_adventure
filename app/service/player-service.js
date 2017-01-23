@@ -29,6 +29,7 @@ function playerService($q, $log, mapService) {
   service.movePlayer = function(direction) {
     return new $q((resolve, reject) => {
       turn++;
+      
       let current = player.location;
       let newLocation = mapService.mapData[current][direction];
 
