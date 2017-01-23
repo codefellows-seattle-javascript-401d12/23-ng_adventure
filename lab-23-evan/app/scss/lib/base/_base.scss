@@ -10,9 +10,17 @@ body {
   height: 100vh;
   width: 100vw;
 }
-
+#ship {
+  height: 12%;
+  width: 10%;
+  float: right;
+  display: inline;
+}
 h1 {
   font-size: $xx-large;
+  display: inline;
+  // margin-left: 10%;
+  // padding-top: 10%;
 }
 
 h2 {

@@ -14,5 +14,5 @@ treasureQuest.controller('GameHistoryController', ['$log', 'playerService', Game
 function GameHistoryController($log, playerService) {
   $log.debug('GameHistoryController');
 
-  this.history = playerService.history;
+  this.history = playerService.history;  
 };

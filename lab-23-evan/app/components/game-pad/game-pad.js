@@ -24,6 +24,7 @@ function GamePadController($log, playerService) {
       this.addItems();
       this.addKnowledge();
       this.calculateHP();
+      this.winOrDie();
     })
     .catch( err => {
       $log.error(err);
@@ -37,5 +38,8 @@ function GamePadController($log, playerService) {
   }
   this.calculateHP = function() {
     playerService.calculateHP();
-  }
+  };
+  this.winOrDie = function() {
+    playerService.winOrDie();
+  }  
 };
