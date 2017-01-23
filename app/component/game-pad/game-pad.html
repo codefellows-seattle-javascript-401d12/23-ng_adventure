@@ -3,7 +3,7 @@
     <label for="direction">head to the</label>
     <input
       type="button"
-      ng-click="gamePadCtrl.movePlayerSouth()"
+      ng-click="gamePadCtrl.movePlayer()"
       ng-model="gamePadCtrl.moveDirection"
       ng-repeat="direction in gamePadCtrl.directions"
       value="{{ direction }}">{{ direction }}
