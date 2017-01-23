@@ -1,0 +1,22 @@
+.player-info-column {
+  text-align: center;
+  font-family: courier;
+  font-size: 2vw;
+  display: inline-block;
+  width: 30%;
+  text-transform: uppercase;
+}
+
+.player-info-roomdesc {
+  font-size: 5vw;
+  text-align: center;
+  font-family: courier;
+  padding: 3%;
+  min-height: 200px;
+}
+
+.player-info-gamescreen {
+  padding: 5%;
+  background-color: $background-mid;
+  margin: 5% 5%;
+}
