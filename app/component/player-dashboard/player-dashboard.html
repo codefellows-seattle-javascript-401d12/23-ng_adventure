@@ -1,0 +1,22 @@
+<section class="player-dashboard">
+  <h2>dashboard</h2>
+
+  <ul>
+    <li>
+      <span>player:</span>
+      <span class="capitalize">{{ playerDashControl.player.name }}</span>
+    </li>
+    <li>
+      <span>oxygen level:</span>
+      <span>{{ playerDashControl.player.oxygen }}</span>
+    </li>
+    <li>
+      <span>current location:</span>
+      <span class="capitalize">{{ playerDashControl.player.location.split('_').join(' ') }}</span>
+    </li>
+    <li>
+      <span>details:</span>
+      <!-- TODO: FILL IN CURRENT LOCATION DESCRIPTION HERE -->
+    </li>
+  </ul>
+</section>

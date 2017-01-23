@@ -1,0 +1,18 @@
+<section class="history">
+  <h2>progress log</h2>
+
+  <ul ng-repeat="historyState in gameHistoryControl.history">
+    <li>
+      <span>turn:</span>
+      <span>{{ historyState.turn }}</span>
+    </li>
+    <li>
+      <span>location:</span>
+      <span>{{ historyState.location }}</span>
+    </li>
+    <li>
+      <span>description:</span>
+      <span>{{ historyState.description }}</span>
+    </li>
+  </ul>
+</section>
