@@ -30,6 +30,12 @@ function PlayerInputController($log, mapService, playerService, interpreterServi
       playerService.listStates();
       return scrollToBottom();
     }
+
+    if (interpreterService.acceptableCommands[baseCommand] === 'alias') {
+      playerService.player.feedback = interpreterService.alias(commandArgs);
+      return scrollToBottom();
+    }
+
     if (interpreterService.acceptableCommands[baseCommand] === 'cast') {
       combatService.castSpell(commandArgs);
       if (playerService.player.feedback === 'You don\'t have enough MP.' || playerService.player.feedback === 'You don\'t know that spell.') {

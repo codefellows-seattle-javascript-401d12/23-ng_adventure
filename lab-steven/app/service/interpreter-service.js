@@ -40,7 +40,8 @@ function interpreterService($log) {
     st: 'states',
     buffs: 'states',
     attack: 'attack',
-    at: 'attack'
+    at: 'attack',
+    alias: 'alias'
   };
 
   service.help = function() {
@@ -58,7 +59,19 @@ function interpreterService($log) {
     'ATTACK, AT: Attack your current enemy with your fists. Deals less damage than spells, but doesn\'t cost MP.\n\n' +
     'SPELLS, SPELLBOOK, MAGIC: List the spells you know.\n\n' +
     'DRINK, QUAFF, USE <item>: Consumes a potion in your inventory.\n\n' +
-    'STATES, ST, BUFFS: Shows states currently affecting you and their remaining duration.\n\n';
+    'STATES, ST, BUFFS: Shows states currently affecting you and their remaining duration.\n\n' +
+    'ALIAS <command> <new command> (ex: "alias fight kill"): Creates a custom alias for any of the above commands.\n\n';
+  };
+
+  service.alias = function(commandArgs) {
+    let originalCommand = commandArgs.split(' ')[0];
+    let newCommand = commandArgs.split(' ').splice(1).join(' ').trim();
+
+    if (!service.acceptableCommands[originalCommand]) return 'That isn\'t a known command.';
+    if (originalCommand === 'alias') return 'You can\'t alias the alias command.';
+
+    service.acceptableCommands[newCommand] = service.acceptableCommands[originalCommand];
+    return `Alias ${newCommand} created for ${originalCommand}.`;
   };
 
   return service;
