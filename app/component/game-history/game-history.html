@@ -1,0 +1,21 @@
+<section class="history">
+  <h2>history</h2>
+
+  <ul ng-repeat="stat in gameHistoryCtrl.history">
+    <li>
+      <span>message:</span>
+      <span>{{ stat.desc }}</span>
+    </li>
+    <li>
+      <img ng-src="{{ stat.image }}">
+    </li>
+    <li>
+      <span>turn:</span>
+      <span>{{ stat.turn }}</span>
+    </li>
+    <li>
+      <span>previous location:</span>
+      <span>{{ stat.currentLocation }}</span>
+    </li>
+  </ul>
+</section>

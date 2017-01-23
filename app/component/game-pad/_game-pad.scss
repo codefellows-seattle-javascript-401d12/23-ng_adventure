@@ -1,0 +1,19 @@
+@import "../../scss/lib/theme/vars";
+
+.gamepad {
+  label {
+    margin-bottom: 1vw;
+    font-size: 3vw;
+    font-style: italic;
+    width: 49%;
+  }
+
+  button {
+    width: 40%;
+    margin: 1vw 2vw 0 0;
+  }
+
+  select {
+    font-size: 2vw;
+  }
+}
