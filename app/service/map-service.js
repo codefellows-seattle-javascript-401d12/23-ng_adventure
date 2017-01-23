@@ -12,7 +12,7 @@ function mapService($log) {
 
   service.mapData = {
     porch: {
-      description: 'You are standing on the porch of an abandoned house, facing north. The front door is ajar.',
+      description: 'You are standing on the porch of an abandoned house, facing NORTH. The front door is ajar.',
       north: 'entryway'
     },
     entryway: {

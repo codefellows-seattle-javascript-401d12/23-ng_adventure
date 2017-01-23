@@ -43,6 +43,8 @@ function playerService($q, $log, mapService) {
         return reject('There is not a room in that direction.');
       }
 
+      player.location = newLocation;
+
       history.unshift({
         turn,
         location: player.location,
@@ -50,7 +52,6 @@ function playerService($q, $log, mapService) {
         inventory: player.inventory
       });
 
-      player.location = newLocation;
       return resolve(player.location);
     });
   };
