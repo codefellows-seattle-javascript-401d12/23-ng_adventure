@@ -20,7 +20,7 @@ function playerService($q, $log, mapService) {
   let history = service.history = [
     {
       turn,
-      description: 'game start message',
+      description: 'You are standing on the front porch of an abandoned house. To the north is the front door, it is ajar.',
       location: 'porch',
       inventory: player.inventory
     }
@@ -36,7 +36,7 @@ function playerService($q, $log, mapService) {
       if(!newLocation) {
         history.unshift({
           turn,
-          desc: 'You cannot go in that direction.',
+          description: 'You cannot go in that direction.',
           location: player.location,
           inventory: player.inventory
         });
@@ -46,7 +46,7 @@ function playerService($q, $log, mapService) {
       history.unshift({
         turn,
         location: player.location,
-        desc: mapService.mapData[newLocation].desc,
+        description: mapService.mapData[newLocation].description,
         inventory: player.inventory
       });
 
