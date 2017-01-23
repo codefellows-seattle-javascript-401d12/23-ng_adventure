@@ -95,7 +95,7 @@ function mapService($log) {
       west: 'lab',
     },
     hallway2: {
-      title: 'hallway'
+      title: 'hallway',
       description: 'another long, narrow hallway, with mysterious doors leading to who-knows-where.',
       east: 'alien',
       north: 'engineRoom',
@@ -106,7 +106,7 @@ function mapService($log) {
       title: 'engine room',
       description: 'a noisy, not to mention radioactive place.',
       south: 'hallway2',
-    }
+    },
     alien: {
       title: 'room containing an alien',
       description: 'a ferocious alien has been hiding in this room. you are eaten.'
