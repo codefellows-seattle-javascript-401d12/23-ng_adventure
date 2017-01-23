@@ -80,6 +80,11 @@ function PlayerInputController($log, mapService, playerService, interpreterServi
     }
 
     if (interpreterService.acceptableCommands[baseCommand] === 'look') {
+      if (!commandArgs) {
+        playerService.player.feedback = 'Look at what?';
+        return scrollToBottom();
+      }
+      
       let examArray = mapService.mapData[playerService.player.location].mobs;
       let foundMob = examArray.filter(mob => mob.keywords.indexOf(commandArgs) !== -1)[0];
       if (!foundMob) {
