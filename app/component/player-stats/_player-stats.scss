@@ -1,0 +1,28 @@
+.player {
+  background: $brand-green;
+  float: right;
+  width: 28%;
+
+  img {
+    margin: 3vw 30%;
+    width: 40%;
+  }
+}
+
+.player-stats {
+  background: $brand-brown;
+  float: right;
+  width: 28%;
+  margin: 1vw 0 0 0;
+
+  ul {
+    text-align: center;
+    margin: 2vw 0;
+
+    li:first-of-type {
+      font-weight: bold;
+      font-size: 2vw;
+      margin-bottom: 1vw;
+    }
+  }
+}

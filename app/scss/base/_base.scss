@@ -1,0 +1,15 @@
+html {
+  background: $brand-white;
+}
+
+body {
+  max-width: 800px;
+  margin: 2vw auto;
+  font-family: $brand-font-primary;
+}
+
+h1 {
+  font-size: 4vw;
+  text-align: center;
+  margin: 1vw 0;
+}
