@@ -31,8 +31,8 @@ function combatService($log, mapService, mobService, playerService) {
     playerService.player.states.forEach(state => {
       if (playerService.player.spells[state].damageReduction) damage -= playerService.player.spells[state].damageReduction;
       playerService.player.spells[state].remaining--;
-      if (playerService.player.spells[state].remaining === 0) {
-        playerService.player.states.splice(state, 1);
+      if (playerService.player.spells[state].remaining <= 0) {
+        playerService.player.states.splice(playerService.player.states.indexOf(state), 1);
         service.combatLog.push(`${state[0].toUpperCase()}${state.slice(1)} has worn off.`);
       }
     });
@@ -97,13 +97,13 @@ function combatService($log, mapService, mobService, playerService) {
         }
         return;
       }
+      if (playerService.player.spells[spell].addState) playerService.player.spells[spell].remaining = playerService.player.spells[spell].duration;
       if (playerService.player.states.indexOf(playerService.player.spells[spell].addState) === -1) {
         service.combatLog.push(logMessage);
         playerService.player.states.push(playerService.player.spells[spell].addState);
         return;
       }
       service.combatLog.push(`You refresh the duration on ${playerService.player.spells[spell].addState}.`);
-      playerService.player.spells[spell].remaining = playerService.player.spells[spell].duration;
       return;
     }
     logMessage += `It heals you for ${playerService.player.mat} HP.`;
