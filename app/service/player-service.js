@@ -45,6 +45,23 @@ function playerService($q, $log, mapService) {
 
       player.location = newLocation;
 
+      // TODO switch next three statements to be inventory array
+      // if((player.location === 'den') && (player.inventory !== 'matches')) {
+      //   player.inventory += 'matches';
+      // }
+      //
+      // if((player.location === 'diningroom') && (player.inventory !== 'candle')) {
+      //   player.inventory += 'candle';
+      // }
+      //
+      // if((player.location === 'pantry') && (player.inventory !== 'key')) {
+      //   player.inventory += 'key';
+      // }
+
+      if(player.location === 'stairs') {
+        console.log('THE END');
+      }
+
       history.unshift({
         turn,
         location: player.location,

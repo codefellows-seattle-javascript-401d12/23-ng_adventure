@@ -26,4 +26,11 @@ function GamePadController($log, playerService) {
       $log.error(err);
     });
   };
+
+  // this.theEnd = function() {
+  //   if (this.player.location === this.mapService.mapData.stairs) {
+  //     console.log('THE END');
+  //   }
+  // };
+
 }
