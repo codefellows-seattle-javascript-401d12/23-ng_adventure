@@ -1,0 +1,65 @@
+.gamePad{
+  width: 59%;
+  float:left;
+  margin-left: $margin-std/2;
+  min-height: 300px;
+
+  form{
+    width: 75%;
+    margin: $margin-std auto;
+    padding: $padding-std 0;
+    background: $secondary-color;
+    text-align: center;
+    @include box-shadow(1px, 1px, 1px, 1px, $shadow);
+    h3{
+      width: 80%;
+      border-bottom: 1px solid $secondary-color/1.1;
+      margin: 0 $margin-std*5;
+    }
+    button{
+      margin-top: $margin-std;
+      width: 25%;
+
+    }
+  }
+
+  .gameDialog{
+    margin: 0 0 0 $margin-std;
+
+    h2{
+      width: 75%;
+      border-bottom: 1px solid $secondary-color;
+      margin-bottom: $margin-std*2;
+      padding-bottom: $padding-std/2;
+    }
+    p{
+      margin-bottom: $margin-std*2;
+      margin-left: $margin-std*2.5;
+      width: 90%;
+    }
+    p:first-child{
+      margin: 0;
+      color: $tertiary-color;
+      font-weight: bold;
+      font-style: italic;
+      font-size: 1vw;
+    }
+
+    .result{
+      button{
+        width: 30%;
+      }
+
+      iframe{
+        width: 90%;
+        height: 400px;
+        margin: 0 $margin-std*2.5;
+      }
+    }
+
+    #btn-td{
+      margin: $margin-std*2.5;
+    }
+  }
+
+}

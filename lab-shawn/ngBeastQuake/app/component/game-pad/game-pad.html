@@ -1,0 +1,43 @@
+<section class="gamePad">
+  <div class="gameDialog">
+    <p>Player At</p>
+    <h2 ng-model="gamePadCtrl.playerService" ng-show="gamePadCtrl.playerService.play">{{gamePadCtrl.playerService.player.location}}</h2>
+    <p ng-model="gamePadCtrl.playerService.currentDesc" ng-show="gamePadCtrl.playerService.play">{{gamePadCtrl.playerService.currentDesc}}</p>
+    <div class="result" ng-show="gamePadCtrl.playerService.touchdown">
+      <h2>
+        Endzone
+      </h2>
+      <p>
+        Touchdown Seahawks. Oh my word. A 67 yard run. Marshawn Lynch. Unbelievable.
+      </p>
+      <iframe src="https://www.youtube.com/embed/ZPcfkxmhS_A" frameborder="0" allowfullscreen></iframe>
+      <button id="btn-td" type="button" ng-click="gamePadCtrl.playerService.retry()">Replay</button>
+    </div>
+
+    <div class="result" ng-show="gamePadCtrl.playerService.tackled">
+      <h2>
+        TACKLED!!!
+      </h2>
+      <button type="button" ng-click="gamePadCtrl.playerService.retry()">Retry</button>
+    </div>
+  </div>
+
+  <form name="gamePad" ng-show="gamePadCtrl.playerService.play" novalidate>
+    <h3>make a move</h3>
+    <button
+      type="button"
+      ng-click="gamePadCtrl.movePlayer(gamePadCtrl.directions[0])"
+      value="gamePadCtrl.directions[0]">{{gamePadCtrl.directions[0]}}</button>
+
+    <button
+      type="button"
+      ng-click="gamePadCtrl.movePlayer(gamePadCtrl.directions[1])"
+      value="gamePadCtrl.directions[1]">{{gamePadCtrl.directions[1]}}</button>
+
+      <button
+        type="button"
+        ng-click="gamePadCtrl.movePlayer(gamePadCtrl.directions[2])"
+        value="gamePadCtrl.directions[2]">{{gamePadCtrl.directions[2]}}</button>
+
+  </form>
+</section>
