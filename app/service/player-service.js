@@ -44,8 +44,8 @@ function playerService($q, $log, mapService) {
       };
 
       if (newLocation === 'medical_station') {
-        if (!mapService.mapData[current].visited) {
-          mapService.mapData[current]['visited'] = true;
+        if (!mapService.mapData[newLocation].visited) {
+          mapService.mapData[newLocation]['visited'] = true;
 
           history.unshift({
             turn,
@@ -54,6 +54,7 @@ function playerService($q, $log, mapService) {
             oxygen: player.oxygen += 7
           });
 
+          mapService.mapData[newLocation]['description'] = 'you already got the oxygen tank!';
           player.location = newLocation;
           return resolve(player.location);
         }
