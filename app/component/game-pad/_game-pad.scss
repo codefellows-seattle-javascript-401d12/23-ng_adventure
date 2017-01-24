@@ -3,7 +3,7 @@
 .gamepad {
   background: $brand-secondary;
   padding: 2vw;
-
+  border: 2px solid $brand-primary;
 
   label {
     display: block;
@@ -11,7 +11,6 @@
     text-align: center;
     font-size: 3vw;
     margin-bottom: 1vw;
-
   }
 
   button {

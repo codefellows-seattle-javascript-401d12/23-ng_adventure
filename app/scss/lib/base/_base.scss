@@ -4,7 +4,7 @@ html {
   width: 100%;
   height: 100%;
   font-family: $font-primary;
-  position: absolute;
+  background-image: url("http://media.oregonlive.com/ent_impact_dining/photo/canon-seattle-42103bf229a1010f.jpg");
 }
 
 h1 {
@@ -14,6 +14,7 @@ h1 {
 h2 {
   font-size: 3vw;
   margin-bottom: $gutter-sm;
+  color: $brand-primary;
 }
 
 button {
