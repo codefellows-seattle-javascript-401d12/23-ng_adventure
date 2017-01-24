@@ -1,0 +1,29 @@
+.player-info h2 {
+  text-align: center;
+  font-size: 3vw;
+  font-weight: bold;
+  font-style: oblique;
+  margin-top: $gutter-sm;
+}
+
+.player-info {
+  border: $black solid 1vw;
+  padding: $gutter-sm;
+  background: $btn-hover;
+}
+
+.player-info ul {
+  width: 90%;
+  margin: $ctr;
+  text-align: center;
+  padding-top: $pad-reg + 1%;
+
+  li {
+    display: inline-block;
+    padding: 3 * $pad-reg;
+
+    span:first-child {
+      font-weight: bold;
+    }
+  }
+}

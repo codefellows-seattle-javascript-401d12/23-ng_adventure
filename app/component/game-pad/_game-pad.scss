@@ -1,0 +1,14 @@
+.gamepad {
+  border: $black solid 1vw;
+  padding: $gutter-sm;
+  background: $btn-hover;
+}
+
+.gamepad h2 {
+  text-align: center;
+  font-size: 3vw;
+  font-weight: bold;
+  font-style: oblique;
+  margin-bottom: $gutter-std;
+  margin-top: $gutter-sm;
+}
