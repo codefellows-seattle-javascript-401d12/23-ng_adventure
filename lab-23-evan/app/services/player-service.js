@@ -15,6 +15,7 @@ function playerService($q, $log, mapService) {
   let player = service.player = {
     name: 'Evan',
     location: 'Sandy_Beach',
+    locationName: 'Sandy Beach',
     hp: 20,
     items: [],
     knowledge: [],
@@ -64,6 +65,7 @@ function playerService($q, $log, mapService) {
 
       history.unshift({
         turn,
+        name: mapService.mapData[newLocation].name,
         location: newLocation,
         desc: mapService.mapData[newLocation].desc,
         message: mapService.mapData[player.location].message,
@@ -175,6 +177,7 @@ function playerService($q, $log, mapService) {
       player.hp = 20;
       history.splice(0, history.length-1);
       player.location = 'Sandy_Beach';
+      player.locationName = 'Sandy Beach';
       player.message = "Sorry, you died trying to find the treasure!";
       alert(player.message);
       player.message = '';
