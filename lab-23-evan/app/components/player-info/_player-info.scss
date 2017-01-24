@@ -1,0 +1,21 @@
+.player-info {
+  font-size: 125%;
+  height: 20%;
+  border-bottom: solid $dark-grey $xx-small;
+  .label {
+    font-weight: bolder;
+  }
+  ul {
+    width: 50%;
+    float: left;
+    text-align: left;
+    margin-top: $med;
+    li {
+      margin-left: $xx-large + $x-large;
+      padding: $xx-small;
+    }
+    #player-message {
+      overflow: scroll;
+    }
+  }
+}

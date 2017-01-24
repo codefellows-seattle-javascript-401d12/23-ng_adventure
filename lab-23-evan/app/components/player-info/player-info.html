@@ -1,0 +1,33 @@
+<section class="player-info">
+  <h4>Player stats</h4>
+  <ul>
+    <li>
+      <span class="label">Name:</span>
+      <span>{{ playerInfoCtrl.player.name }}</span>
+    </li>
+    <li>
+      <span class="label">HP:</span>
+      <span>{{ playerInfoCtrl.player.hp }}</span>
+    </li>
+    <li>
+      <span class="label">Items:</span>
+      <span ng-repeat="item in playerInfoCtrl.player.items">{{ item }}</span>
+    </li>
+    <li>
+      <span class="label">knowledge:</span>
+      <span ng-repeat="skill in playerInfoCtrl.player.knowledge">
+        {{ skill }}
+      </span>
+    </li>
+  </ul>
+  <ul>
+    <li>
+      <span class="label">Location:</span>
+      <span>{{ playerInfoCtrl.player.locationName }}</span>
+      <br/>
+      <span class="label">Message:</span>
+      <br/>
+      <span id="player-message">{{ playerInfoCtrl.player.message }}</span>
+    </li>
+  </ul>
+</section>

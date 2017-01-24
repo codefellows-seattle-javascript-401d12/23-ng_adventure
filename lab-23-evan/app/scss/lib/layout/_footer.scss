@@ -1,0 +1,14 @@
+footer {
+  font-size: $med;
+  text-align: center;
+  height: 10%;
+  span {
+    margin-top: $x-small;
+    padding-top: $xx-small;
+    width: 100%;
+    height: 100%;
+    display: block;
+    text-align: center;
+    background: $white;
+  }
+}

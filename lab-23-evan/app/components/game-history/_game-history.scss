@@ -1,0 +1,31 @@
+.history {
+  font-size: 125%;
+  height: 60%;
+  div {
+    background: $light-grey;
+    height: 100%;
+    overflow: scroll;
+  }
+  ul {
+    border-bottom: dotted $dark-grey $xx-small / 2;
+    padding-top: $x-small;
+    margin-left: $small;
+    margin-right: $small;
+    li {
+      line-height: 120%;
+    }
+  }
+  h2 {
+    padding: $small;
+
+  }
+  .hist-loc {
+    background: $pink;
+  }
+  .hist-msg {
+    background: $yellow;
+  }
+  .hist-desc {
+    background: $light-blue;
+  }
+}
