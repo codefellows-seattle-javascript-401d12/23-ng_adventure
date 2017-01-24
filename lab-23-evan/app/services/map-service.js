@@ -148,7 +148,7 @@ function mapService($log) {
     Booby_Trap_Swinging_Boulder: {
       name: 'Booby Trap Swinging Boulder',
       desc: 'An old swinging boulder booby trap',
-      message: 'You just got killed by the booby trap',
+      message: 'You just got hit by a booby trap',
       north: 'Jungle_6',
       east: 'Lookout_Point',
       west: 'Jungle_8'
@@ -156,7 +156,7 @@ function mapService($log) {
     Booby_Trap_Spike_Pit: {
       name: 'Booby Trap Spike Pit',
       desc: 'An old spike pit booby trap',
-      message: 'You just got killed by the booby trap',
+      message: 'You just got hit by the booby trap',
       north: 'Treasure',
       west: 'Clue'
     },
@@ -271,6 +271,9 @@ function mapService($log) {
       message: "This boat should be good enough to get me out of here!",
       west: 'Rocky_Beach'
     }
+  }
+  service.location = function(loc) {
+    return this.mapData.loc;
   }
   return service;
 };

@@ -1,5 +1,6 @@
 'use strict';
 
+
 const angular = require('angular');
 const treasureQuest = angular.module('treasureQuest');
 
@@ -39,8 +40,8 @@ function playerService($q, $log, mapService) {
       turn++;
 
       let current = player.location;
-      let newLocation = mapService.mapData[current][direction]
-      let message = mapService.mapData[newLocation].message
+      let newLocation = mapService.mapData[current][direction];
+      let message = mapService.mapData[newLocation].message;
       player.message = message;
       player.location = current;
 
@@ -94,48 +95,41 @@ function playerService($q, $log, mapService) {
 
   // Calculate HP ------------------------------
   service.calculateHP = function() {
+    var hpGain;
+    var hpLoss;
     function playerDead() {
       if(player.hp < 0) {
         player.hp = 0;
-        winOrDie();
       }
-      return;
     }
     if(player.location === 'Natural_Spring' || player.location === 'Bananna_Tree') {
-      player.hp+=5;
-      playerDead();
+      hpGain = 5;
     }
     if(player.location === 'Coconut_Tree_1' || player.location === 'Coconut_Tree_2') {
-      player.hp+=8;
-      playerDead();
+      hpGain = 8;
     }
     if(player.location === 'Quicksand') {
       if(player.items.includes('Climbing_Rope')) {
         player.hp = player.hp;
         player.message = 'Thankfully you found that rope so you could repel down the cliff.';
-        playerDead();
       }
-      player.hp-=10;
-      playerDead();
+      hpLoss = 10;
     }
     if(player.location === 'Wild_Boar') {
-      player.hp-=5;
-      playerDead();
+      hpLoss = 5;
     }
     if(player.location === 'Cliff') {
       if(player.items.includes('Climbing_Rope')) {
         player.hp = player.hp;
       }
-      player.hp-=15;
-      playerDead();
+      hpLoss = 15;
     }
     if(player.location === 'Booby_Trap_Swinging_Boulder' || player.location === 'Booby_Trap_Spike_Pit') {
       if(player.knowledge.includes('Clue')) {
         player.hp = player.hp;
         player.message = 'Finding clues led to you spotting the booby trap before it took you out!';
       }
-      player.hp-=12;
-      playerDead();
+      hpLoss = 12;
     }
     if(player.location === 'Cannibals') {
       if(player.items.includes('Old_Coin')) {
@@ -147,9 +141,17 @@ function playerService($q, $log, mapService) {
       player.hp = 0;
       player.message = "Sorry, you were eaten by cannibals";
     }
-    player.hp-=1;
+    if(hpLoss>0) {
+      player.hp-=hpLoss;
+    }
+    if(hpGain>0) {
+      player.hp+=hpGain;
+    }
+    if(hpGain === 0 && hpLoss === 0) {
+      hpLoss = 1;
+      player.hp-=hpLoss;
+    }
     playerDead();
-    winOrDie();
   };
 
   // Win or Die --------------------------
@@ -158,19 +160,24 @@ function playerService($q, $log, mapService) {
       if(player.items.includes('Treasure')) {
         if(player.hp > 0) {
           player.message = "Congratulations, You've successfully collected the treasure and escaped the island!";
-          alert("Congratulations, You've successfully collected the treasure and escaped the island!");
+          alert(player.message);
           return;
         }
         player.message = "Sorry, you were close but you died trying to escape with the treasure!";
+        alert(player.message);
         return;
       }
       player.message = "You can't leave without the treasure!";
+      alert(player.message);
       return;
     }
     if(player.hp < 1) {
-      player.hp = 0;
-      player.history = [];
+      player.hp = 20;
+      history.splice(0, history.length-1);
+      player.location = 'Sandy_Beach';
       player.message = "Sorry, you died trying to find the treasure!";
+      alert(player.message);
+      player.message = '';
       return;
     }
   }
