@@ -69,28 +69,29 @@ function mapService($log) {
       south: 'corridor',
       west: 'cellar'
     },
-    pantry: {
-      name: 'Pantry',
-      description: 'You find yourself in large pantry, dusty shelves hold a few pieces of broken crockery. The door back to the kitchen is to the WEST.',
-      west: 'kitchen'
-    },
-    // NOTE: saved below to use when have inventory working
+    // NOTE: the key-less version of the cellar
     // pantry: {
-    //   description: 'You find yourself in large pantry, dusty shelves hold a few pieces of broken crockery. There is a key here. The door back to the kitchen is to the WEST.',
+    //   name: 'Pantry',
+    //   description: 'You find yourself in large pantry, dusty shelves hold a few pieces of broken crockery. The door back to the kitchen is to the WEST.',
     //   west: 'kitchen'
     // },
-    cellar: {
-      name: 'Cellar',
-      description: 'You are in a small room, to the WEST is staircase. It is dark there. You are likely to be eaten by a grue.',
-      east: 'kitchen',
-      west: 'stairs'
-    },
     // NOTE: saved below to use when have inventory working
+    pantry: {
+      description: 'You find yourself in large pantry, dusty shelves hold a few pieces of broken crockery. There is a key here. The door back to the kitchen is to the WEST.',
+      west: 'kitchen'
+    },
     // cellar: {
-    //   description: 'You are in a small room, to the WEST is a door. It is locked.',
+    //   name: 'Cellar',
+    //   description: 'You are in a small room, to the EAST is the door back to the kitchen. To the WEST is a staircase. It is dark there. You are likely to be eaten by a grue.',
     //   east: 'kitchen',
     //   west: 'stairs'
     // },
+    // NOTE: saved below to use when have inventory working
+    cellar: {
+      description: 'You are in a small room, to the WEST is a door. It is locked.',
+      east: 'kitchen',
+      west: 'stairs'
+    },
     stairs: {
       name: 'stairs',
       description: 'A staircase leads down into pitch black. You descend. You have been eaten by a grue. THE END.'
