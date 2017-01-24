@@ -29,9 +29,17 @@ function playerService($q, $log, mapService) {
   service.movePlayer = function(direction) {
     return new $q((resolve, reject) => {
       turn++;
+      player.hp--;
+      if (player.hp === 0) {
+        alert('Go Home, you are too drunk to navigate');
+      }
       $log.log(direction);
       let current = player.location;
       let newLocation = mapService.mapData[current][direction];
+
+      if(current === 'BalMar') {
+        alert('You have been X-ed out....Go home. GAME OVER');
+      }
 
       if(!newLocation) {
         history.unshift({
