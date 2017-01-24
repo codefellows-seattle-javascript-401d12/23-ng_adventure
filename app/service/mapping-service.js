@@ -36,7 +36,7 @@ function mappingService($log) {
       right: "utopiaPlanitia"
     },
     utopiaPlanitia: {
-      desc: "Welcome to Utopia Planitia! You have two years of supplies to survive! Good luck!",
+      desc: "Congrats! You've reached the end of your journey! Welcome to Utopia Planitia! You have two years of supplies to survive! Good luck!",
       left: "vastitasBorealis"
     }
   };
