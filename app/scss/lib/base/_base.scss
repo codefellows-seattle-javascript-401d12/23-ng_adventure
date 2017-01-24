@@ -1,0 +1,76 @@
+/* NOTE all styles here brought over from CF JS 401 Lab #20 */
+
+/*** $vars ***/
+
+$brand-primary: #444;
+$btn-primary: $brand-primary / 2;
+$btn-hover: #ff4da6;
+$black: #333;
+$white: #fff;
+$green: #80BD50;
+$box-std: 40%;
+$gutter-std: 5%;
+$gutter-sm: $gutter-std / 2;
+
+/*** global style ***/
+
+body {
+  font-family: helvetica;
+  font-size: 2vw;
+  background: $brand-primary * 3;
+}
+
+h2 {
+  font-size: 3vw;
+  margin: $gutter-std 0;
+  // text-transform: lowercase;
+  color: $brand-primary;
+}
+
+button {
+  background: $btn-primary / 3;
+  color: $white;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+  transition: 350ms all;
+  // text-transform: uppercase;
+
+  &:hover {
+    background: $btn-hover;
+  }
+}
+
+input[type="text"] {
+  border: none;
+  border-radius: 3px;
+}
+
+pre {
+  font-family: monospace;
+  background-color: $white;
+}
+
+p {
+  margin: $gutter-sm;
+}
+
+ul {
+  // text-align: right;
+}
+
+li {
+  // display: inline-block;
+  margin: $gutter-sm;
+}
+
+li a {
+  text-decoration: none;
+  font-size: 1.2vw;
+  // text-transform: uppercase;
+  color: $white;
+}
+
+.clearfix {
+  clear: both;
+}
