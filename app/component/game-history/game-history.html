@@ -1,0 +1,17 @@
+<section class="history">
+  <h2>Space Movement Log:</h2>
+  <ul ng-repeat="stat in gameHistoryCtrl.history">
+    <li>
+      <span>Space Pivots:</span>
+      <span>{{ stat.turn }}</span>
+    </li>
+    <li>
+      <span>Mars Location:</span>
+      <span>{{ stat.location }}</span>
+    </li>
+    <li>
+      <span>Description:</span>
+      <span>{{ stat.desc }}</span>
+    </li>
+  </ul>
+</section>
