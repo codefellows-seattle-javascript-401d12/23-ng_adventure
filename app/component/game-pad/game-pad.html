@@ -1,0 +1,46 @@
+<section class="gamepad">
+  <form name="gamepad" novalidate>
+    <label for="direction">Select a direction to the next bar</label>
+      <div class="btn-container">
+        <button
+        type="button"
+        ng-click="gamePadCtrl.movePlayer(gamePadCtrl.directions[0])"
+        ng-model="gamePadCtrl.moveDirection"
+        value="{{ direction }}"> North
+        </button>
+
+        <button
+        type="button"
+        ng-click="gamePadCtrl.movePlayer(gamePadCtrl.directions[3])"
+        ng-model="gamePadCtrl.moveDirection"
+        value="{{ direction }}"> West
+       </button>
+
+        <button
+          type="button"
+          ng-click="gamePadCtrl.movePlayer(gamePadCtrl.directions[2])"
+          ng-model="gamePadCtrl.moveDirection"
+          value="{{ direction }}"> East
+        </button>
+
+        <button
+        type="button"
+        ng-click="gamePadCtrl.movePlayer(gamePadCtrl.directions[1])"
+        ng-model="gamePadCtrl.moveDirection"
+        value="{{ direction }}"> South
+        </button>
+      </div>
+  </form>
+</section>
+
+<!-- <section class="gamepad">
+  <form name="gamepad" novalidate>
+    <label for="direction">Select a direction to the next bar</label>
+    <button type="button" ng-click="gamePadCtrl.movePlayer()">bar hop</button>
+    <select ng-model="gamePadCtrl.moveDirection">
+      <option ng-repeat="direction in gamePadCtrl.directions" value="{{ direction }}">
+        {{ direction }}
+      </option>
+    </select>
+  </form>
+</section> -->

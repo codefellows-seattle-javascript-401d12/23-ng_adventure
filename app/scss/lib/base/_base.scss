@@ -1,0 +1,38 @@
+@import "../theme/vars";
+
+html {
+  width: 100%;
+  height: 100%;
+  font-family: $font-primary;
+  background-image: url("http://media.oregonlive.com/ent_impact_dining/photo/canon-seattle-42103bf229a1010f.jpg");
+}
+
+h1 {
+  font-size: 4vw;
+}
+
+h2 {
+  font-size: 3vw;
+  margin-bottom: $gutter-sm;
+  color: $brand-primary;
+}
+
+button {
+  padding: 1% 5%;
+  background: $btn-primary;
+  color: $white;
+  font-size: 2vw;
+  border: none;
+  border-radius: $btn-radius;
+  cursor: pointer;
+  transition: 350ms all;
+
+  &:hover {
+    background: $brand-primary;
+    color: $btn-primary;
+  }
+}
+
+select {
+  width: 20%;
+}

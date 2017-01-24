@@ -1,0 +1,18 @@
+@import "../../scss/lib/theme/vars";
+
+.history {
+  background: $brand-secondary;
+  overflow: auto;
+  max-height: 30vw;
+  color: $white;
+  padding: 2vw;
+  border: 2px solid $brand-primary;
+
+  li {
+    margin-bottom: $gutter-sm /2;
+
+    span {
+      font-size: 2vw;
+    }
+  }
+}
