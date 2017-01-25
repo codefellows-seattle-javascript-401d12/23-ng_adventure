@@ -45,23 +45,9 @@ function playerService($q, $log, mapService) {
 
       player.location = newLocation;
 
-      // TODO switch next three statements to be inventory array
-      // if((player.location === 'den') && (player.inventory !== 'matches')) {
-      //   player.inventory += 'matches';
-      // }
-      //
-      // if((player.location === 'diningroom') && (player.inventory !== 'candle')) {
-      //   player.inventory += 'candle';
-      // }
-      //
-      // if((player.location === 'pantry') && (player.inventory !== 'key')) {
-      //   player.inventory += 'key';
-      // }
-
-      // NOTE: keep until I know I don't want to do something with the JS at the end of the game
-      // if(player.location === 'stairs') {
-      //   console.log('THE END');
-      // }
+      if((player.location === 'pantry') && (player.inventory !== 'key')) {
+        player.inventory += 'key';
+      }
 
       history.unshift({
         turn,
