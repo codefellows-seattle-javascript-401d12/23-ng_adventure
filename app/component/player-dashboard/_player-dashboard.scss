@@ -1,0 +1,28 @@
+@import "../../scss/lib/theme/vars";
+
+.player-dashboard {
+
+  ul li {
+    margin: 1% 0;
+
+    &:first-child {
+      width: 50%;
+      background: $btn-primary;
+      margin: -6px 0 -6px 0;
+    }
+  }
+
+  span {
+    font-size: 1.2vw;
+    line-height: 1.5em;
+
+    &:first-child {
+      color: $brand-secondary;
+      font-weight: bold;
+    }
+
+    &:last-child {
+      margin-left: .5vw;
+    }
+  }
+}

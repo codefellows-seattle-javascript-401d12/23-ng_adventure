@@ -1,0 +1,26 @@
+@import "../../scss/lib/theme/vars";
+
+.history {
+  
+  ul li {
+    margin: 1% 0;
+  }
+
+  ul:last-child {
+    display: none;
+  }
+
+  span {
+    font-size: 1.2vw;
+    line-height: 1.5em;
+
+    &:first-child {
+      color: $brand-secondary;
+      font-weight: bold;
+    }
+
+    &:last-child {
+      margin-left: .5vw;
+    }
+  }
+}

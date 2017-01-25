@@ -1,0 +1,25 @@
+<section class="player-dashboard">
+  <h2>dashboard</h2>
+
+  <ul>
+    <li>
+      <span class="game-end">{{ playerDashControl.player.end }}</span>
+    </li>
+    <li>
+      <span>player:</span>
+      <span class="capitalize">{{ playerDashControl.player.name }}</span>
+    </li>
+    <li>
+      <span>oxygen level:</span>
+      <span>{{ playerDashControl.player.oxygen }}</span>
+    </li>
+    <li>
+      <span>current location:</span>
+      <span class="capitalize">{{ playerDashControl.player.location.split('_').join(' ') }}</span>
+    </li>
+    <li>
+      <span>details:</span>
+      <span>{{ playerDashControl.history[0].description }}</span>
+    </li>
+  </ul>
+</section>
