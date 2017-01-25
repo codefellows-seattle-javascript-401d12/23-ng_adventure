@@ -5,7 +5,10 @@
   "main": "index.js",
   "scripts": {
     "build": "./node_modules/webpack/bin/webpack.js",
-    "build-watch": "./node_modules/webpack-dev-server/bin/webpack-dev-server.js --inline --hot"
+    "build-watch": "./node_modules/webpack-dev-server/bin/webpack-dev-server.js --inline --hot",
+    "test-watch": "./node_modules/karma/bin/karma start",
+    "test": "./node_modules/karma/bin/karma start --single-run",
+    "lint": "eslint app/**/*.js"
   },
   "repository": {
     "type": "git",
@@ -36,6 +39,13 @@
     "webpack": "^1.14.0"
   },
   "devDependencies": {
+    "angular-mocks": "^1.6.1",
+    "jasmine-core": "^2.5.2",
+    "karma": "^1.4.0",
+    "karma-jasmine": "^1.1.0",
+    "karma-mocha-reporter": "^2.2.2",
+    "karma-phantomjs-launcher": "^1.0.2",
+    "karma-webpack": "^2.0.1",
     "webpack-dev-server": "^1.16.2"
   }
 }
