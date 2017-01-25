@@ -68,6 +68,9 @@ function playerService($q, $log, mapService) {
         oxygen: player.oxygen -= 1,
       });
       player.location = newLocation;
+      if (player.oxygen < 1) player.end = 'out of oxygen...you are dead.';
+      if (player.location === 'alien') player.end = 'you encounter a bloodthirsty alien...you are dead.';
+      if (player.location === 'airlock') player.end = 'you made it to the airlock. congratulations!';
       return resolve(player.location);
     });
   };
