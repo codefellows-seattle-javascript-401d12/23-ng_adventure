@@ -1,0 +1,9 @@
+.gamehistory {
+  border: solid 1px $brand-primary;
+  border-radius: 3px;
+  width: $box-std;
+  display: inline-block;
+  float: left;
+  margin: $gutter-xsm;
+  padding: $gutter-xsm;
+}

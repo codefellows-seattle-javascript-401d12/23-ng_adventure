@@ -1,0 +1,11 @@
+.playerinfo {
+  display: inline-block;
+  width: $box-std;
+  margin: $gutter-xsm;
+  padding: $gutter-xsm;
+}
+
+.currentlocation {
+  text-transform: uppercase;
+  font-weight: bold;
+}
