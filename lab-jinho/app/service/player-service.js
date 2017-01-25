@@ -14,7 +14,7 @@ function playerService($q, $log, mapService) {
   let player = service.player = {
     name: 'passenger',
     location: 'seatB2',
-    hp: 16
+    hp: 10
   };
 
   let history = service.history = [
@@ -29,9 +29,18 @@ function playerService($q, $log, mapService) {
   service.movePlayer = function(direction) {
     return new $q((resolve, reject) => {
       turn++;
+      player.hp--;
+      if (player.hp === 0) {
+        return ('Captain has turned the seat belt light on, please remain in your seats.');
+      }
+      $log.log(direction);
 
       let current = player.location;
       let newLocation = mapService.mapData[current][direction];
+
+      if(current === 'seatA3') {
+        return ('GAME OVER!');
+      }
 
       if (!newLocation) {
         history.unshift({
@@ -40,7 +49,7 @@ function playerService($q, $log, mapService) {
           location: player.location,
           hp: player.hp
         });
-        return reject('no seat in that direction');
+        return reject('This is not an assigned seat.');
       }
 
       history.unshift({
