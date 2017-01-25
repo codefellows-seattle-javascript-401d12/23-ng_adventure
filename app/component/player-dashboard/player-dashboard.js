@@ -14,4 +14,5 @@ angularAdventure.controller('PlayerDashController', ['$log', 'playerService', Pl
 function PlayerDashController($log, playerService) {
   $log.debug('PlayerDashController');
   this.player = playerService.player;
+  this.history = playerService.history;
 };
