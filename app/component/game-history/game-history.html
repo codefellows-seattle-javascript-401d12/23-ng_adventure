@@ -3,16 +3,14 @@
 
   <ul ng-repeat="historyState in gameHistoryControl.history">
     <li>
-      <span>turn:</span>
-      <span>{{ historyState.turn }}</span>
-    </li>
-    <li>
-      <span>location:</span>
-      <span>{{ historyState.location }}</span>
-    </li>
-    <li>
-      <span>description:</span>
-      <span>{{ historyState.description }}</span>
+      <div class="stat">
+        <span>move no.</span>
+        <span>{{ historyState.turn }}</span>
+      </div>
+      <div class="stat">
+        <span>last location:</span>
+        <span>{{ historyState.location }}</span>
+      </div>
     </li>
   </ul>
 </section>
