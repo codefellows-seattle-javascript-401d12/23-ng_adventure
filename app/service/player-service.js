@@ -20,7 +20,7 @@ function playerService($q, $log, mapService) {
   let history = service.history = [
     {
       turn,
-      description: 'Welcome aboard the space research station Vasa',
+      description: 'Deep in space aboard the research ship Vasa. The \'west\' section of the ship has been evacuated while you go in to investiage a malfunction. Deep into the eerily quiet \'west\' section, you feel the craft shudder, and seconds later, the emergency system alerts you that the section has lost its main oxygen supply in an explosion. You grab an emergency oxygen tank and mask and prepare to head for the airlock that will allow you to escape to one of the other undamaged sections. Each move you make depletes your oxygen a little, so you\'ll have to conserve. You know that your tank won\'t give you enough oxygen to make it all the way, so you\'ll need to find another tank somewhere between here and the airlock...',
       location: 'start',
       oxygen: player.oxygen
     }
