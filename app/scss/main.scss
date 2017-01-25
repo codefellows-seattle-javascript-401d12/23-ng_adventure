@@ -3,7 +3,11 @@
 @import "lib/base/base";
 
 // LAYOUT
-// TODO: ADD LAYOUT STYLES
+@import "lib/layout/header";
+@import "lib/layout/footer";
+@import "lib/layout/content";
 
 // COMPONENT
-// TODO: ADD COMPONENT STYLES
+@import "../component/gameboard/gameboard";
+@import "../component/player-dashboard/player-dashboard";
+@import "../component/game-history/game-history";
