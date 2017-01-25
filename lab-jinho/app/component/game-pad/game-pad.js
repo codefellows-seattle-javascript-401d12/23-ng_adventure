@@ -26,4 +26,4 @@ function GamePadController($log, playerService) {
       $log.error(err);
     });
   };
-};
+}
