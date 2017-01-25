@@ -1,11 +1,11 @@
 <section class="gameboard">
   <form name="gameboard" ng-show="!gameEnd" novalidate>
     <label for="direction">Travel Direction:</label>
-    <button type="button" ng-click="gameboardControl.movePlayer()">GO!</button>
     <select ng-model="gameboardControl.move">
       <option ng-repeat="direction in gameboardControl.directions" value="{{ direction }}">
       {{ direction }}
       </option>
     </select>
+    <button type="button" ng-click="gameboardControl.movePlayer()">GO!</button>
   </form>
 </section>
