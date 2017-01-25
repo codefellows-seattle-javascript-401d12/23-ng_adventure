@@ -3,9 +3,9 @@
 const angular = require('angular');
 const ngAdventure = angular.module('ngAdventure');
 
-ngAdventure.factory('playerService', ['$q', '$log', 'mapService', playerService]);
+ngAdventure.factory('playerService', ['$window', '$q', '$log', 'mapService', playerService]);
 
-function playerService($q, $log, mapService) {
+function playerService($window, $q, $log, mapService) {
   $log.debug('player service');
 
   let service = {};
@@ -31,15 +31,14 @@ function playerService($q, $log, mapService) {
       turn++;
       player.hp--;
       if (player.hp === 0) {
-        return ('Captain has turned the seat belt light on, please remain in your seats.');
+        $window.alert('Captain has turned the seat belt light on, please remain in your seats.');
       }
       $log.log(direction);
-
       let current = player.location;
       let newLocation = mapService.mapData[current][direction];
 
       if(current === 'seatA3') {
-        return ('GAME OVER!');
+        $window.alert('GAME OVER!');
       }
 
       if (!newLocation) {
