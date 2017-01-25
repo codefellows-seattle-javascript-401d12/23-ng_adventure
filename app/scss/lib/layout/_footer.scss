@@ -1,1 +1,8 @@
-// TODO: BUILD OUT CUSTOM FOOTER STYLES
+@import "../theme/vars";
+
+footer {
+  padding: $gutter-sm;
+  background: $brand-secondary;
+  text-align: center;
+  font-size: 1.5vw;
+}

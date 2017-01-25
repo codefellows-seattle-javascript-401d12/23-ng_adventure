@@ -1,1 +1,14 @@
-// TODO: BUILD OUT CUSTOM GAMEBOARD STYLES
+@import "../../scss/lib/theme/vars";
+
+.gameboard {
+
+  label {
+    display: block;
+    margin-bottom: 1vw;
+    font-size: 1.8vw
+  }
+
+  button {
+    width: 8%;
+  }
+}

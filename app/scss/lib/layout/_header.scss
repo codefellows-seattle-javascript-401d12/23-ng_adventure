@@ -1,1 +1,7 @@
-// TODO: BUILD OUT CUSTOM HEADER STYLES
+@import "../theme/vars";
+
+header {
+  background: $brand-secondary;
+  text-align: center;
+  padding: 1vw;
+}
