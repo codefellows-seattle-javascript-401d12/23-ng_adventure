@@ -6,17 +6,16 @@ const angularAdventure = angular.module('angularAdventure');
 angularAdventure.component('gameboard', {
   template: require('./gameboard.html'),
   controller: 'GameboardController',
-  controllerAs: 'gameboardControl'
+  controllerAs: 'gameboardControl',
 });
 
-angularAdventure.controller('GameboardController', ['$log',  'playerService', GameboardController]);
+angularAdventure.controller('GameboardController', ['$log', '$scope',  'playerService', GameboardController]);
 
-function GameboardController($log, playerService) {
+function GameboardController($log, $scope, playerService) {
   $log.debug('GameboardController');
 
   this.directions = ['north', 'south', 'east', 'west'];
   this.move = this.directions[0];
-  console.log(this.move);
 
   this.movePlayer = function() {
     playerService.movePlayer(this.move)
@@ -26,5 +25,6 @@ function GameboardController($log, playerService) {
     .catch( err => {
       $log.error(err);
     });
+    if (playerService.player.end) $scope.gameEnd = true;
   };
 };
