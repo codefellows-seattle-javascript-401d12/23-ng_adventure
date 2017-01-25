@@ -20,7 +20,7 @@ function playerService($q, $log, mapService) {
   let history = service.history = [
     {
       turn,
-      description: 'You are standing on the front porch of an abandoned house. To the NORTH is the front door, it is ajar.',
+      description: 'Welcome. You are standing on the front porch of an abandoned house. To the NORTH is the front door, it is ajar.',
       location: 'porch',
       inventory: player.inventory
     }
